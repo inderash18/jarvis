@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --color-jarvis-bg: #050510;
+  --color-jarvis-primary: #00f3ff;
+  --color-jarvis-secondary: #bc13fe;
+  --color-jarvis-accent: #ff003c;
+  --color-jarvis-panel: rgba(20, 20, 35, 0.7);
+
+  --font-mono: "Fira Code", monospace;
+  --font-display: "Orbitron", sans-serif;
+}
+
+:root {
+  --neon-blue: #00f3ff;
+  --bg-dark: #050510;
+}
+
+body {
+  @apply bg-jarvis-bg text-white overflow-hidden;
+  font-family: 'Fira Code', monospace;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  @apply bg-jarvis-panel backdrop-blur-md border border-white/10 rounded-xl shadow-lg;
+}
+
+.neon-text {
+  text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
