@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     CAMERA_INDEX: int = 0
     
     # System
-    ALLOW_ORIGINS: List[str] = ["http://localhost:5173", "http://localhost:3000"]
+    ALLOW_ORIGINS: List[str] = ["*"]
 
     class Config:
         case_sensitive = True

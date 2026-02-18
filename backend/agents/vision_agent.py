@@ -1,6 +1,12 @@
 from .base import BaseAgent
 from typing import Dict, Any
-import cv2
+import importlib.util
+
+# Lazy import cv2
+cv2 = None
+if importlib.util.find_spec("cv2"):
+    import cv2
+
 import mediapipe as mp
 # import pytesseract
 from core.logging import log
@@ -12,6 +18,9 @@ class VisionAgent(BaseAgent):
         self.cap = None
 
     async def process_request(self, action: str, parameters: Dict[str, Any]) -> Dict[str, Any]:
+        if cv2 is None:
+            return {"error": "OpenCV (cv2) not installed."}
+            
         if action == "capture_frame":
             return self.capture_frame()
         elif action == "analyze_screen":

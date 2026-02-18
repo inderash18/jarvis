@@ -13,9 +13,26 @@ class AutomationAgent(BaseAgent):
         try:
             if action == "open_application":
                 app_name = parameters.get("app_name")
-                # Add logic for finding and opening app
-                # For demo, just print
-                print(f"Opening {app_name}...")
+                print(f"Attempting to open {app_name}...")
+                
+                # Try simple specific cases first for speed
+                try:
+                    if app_name.lower() in ["notepad", "calc", "calculator", "mspaint", "cmd", "explorer"]:
+                        subprocess.Popen(app_name)
+                        result["details"] = f"Launched {app_name}"
+                    elif app_name.lower() == "chrome":
+                        subprocess.Popen(["start", "chrome"], shell=True)
+                        result["details"] = f"Launched {app_name}"
+                    elif app_name.lower() == "vscode":
+                         subprocess.Popen(["code"], shell=True)
+                         result["details"] = f"Launched {app_name}"
+                    else:
+                        # Fallback to general start command
+                        subprocess.Popen(["start", app_name], shell=True)
+                        result["details"] = f"Attempted to launch {app_name}"
+                except Exception as e:
+                    result["status"] = "error"
+                    result["error"] = f"Failed to open {app_name}: {e}"
                 
             elif action == "create_folder":
                 folder_name = parameters.get("folder_name")
@@ -24,9 +41,12 @@ class AutomationAgent(BaseAgent):
                 
             elif action == "execute_command":
                 cmd = parameters.get("command")
-                # BE CAREFUL with shell execution
-                # output = subprocess.check_output(cmd, shell=True)
-                pass
+                # Secure this in production!
+                # For local personal assistant, we allow it but log it
+                print(f"Executing shell command: {cmd}")
+                process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                stdout, stderr = process.communicate()
+                result["details"] = stdout if stdout else stderr
 
         except Exception as e:
             result["status"] = "error"

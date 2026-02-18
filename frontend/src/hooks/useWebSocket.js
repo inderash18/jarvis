@@ -9,34 +9,51 @@ export const useWebSocket = () => {
     const ws = useRef(null);
 
     useEffect(() => {
-        // Only connect once
-        if (ws.current) return;
+        let reconnectTimeout;
 
-        ws.current = new WebSocket(WS_URL);
+        const connect = () => {
+            if (ws.current?.readyState === WebSocket.OPEN) return;
 
-        ws.current.onopen = () => {
-            console.log('Connected to JARVIS Backend');
-            setIsConnected(true);
-            setStatus('connected');
+            console.log('Connecting to JARVIS Backend...');
+            const socket = new WebSocket(WS_URL);
+            ws.current = socket;
+
+            socket.onopen = () => {
+                console.log('Connected to JARVIS Backend');
+                setIsConnected(true);
+                setStatus('connected');
+            };
+
+            socket.onclose = () => {
+                console.log('Disconnected from JARVIS Backend');
+                setIsConnected(false);
+                setStatus('disconnected');
+                // Try to reconnect
+                reconnectTimeout = setTimeout(connect, 3000);
+            };
+
+            socket.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    setMessages((prev) => [...prev, data]);
+                } catch (e) {
+                    console.error("Failed to parse message", e);
+                }
+            };
+
+            socket.onerror = (err) => {
+                console.error("WebSocket Error:", err);
+                socket.close();
+            };
         };
 
-        ws.current.onclose = () => {
-            console.log('Disconnected from JARVIS Backend');
-            setIsConnected(false);
-            setStatus('disconnected');
-        };
-
-        ws.current.onmessage = (event) => {
-            try {
-                const data = JSON.parse(event.data);
-                setMessages((prev) => [...prev, data]);
-            } catch (e) {
-                console.error("Failed to parse message", e);
-            }
-        };
+        connect();
 
         return () => {
+            if (reconnectTimeout) clearTimeout(reconnectTimeout);
             if (ws.current) {
+                // Prevent onclose from triggering reconnection when unmounting
+                ws.current.onclose = null;
                 ws.current.close();
             }
         };

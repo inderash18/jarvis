@@ -1,151 +1,241 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useWebSocket } from '../hooks/useWebSocket';
+import { useVoice } from '../hooks/useVoice';
+import { useSound } from '../hooks/useSound';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Mic, Command, Settings, Shield, Cpu, Activity, Database, Cloud } from 'lucide-react';
+import { Send, Mic, Command, Settings, Shield, Cpu, Activity, Database, Cloud, Clock } from 'lucide-react';
 import Canvas from '../components/Canvas';
 import CommandInput from '../components/CommandInput';
+import bgVideo from '../assets/LIVE_WALLPAPER_AI_JARVIS_-_IRON-MAN_STATUS_REALM_PC_DESKTOP_UPDATED_DOWNLOAD_LINK_1080P.mp4';
 
 const MetricCard = ({ icon: Icon, label, value, color }) => (
-    <div className="bg-black/40 backdrop-blur-md border border-white/5 rounded-lg p-3 flex flex-col items-center justify-center gap-2 hover:border-white/20 transition-all">
-        <Icon size={16} className={`text-${color}-400 mb-1`} />
-        <span className="text-[10px] uppercase tracking-widest text-white/40">{label}</span>
-        <span className="text-sm font-mono text-white/90">{value}</span>
+    <div className="flex items-center gap-3 bg-black/20 backdrop-blur-sm border-l-2 border-white/10 p-2 pr-4 hover:bg-white/5 transition-all group w-48">
+        <div className={`p-2 rounded bg-${color}-500/10 text-${color}-400 group-hover:text-${color}-300 shadow-[0_0_10px_rgba(0,0,0,0.5)]`}>
+            <Icon size={14} />
+        </div>
+        <div className="flex flex-col">
+            <span className="text-[9px] uppercase tracking-widest text-white/40">{label}</span>
+            <span className="text-xs font-mono text-white/90">{value}</span>
+        </div>
     </div>
 );
 
 const Dashboard = () => {
     const { isConnected, status, messages, sendMessage } = useWebSocket();
-    const [isListening, setIsListening] = useState(false);
+    const { speak, isListening, transcript, startListening, stopListening, resetTranscript } = useVoice();
+    const { playProcessing } = useSound();
 
     // Commands filtered from messages
     const [canvasCommands, setCanvasCommands] = useState([]);
+    const [isProcessing, setIsProcessing] = useState(false);
 
     // System Stats
     const [metrics, setMetrics] = useState({
-        cpu: 0,
-        ram_percent: 0,
-        ram_used: 0,
-        ram_total: 0
+        cpu: 12,
+        ram_percent: 45,
+        ram_used: 4.2,
+        ram_total: 16
     });
+
+    // Time
+    const [time, setTime] = useState(new Date());
+
+    // Scroll to bottom of logs
+    const logsEndRef = useRef(null);
+
+    // Welcome Message
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            speak("Welcome back, sir. Systems are online and ready. How can I help you?");
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, [speak]);
+
+    // Simulate aliveness & Time
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setMetrics(prev => ({
+                ...prev,
+                cpu: Math.min(100, Math.max(0, prev.cpu + (Math.random() * 10 - 5))).toFixed(1),
+                ram_percent: Math.min(100, Math.max(0, prev.ram_percent + (Math.random() * 2 - 1))).toFixed(1)
+            }));
+            setTime(new Date());
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
+
+    // Auto-scroll logs
+    useEffect(() => {
+        logsEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
 
     useEffect(() => {
         if (messages.length > 0) {
             const last = messages[messages.length - 1];
             if (last) {
-                // If it's a result with canvas actions, add to canvasCommands
-                console.log("New Message:", last);
+                // Check if status processing
+                if (last.type === 'status') {
+                    setIsProcessing(true);
+                    playProcessing();
+                }
 
-                if (last.type === 'system_stats') {
+                else if (last.type === 'system_stats') {
                     setMetrics({
                         cpu: last.data.cpu,
                         ram_percent: last.data.memory_percent,
                         ram_used: last.data.memory_used_gb,
                         ram_total: last.data.memory_total_gb
                     });
-                } else if (last.type === 'result' && last.data?.execution_results) {
-                    setCanvasCommands(prev => [...prev, last]);
+                }
+
+                else if (last.type === 'result') {
+                    setIsProcessing(false);
+                    if (last.data?.execution_results) {
+                        setCanvasCommands(prev => [...prev, last]);
+                    }
+                    if (last.data?.original_response?.thought_process) {
+                        speak(last.data.original_response.thought_process);
+                    }
+                }
+
+                else if (last.type === 'error') {
+                    setIsProcessing(false);
                 }
             }
         }
-    }, [messages]);
+    }, [messages, speak, playProcessing]);
 
     const handleSendCommand = (cmd) => {
-        sendMessage(cmd);
+        if (cmd) {
+            setIsProcessing(true);
+            playProcessing();
+            sendMessage(cmd);
+        }
     };
 
     return (
-        <div className="relative min-h-screen bg-jarvis-bg text-white font-mono overflow-hidden">
-            {/* Background Grid */}
-            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10 pointer-events-none" />
+        <div className="relative w-screen h-screen bg-jarvis-bg text-white font-mono overflow-hidden selection:bg-jarvis-primary/30">
+            {/* Background Layer */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    className="w-full h-full object-cover opacity-40 mix-blend-screen"
+                >
+                    <source src={bgVideo} type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
+                <div className="absolute inset-0 bg-radial-gradient from-transparent via-jarvis-bg/50 to-jarvis-bg/90" />
+            </div>
 
-            {/* Header / Top Bar */}
-            <header className="fixed top-0 left-0 right-0 h-16 border-b border-white/10 bg-black/60 backdrop-blur-lg flex items-center justify-between px-6 z-50">
-                <div className="flex items-center gap-4">
-                    <div className="size-8 rounded-full bg-gradient-to-br from-jarvis-primary to-jarvis-secondary shadow-[0_0_20px_rgba(0,243,255,0.5)] animate-pulse" />
-                    <h1 className="text-xl font-bold tracking-[0.2em] font-display text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">
-                        JARVIS <span className="text-xs text-jarvis-primary ml-2">SYSTEM ACTIVE</span>
-                    </h1>
-                </div>
+            {/* Canvas Layer - Full Screen Overlay */}
+            <div className="absolute inset-0 z-10 pointer-events-none">
+                <Canvas commands={canvasCommands} isProcessing={isProcessing} isListening={isListening} />
+            </div>
 
-                <div className="flex items-center gap-6 text-xs">
-                    <div className="flex items-center gap-2 text-white/50">
-                        <div className={`size-2 rounded-full ${isConnected ? 'bg-green-500 shadow-[0_0_10px_#22c55e]' : 'bg-red-500'}`} />
-                        {status.toUpperCase()}
-                    </div>
-                    <span className="text-white/30">V.1.0.0 Local</span>
-                    <button className="p-2 hover:bg-white/5 rounded-full text-white/60 hover:text-white transition-colors">
-                        <Settings size={16} />
-                    </button>
-                </div>
-            </header>
+            {/* UI Container - Top Layer */}
+            <div className="absolute inset-0 z-20 flex flex-col justify-between p-8 pointer-events-none">
 
-            {/* Main Content Area */}
-            <main className="pt-20 pb-24 px-6 h-screen grid grid-cols-12 gap-6">
+                {/* Header Area */}
+                <div className="flex justify-between items-start pointer-events-auto">
+                    {/* Top Left: Identity */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="flex flex-col gap-1"
+                    >
+                        <h1 className="text-2xl font-bold tracking-[0.3em] font-display text-transparent bg-clip-text bg-gradient-to-r from-jarvis-primary to-white drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
+                            JARVIS
+                        </h1>
+                        <div className="flex items-center gap-2 text-[10px] text-white/60">
+                            <span className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500 shadow-[0_0_8px_#22c55e]' : 'bg-red-500'}`} />
+                            <span>SYSTEM STATUS: {status.toUpperCase()}</span>
+                        </div>
+                    </motion.div>
 
-                {/* Left Sidebar - System Metrics */}
-                <div className="col-span-3 flex flex-col gap-4">
-                    <div className="glass-panel p-4 flex-1">
-                        <h2 className="text-xs font-bold text-jarvis-primary mb-4 flex items-center gap-2">
-                            <Activity size={14} /> SYSTEM STATUS
-                        </h2>
-
-                        <div className="grid grid-cols-2 gap-3 mb-6">
-                            <MetricCard icon={Cpu} label="CPU Core" value={`${metrics.cpu}%`} color="indigo" />
-                            <MetricCard icon={Database} label="Memory" value={`${metrics.ram_used}/${metrics.ram_total}GB`} color="purple" />
-                            <MetricCard icon={Cloud} label="Latency" value="23ms" color="cyan" />
-                            <MetricCard icon={Shield} label="Security" value="SECURE" color="green" />
+                    {/* Top Right: Time & Metrics */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="flex flex-col items-end gap-4"
+                    >
+                        <div className="text-4xl font-light tracking-widest text-white/80 font-display drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                            {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </div>
 
-                        <div className="h-px bg-white/10 my-4" />
+                        <div className="flex flex-col gap-2 mt-4">
+                            <MetricCard icon={Cpu} label="Processing Unit" value={`${metrics.cpu}% Load`} color="indigo" />
+                            <MetricCard icon={Database} label="Volatile Memory" value={`${metrics.ram_used}GB / ${metrics.ram_total}GB`} color="purple" />
+                            <MetricCard icon={Shield} label="Firewall" value="ACTIVE" color="green" />
+                        </div>
+                    </motion.div>
+                </div>
 
-                        <div className="space-y-4">
-                            <div className="text-xs text-white/30 mb-2">ACTIVE AGENTS</div>
-                            {['ChiefAgent', 'CanvasAgent', 'AutomationAgent', 'VisionAgent'].map(agent => (
-                                <div key={agent} className="flex items-center justify-between p-2 rounded bg-white/5 border border-white/5">
-                                    <span className="text-xs">{agent}</span>
-                                    <div className="flex gap-1">
-                                        <div className="size-1.5 rounded-full bg-green-500 animate-[pulse_2s_infinite]" />
-                                    </div>
+                {/* Middle Area: Left Empty for Core Visibility */}
+                <div className="flex-1 flex items-center justify-between px-12 pointer-events-none">
+                    {/* Floating Logs (Left Side) */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="w-96 h-96 overflow-hidden flex flex-col justify-end pointer-events-auto"
+                    >
+                        <div className="bg-black/40 backdrop-blur-md border-l-2 border-jarvis-primary/30 p-6 rounded-r-2xl mask-linear-gradient hover:bg-black/50 transition-colors">
+                            <h3 className="text-xs font-bold text-jarvis-primary mb-4 tracking-widest flex items-center gap-2">
+                                <Activity size={12} /> NEURAL FEED
+                            </h3>
+                            <div className="flex flex-col gap-2 text-[11px] text-white/60 font-mono h-64 overflow-y-auto custom-scrollbar">
+                                <AnimatePresence mode='popLayout'>
+                                    {messages.slice(-10).map((msg, i) => (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            className="border-l border-white/10 pl-3 py-1 hover:bg-white/5 transition-colors"
+                                        >
+                                            <span className="text-jarvis-secondary mr-2 font-bold">{new Date().toLocaleTimeString().split(' ')[0]}</span>
+                                            <span className="text-white/80 typing-effect">
+                                                {typeof msg === 'string' ? msg : (msg.data?.original_response?.thought_process || "Processing data packet...")}
+                                            </span>
+                                        </motion.div>
+                                    ))}
+                                </AnimatePresence>
+                                <div ref={logsEndRef} />
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Right Side: Active Agents (Mini cards) */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="flex flex-col gap-3 pointer-events-auto"
+                    >
+                        {['ChiefAgent', 'CanvasAgent', 'AutomationAgent', 'VisionAgent'].map((agent, i) => (
+                            <div key={agent} className="flex items-center justify-end gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-pointer group">
+                                <span className="text-[10px] tracking-widest text-white/50 group-hover:text-jarvis-primary transition-colors">{agent.toUpperCase()}</span>
+                                <div className="w-12 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                    <div className="h-full bg-jarvis-primary/50 animate-pulse" style={{ width: `${Math.random() * 50 + 50}%` }} />
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Log Terminal */}
-                    <div className="glass-panel p-4 h-1/3 overflow-hidden flex flex-col">
-                        <h2 className="text-xs font-bold text-jarvis-secondary mb-2">SYSTEM LOGS</h2>
-                        <div className="flex-1 overflow-y-auto text-[10px] font-mono text-white/50 space-y-1 custom-scrollbar">
-                            {messages.map((msg, i) => (
-                                <div key={i} className="border-l-2 border-white/10 pl-2">
-                                    <span className="text-jarvis-primary/70">[{new Date().toLocaleTimeString()}]</span>
-                                    <span className="ml-2">{typeof msg === 'string' ? msg : JSON.stringify(msg).slice(0, 50)}...</span>
-                                </div>
-                            ))}
-                            {messages.length === 0 && <div className="italic opacity-50">System Initialized. Awaiting Input.</div>}
-                        </div>
-                    </div>
+                            </div>
+                        ))}
+                    </motion.div>
                 </div>
 
-                {/* Center Canvas */}
-                <div className="col-span-9 flex flex-col gap-4 h-full pb-6">
-                    <div className="flex-1 relative">
-                        <Canvas commands={canvasCommands} />
-
-                        {/* Overlay Controls */}
-                        <div className="absolute top-4 right-4 flex gap-2">
-                            <button className="bg-black/50 backdrop-blur border border-white/10 p-2 rounded hover:bg-white/10 transition-colors">
-                                <Activity size={16} />
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Command Input Area */}
-                    <div className="h-20 flex items-center justify-center relative z-10">
-                        <CommandInput onSend={handleSendCommand} isListening={isListening} />
-                    </div>
+                {/* Bottom Area: Input */}
+                <div className="w-full flex justify-center mb-10 pointer-events-auto relative z-50">
+                    <CommandInput
+                        onSend={handleSendCommand}
+                        isProcessing={isProcessing}
+                        // Pass voice props
+                        isListening={isListening}
+                        transcript={transcript}
+                        startListening={startListening}
+                        stopListening={stopListening}
+                        resetTranscript={resetTranscript}
+                    />
                 </div>
-
-            </main>
+            </div>
         </div>
     );
 };
