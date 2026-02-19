@@ -13,7 +13,7 @@ export const useWebSocket = () => {
         let reconnectTimeout;
 
         const connect = () => {
-            if (ws.current?.readyState === WebSocket.OPEN) return;
+            if (ws.current && (ws.current.readyState === WebSocket.OPEN || ws.current.readyState === WebSocket.CONNECTING)) return;
 
             console.log('Connecting to JARVIS Backend...');
             const socket = new WebSocket(WS_URL);
@@ -84,7 +84,7 @@ export const useWebSocket = () => {
 
             socket.onerror = (err) => {
                 console.error("WebSocket Error:", err);
-                socket.close();
+                // socket.close(); // Don't manually close immediately, let onclose handle it or browser logic
             };
         };
 
@@ -96,6 +96,7 @@ export const useWebSocket = () => {
                 // Prevent onclose from triggering reconnection when unmounting
                 ws.current.onclose = null;
                 ws.current.close();
+                ws.current = null;
             }
         };
     }, []);
