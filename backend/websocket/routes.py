@@ -27,12 +27,19 @@ async def websocket_endpoint(websocket: WebSocket):
                         "message": "Processing command..."
                     }), websocket)
                     
-                    result = await chief_agent.process_request(command)
+                    full_response_text = ""
+                    # Stream chunks
+                    async for chunk in chief_agent.stream_request(command):
+                         full_response_text += chunk
+                         await manager.send_message(json.dumps({
+                             "type": "stream_token",
+                             "token": chunk
+                         }), websocket)
                     
-                    # Send result back
+                    # Send completion signal for frontend logic if needed
                     await manager.send_message(json.dumps({
                         "type": "result", 
-                        "data": result
+                        "data": {"original_response": {"thought_process": full_response_text}}
                     }), websocket)
                     
             except json.JSONDecodeError:

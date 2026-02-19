@@ -6,6 +6,7 @@ export const useWebSocket = () => {
     const [isConnected, setIsConnected] = useState(false);
     const [status, setStatus] = useState('disconnected');
     const [messages, setMessages] = useState([]);
+    const [stats, setStats] = useState(null);
     const ws = useRef(null);
 
     useEffect(() => {
@@ -35,7 +36,47 @@ export const useWebSocket = () => {
             socket.onmessage = (event) => {
                 try {
                     const data = JSON.parse(event.data);
-                    setMessages((prev) => [...prev, data]);
+
+                    if (data.type === 'system_stats') {
+                        setStats(data.data);
+                        return; // Do not add to messages history
+                    }
+
+                    if (data.type === 'stream_token') {
+                        if (!data.token) return; // Skip empty tokens
+
+                        setMessages((prev) => {
+                            const lastMsg = prev[prev.length - 1];
+                            if (lastMsg && lastMsg.type === 'assistant_response' && lastMsg.isStreaming) {
+                                // Update existing streaming message
+                                const updatedMsg = {
+                                    ...lastMsg,
+                                    content: lastMsg.content + data.token
+                                };
+                                return [...prev.slice(0, -1), updatedMsg];
+                            } else {
+                                // Start new streaming message
+                                return [...prev, {
+                                    type: 'assistant_response',
+                                    isStreaming: true,
+                                    content: data.token,
+                                    timestamp: new Date()
+                                }];
+                            }
+                        });
+                    } else if (data.type === 'result') {
+                        // Mark last streaming message as done
+                        setMessages((prev) => {
+                            const lastMsg = prev[prev.length - 1];
+                            if (lastMsg && lastMsg.isStreaming) {
+                                return [...prev.slice(0, -1), { ...lastMsg, isStreaming: false, data: data.data }];
+                            }
+                            return [...prev, data];
+                        });
+                    } else {
+                        setMessages((prev) => [...prev, data]);
+                    }
+
                 } catch (e) {
                     console.error("Failed to parse message", e);
                 }
@@ -67,5 +108,5 @@ export const useWebSocket = () => {
         }
     }, [isConnected]);
 
-    return { isConnected, status, messages, sendMessage };
+    return { isConnected, status, messages, stats, sendMessage };
 };

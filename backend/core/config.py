@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     
     # LLM
     OLLAMA_BASE_URL: str = "http://localhost:11434"
-    LLM_MODEL: str = "mistral"  # or llama3
+    LLM_MODEL: str = "tomng/nanbeige4.1:3b-q4_K_M"
     
     # Voice
     WHISPER_MODEL_SIZE: str = "base"

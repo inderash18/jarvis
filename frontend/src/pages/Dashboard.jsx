@@ -21,7 +21,7 @@ const MetricCard = ({ icon: Icon, label, value, color }) => (
 );
 
 const Dashboard = () => {
-    const { isConnected, status, messages, sendMessage } = useWebSocket();
+    const { isConnected, status, messages, stats, sendMessage } = useWebSocket();
     const { speak, isListening, transcript, startListening, stopListening, resetTranscript } = useVoice();
     const { playProcessing } = useSound();
 
@@ -51,18 +51,33 @@ const Dashboard = () => {
         return () => clearTimeout(timer);
     }, [speak]);
 
+    // Update metrics from stats
+    useEffect(() => {
+        if (stats) {
+            setMetrics({
+                cpu: stats.cpu,
+                ram_percent: stats.memory_percent,
+                ram_used: stats.memory_used_gb,
+                ram_total: stats.memory_total_gb
+            });
+        }
+    }, [stats]);
+
     // Simulate aliveness & Time
     useEffect(() => {
         const interval = setInterval(() => {
-            setMetrics(prev => ({
-                ...prev,
-                cpu: Math.min(100, Math.max(0, prev.cpu + (Math.random() * 10 - 5))).toFixed(1),
-                ram_percent: Math.min(100, Math.max(0, prev.ram_percent + (Math.random() * 2 - 1))).toFixed(1)
-            }));
+            // Fallback animation if no stats coming
+            if (!stats) {
+                setMetrics(prev => ({
+                    ...prev,
+                    cpu: Math.min(100, Math.max(0, prev.cpu + (Math.random() * 10 - 5))).toFixed(1),
+                    ram_percent: Math.min(100, Math.max(0, prev.ram_percent + (Math.random() * 2 - 1))).toFixed(1)
+                }));
+            }
             setTime(new Date());
         }, 1000);
         return () => clearInterval(interval);
-    }, []);
+    }, [stats]);
 
     // Auto-scroll logs
     useEffect(() => {
@@ -79,15 +94,6 @@ const Dashboard = () => {
                     playProcessing();
                 }
 
-                else if (last.type === 'system_stats') {
-                    setMetrics({
-                        cpu: last.data.cpu,
-                        ram_percent: last.data.memory_percent,
-                        ram_used: last.data.memory_used_gb,
-                        ram_total: last.data.memory_total_gb
-                    });
-                }
-
                 else if (last.type === 'result') {
                     setIsProcessing(false);
                     if (last.data?.execution_results) {
@@ -101,9 +107,25 @@ const Dashboard = () => {
                 else if (last.type === 'error') {
                     setIsProcessing(false);
                 }
+
+                else if (last.type === 'stream_token') {
+                    // We don't need to do anything here for UI update as messages state update handles it,
+                    // but we might want to ensure 'isProcessing' is false once streaming starts to show text?
+                    // Actually let's keep isProcessing true until done? 
+                    // No, "isProcessing" usually means "thinking". Streaming is "responding".
+                    setIsProcessing(false);
+                }
             }
         }
     }, [messages, speak, playProcessing]);
+
+    // Custom effect to handle streaming accumulation display
+    // We will render the stream in real-time by checking the messages array
+    // This part is a bit tricky with the current state structure.
+    // simpler approach: modify useWebSocket to handle stream accumulation OR handle it here.
+    // Let's handle it by modifying the messages state directly in useWebSocket or here.
+    // Actually, let's keep it simple: Render the stream raw.
+
 
     const handleSendCommand = (cmd) => {
         if (cmd) {
@@ -194,8 +216,9 @@ const Dashboard = () => {
                                             className="border-l border-white/10 pl-3 py-1 hover:bg-white/5 transition-colors"
                                         >
                                             <span className="text-jarvis-secondary mr-2 font-bold">{new Date().toLocaleTimeString().split(' ')[0]}</span>
-                                            <span className="text-white/80 typing-effect">
-                                                {typeof msg === 'string' ? msg : (msg.data?.original_response?.thought_process || "Processing data packet...")}
+                                            <span className="text-white/80 typing-effect whitespace-pre-wrap">
+                                                {/* Prioritize content (for streaming), then thought process */}
+                                                {msg.content || msg.message || msg.data?.original_response?.thought_process || (typeof msg === 'string' ? msg : '')}
                                             </span>
                                         </motion.div>
                                     ))}
