@@ -25,21 +25,30 @@ async def websocket_endpoint(websocket: WebSocket):
 
                 if command:
                     # Notify client processing started
-                    await manager.send_message(
+                    await manager.broadcast(
                         json.dumps(
                             {"type": "status", "message": "Processing command..."}
-                        ),
-                        websocket,
+                        )
                     )
 
                     full_response_text = ""
+                    execution_results = []
+
                     # Stream chunks
                     async for chunk in chief_agent.stream_request(command):
-                        full_response_text += chunk
-                        await manager.send_message(
-                            json.dumps({"type": "stream_token", "token": chunk}),
-                            websocket,
-                        )
+                        if isinstance(chunk, str) and chunk.startswith(
+                            "__EXECUTION_RESULTS__:"
+                        ):
+                            try:
+                                json_str = chunk.replace("__EXECUTION_RESULTS__:", "")
+                                execution_results = json.loads(json_str)
+                            except Exception as e:
+                                log.error(f"Failed to parse execution results: {e}")
+                        else:
+                            full_response_text += chunk
+                            await manager.broadcast(
+                                json.dumps({"type": "stream_token", "token": chunk})
+                            )
 
                     # Send completion signal for frontend logic if needed
                     # Try to parse the accumulated JSON to extract the real thought process
@@ -82,18 +91,18 @@ async def websocket_endpoint(websocket: WebSocket):
                     log.info(
                         f"Sending final result with thought_process length: {len(final_thought_process)}"
                     )
-                    await manager.send_message(
+                    await manager.broadcast(
                         json.dumps(
                             {
                                 "type": "result",
                                 "data": {
                                     "original_response": {
                                         "thought_process": final_thought_process
-                                    }
+                                    },
+                                    "execution_results": execution_results,
                                 },
                             }
-                        ),
-                        websocket,
+                        )
                     )
 
             except json.JSONDecodeError:

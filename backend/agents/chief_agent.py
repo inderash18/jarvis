@@ -13,6 +13,7 @@ from schemas.command_schema import AgentAction, AgentResponse
 from .automation_agent import AutomationAgent
 from .base import BaseAgent
 from .canvas_agent import CanvasAgent
+from .image_agent import ImageAgent
 from .memory_agent import MemoryAgent
 
 
@@ -22,6 +23,7 @@ class ChiefAgent(BaseAgent):
         self.canvas_agent = CanvasAgent()
         self.automation_agent = AutomationAgent()
         self.memory_agent = MemoryAgent()
+        self.image_agent = ImageAgent()
 
         # Using Ollama with LangChain
         self.llm = OllamaLLM(
@@ -39,6 +41,8 @@ class ChiefAgent(BaseAgent):
         2. AutomationAgent: Use ONLY for system control (open apps, create folders).
            - open_application(app_name)
            - create_folder(folder_name)
+        3. ImageAgent: Use when asked to find or show images.
+           - fetch_image(query)
 
         RULES:
         1. Return ONLY valid JSON.
@@ -65,6 +69,19 @@ class ChiefAgent(BaseAgent):
           "thought_process": "The answer is 4, sir.",
           "actions": []
         }
+
+        Example 3 (Image Search):
+        User: "Show me a picture of Iron Man."
+        {
+          "thought_process": "Fetching an image of Iron Man for you, sir.",
+          "actions": [
+            {
+              "agent": "ImageAgent",
+              "action": "fetch_image",
+              "parameters": {"query": "iron man"}
+            }
+          ]
+        }
         """
 
     async def stream_request(self, command: str):
@@ -85,7 +102,15 @@ class ChiefAgent(BaseAgent):
             print("\n[STREAM COMPLETE]")
 
             # After streaming, parse actions
-            await self._process_actions(full_response)
+            results = await self._process_actions(full_response)
+
+            # Yield the results as a special JSON string that the websocket handler can detect
+            # Or better, we just rely on the websocket handler to parse the full response,
+            # BUT the websocket handler doesn't run the actions! WE do.
+            # So we must tell the websocket handler what the results were.
+            # We will yield a special marker.
+            if results:
+                yield f"__EXECUTION_RESULTS__:{json.dumps(results)}"
 
         except Exception as e:
             log.error(f"Streaming error: {e}")
@@ -93,6 +118,7 @@ class ChiefAgent(BaseAgent):
 
     async def _process_actions(self, response_text: str):
         log.debug(f"Processing actions from full response")
+        results = []
         try:
             # Clean up response to extract JSON
             response_text = response_text.strip()
@@ -125,14 +151,24 @@ class ChiefAgent(BaseAgent):
                 action_name = action_data.get("action")
                 params = action_data.get("parameters", {})
 
+                res = None
                 if agent_name == "CanvasAgent":
-                    await self.canvas_agent.process_request(action_name, params)
+                    res = await self.canvas_agent.process_request(action_name, params)
                 elif agent_name == "AutomationAgent":
-                    await self.automation_agent.process_request(action_name, params)
-                # We do not return anything here as the stream is the response
+                    res = await self.automation_agent.process_request(
+                        action_name, params
+                    )
+                elif agent_name == "ImageAgent":
+                    res = await self.image_agent.process_request(action_name, params)
+
+                if res:
+                    results.append(res)
+
+            return results
 
         except Exception as e:
             log.error(f"Action processing error: {e}")
+            return []
 
     async def process_request(
         self, command: str, context: Dict[str, Any] = None
@@ -190,7 +226,9 @@ class ChiefAgent(BaseAgent):
                         action_name, params
                     )
                     results.append(res)
-                # Add other agents...
+                elif agent_name == "ImageAgent":
+                    res = await self.image_agent.process_request(action_name, params)
+                    results.append(res)
 
             return {"original_response": parsed_response, "execution_results": results}
 
