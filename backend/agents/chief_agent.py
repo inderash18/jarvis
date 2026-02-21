@@ -5,7 +5,6 @@ from typing import Any, Dict
 from core.config import settings
 from core.logging import log
 
-# from .voice_agent import VoiceAgent
 # from .vision_agent import VisionAgent
 from langchain_ollama import OllamaLLM
 from schemas.command_schema import AgentAction, AgentResponse
@@ -15,6 +14,7 @@ from .base import BaseAgent
 from .canvas_agent import CanvasAgent
 from .image_agent import ImageAgent
 from .memory_agent import MemoryAgent
+from .voice_agent import VoiceAgent
 
 
 class ChiefAgent(BaseAgent):
@@ -24,6 +24,7 @@ class ChiefAgent(BaseAgent):
         self.automation_agent = AutomationAgent()
         self.memory_agent = MemoryAgent()
         self.image_agent = ImageAgent()
+        self.voice_agent = VoiceAgent()
 
         # Using Ollama with LangChain
         self.llm = OllamaLLM(
@@ -43,6 +44,9 @@ class ChiefAgent(BaseAgent):
            - create_folder(folder_name)
         3. ImageAgent: Use when asked to find or show images.
            - fetch_image(query)
+        4. VoiceAgent: Use when explicitly asked to speak or listen via backend.
+           - speak(text)
+           - listen(duration=5)
 
         RULES:
         1. Return ONLY valid JSON.
@@ -160,6 +164,8 @@ class ChiefAgent(BaseAgent):
                     )
                 elif agent_name == "ImageAgent":
                     res = await self.image_agent.process_request(action_name, params)
+                elif agent_name == "VoiceAgent":
+                    res = await self.voice_agent.process_request(action_name, params)
 
                 if res:
                     results.append(res)
@@ -228,6 +234,9 @@ class ChiefAgent(BaseAgent):
                     results.append(res)
                 elif agent_name == "ImageAgent":
                     res = await self.image_agent.process_request(action_name, params)
+                    results.append(res)
+                elif agent_name == "VoiceAgent":
+                    res = await self.voice_agent.process_request(action_name, params)
                     results.append(res)
 
             return {"original_response": parsed_response, "execution_results": results}

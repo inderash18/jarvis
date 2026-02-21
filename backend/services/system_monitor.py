@@ -1,6 +1,6 @@
 import psutil
 import asyncio
-from websocket.manager import manager
+from ws_module.manager import manager
 from core.logging import log
 import json
 
