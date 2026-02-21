@@ -1,8 +1,17 @@
+"""
+Vector Service — ChromaDB + Sentence Transformers
+──────────────────────────────────────────────────
+Long-term memory storage using vector embeddings.
+"""
+
+import uuid
+
 import chromadb
 from chromadb.config import Settings as ChromaSettings
-from core.config import settings
-from core.logging import log
 from sentence_transformers import SentenceTransformer
+
+from app.config import settings
+from utils.logger import log
 
 
 class VectorService:
@@ -10,7 +19,6 @@ class VectorService:
         log.info("Initializing Vector Service (ChromaDB)...")
         self.client = chromadb.PersistentClient(path=str(settings.CHROMA_DB_PATH))
 
-        # Use a local embedding model (sentence-transformers)
         log.info("Loading Embedding Model...")
         self.embedding_fn = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -19,15 +27,9 @@ class VectorService:
         )
         log.info("Vector Service Ready.")
 
-    def add_memory(self, text: str, meta: dict):
-        # Generate ID based on content hash or UUID
-        import uuid
-
+    def add_memory(self, text: str, meta: dict) -> str:
         doc_id = str(uuid.uuid4())
-
-        # Embed and store
         vector = self.embedding_fn.encode(text).tolist()
-
         self.collection.add(
             ids=[doc_id], embeddings=[vector], documents=[text], metadatas=[meta]
         )
@@ -38,7 +40,6 @@ class VectorService:
         results = self.collection.query(query_embeddings=[vector], n_results=n_results)
         return results
 
-        return results
 
 # Singleton instance
 vector_service = VectorService()

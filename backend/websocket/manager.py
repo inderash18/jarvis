@@ -1,5 +1,13 @@
+"""
+WebSocket Connection Manager
+─────────────────────────────
+Manages active WebSocket connections for broadcasting messages.
+"""
+
 from typing import List
+
 from fastapi import WebSocket
+
 
 class ConnectionManager:
     def __init__(self):
@@ -10,7 +18,8 @@ class ConnectionManager:
         self.active_connections.append(websocket)
 
     def disconnect(self, websocket: WebSocket):
-        self.active_connections.remove(websocket)
+        if websocket in self.active_connections:
+            self.active_connections.remove(websocket)
 
     async def send_message(self, message: str, websocket: WebSocket):
         await websocket.send_text(message)
@@ -18,5 +27,6 @@ class ConnectionManager:
     async def broadcast(self, message: str):
         for connection in self.active_connections:
             await connection.send_text(message)
+
 
 manager = ConnectionManager()

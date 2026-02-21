@@ -1,14 +1,18 @@
+"""
+Image Agent — Fetch and display images from the web.
+"""
+
 from typing import Any, Dict
 
-from core.logging import log
-
+from utils.logger import log
 from .base import BaseAgent
 
 
 class ImageAgent(BaseAgent):
     def __init__(self):
         super().__init__(
-            name="ImageAgent", description="Fetch and display images from the web."
+            name="ImageAgent",
+            description="Fetch and display images from the web.",
         )
 
     async def process_request(
@@ -21,10 +25,7 @@ class ImageAgent(BaseAgent):
 
     def fetch_image(self, query: str) -> Dict[str, Any]:
         log.info(f"Fetching image for query: {query}")
-        # Using loremflickr as a simple keyword-based image source
-        # In a production app, this would use Google Images API or Bing Search API
         image_url = f"https://loremflickr.com/1920/1080/{query.replace(' ', ',')}"
-
         return {
             "status": "success",
             "image_url": image_url,

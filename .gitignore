@@ -10,3 +10,12 @@ build/
 *.egg-info/
 .idea/
 .vscode/
+
+# Data directories
+backend/data/chroma_db/
+backend/data/images/*.jpg
+backend/data/images/*.png
+backend/data/audio/*.wav
+chroma_db/
+logs/
+backend/logs/

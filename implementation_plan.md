@@ -21,7 +21,7 @@ This document outlines the step-by-step implementation of the fully local, produ
 - [ ] **Automation Agent**: Implement system control (pyautogui, subprocess).
 - [ ] **Canvas Agent**: Implement drawing command generator.
 - [x] **Voice Agent**: Setup STT (Faster-Whisper) and TTS (pyttsx3) pipelines.
-- [ ] **Vision Agent**: Setup OpenCV + MediaPipe loop.
+- [x] **Vision Agent**: Setup OpenCV + MediaPipe loop.
 
 ### Phase 4: Frontend Development
 - [x] **Initialization**: Create React app (Vite) with Tailwind CSS.

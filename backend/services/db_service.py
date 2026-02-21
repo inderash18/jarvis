@@ -1,6 +1,13 @@
+"""
+Database Service — MongoDB async client
+────────────────────────────────────────
+"""
+
 from motor.motor_asyncio import AsyncIOMotorClient
-from core.config import settings
-from core.logging import log
+
+from app.config import settings
+from utils.logger import log
+
 
 class DatabaseService:
     client: AsyncIOMotorClient = None
@@ -17,7 +24,9 @@ class DatabaseService:
         self.client.close()
         log.info("MongoDB connection closed!")
 
+
 db_service = DatabaseService()
+
 
 async def get_database():
     return db_service.db
