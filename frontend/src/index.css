@@ -1,227 +1,113 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
 
 @theme {
-    --color-jarvis-void: #020408;
-    --color-jarvis-plate: #080c14;
+    --color-jarvis-void: #060a10;
+    --color-jarvis-plate: #0a0f18;
     --color-jarvis-cyan: #00f0ff;
-    --color-jarvis-violet: #7000ff;
-    --color-jarvis-amber: #ffae00;
+    --color-jarvis-violet: #7c3aed;
+    --color-jarvis-amber: #f59e0b;
 
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: "JetBrains Mono", monospace;
-    --font-display: "Orbitron", sans-serif;
+    --font-display: "Inter", sans-serif;
+}
 
-    --animate-hologram: hologram 4s linear infinite;
+/* ── Base ────────────────────────────────────────── */
+
+* {
+    box-sizing: border-box;
 }
 
 body {
-    @apply bg-jarvis-void text-white overflow-hidden font-mono selection:bg-jarvis-cyan/30 selection:text-jarvis-cyan;
-    background-image:
-        linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #060a10;
+    color: #e5e5e5;
+    overflow: hidden;
 }
 
-/* --- The "Construct" Geometric System --- */
+/* ── Scrollbar ───────────────────────────────────── */
 
-/* 1. Chamfered Edges (Angled Corners) */
-.tech-border {
-    clip-path: polygon(
-        10px 0,
-        100% 0,
-        100% calc(100% - 10px),
-        calc(100% - 10px) 100%,
-        0 100%,
-        0 10px
-    );
-    position: relative;
-}
-
-/* Double border trick for clip-path */
-.tech-border::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--color-jarvis-cyan);
-    z-index: -1;
-    clip-path: polygon(
-        10px 0,
-        100% 0,
-        100% calc(100% - 10px),
-        calc(100% - 10px) 100%,
-        0 100%,
-        0 10px,
-        0 11px,
-        1px 11px,
-        1px calc(100% - 1px),
-        calc(100% - 11px) calc(100% - 1px),
-        calc(100% - 11px) 100%,
-        11px 100%,
-        11px 11px,
-        0 11px
-    );
-    opacity: 0.3;
-}
-
-/* 2. Complex Panel (Tech Card) */
-.tech-panel {
-    @apply bg-jarvis-plate/80 backdrop-blur-md relative;
-    border: 1px solid rgba(0, 240, 255, 0.1);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.tech-panel::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    border-top: 2px solid var(--color-jarvis-cyan);
-    border-left: 2px solid var(--color-jarvis-cyan);
-}
-
-.tech-panel::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 20px;
-    height: 20px;
-    border-bottom: 2px solid var(--color-jarvis-cyan);
-    border-right: 2px solid var(--color-jarvis-cyan);
-}
-
-/* 3. Holographic Button */
-.holo-btn {
-    @apply relative px-6 py-3 font-display text-sm tracking-widest uppercase text-jarvis-cyan transition-all duration-300;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(0, 240, 255, 0.1),
-        transparent
-    );
-    border: 1px solid rgba(0, 240, 255, 0.3);
-    clip-path: polygon(
-        10px 0,
-        100% 0,
-        100% calc(100% - 10px),
-        calc(100% - 10px) 100%,
-        0 100%,
-        0 10px
-    );
-}
-
-.holo-btn:hover {
-    background: rgba(0, 240, 255, 0.1);
-    border-color: var(--color-jarvis-cyan);
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
-    text-shadow: 0 0 8px var(--color-jarvis-cyan);
-}
-
-.holo-btn:active {
-    transform: scale(0.98);
-}
-
-/* 4. Scanner Line Animation */
-@keyframes scan {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-}
-
-.scanline {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(0, 240, 255, 0.2),
-        transparent
-    );
-    animation: scan 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    pointer-events: none;
-}
-
-/* 5. Glitch Text Effect */
-.glitch {
-    position: relative;
-}
-.glitch::before,
-.glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--color-jarvis-void);
-}
-.glitch::before {
-    left: 2px;
-    text-shadow: -1px 0 red;
-    clip-path: inset(0 0 0 0);
-    animation: noise-anim-2 3s infinite linear alternate-reverse;
-}
-.glitch::after {
-    left: -2px;
-    text-shadow: -1px 0 blue;
-    clip-path: inset(0 0 0 0);
-    animation: noise-anim 2s infinite linear alternate-reverse;
-}
-
-@keyframes noise-anim {
-    0% {
-        clip-path: inset(10% 0 80% 0);
-    }
-    20% {
-        clip-path: inset(80% 0 10% 0);
-    }
-    40% {
-        clip-path: inset(40% 0 40% 0);
-    }
-    60% {
-        clip-path: inset(10% 0 60% 0);
-    }
-    80% {
-        clip-path: inset(60% 0 10% 0);
-    }
-    100% {
-        clip-path: inset(30% 0 30% 0);
-    }
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
+.custom-scrollbar::-webkit-scrollbar {
     width: 4px;
 }
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Firefox */
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+}
+
+/* ── Global scrollbar (minimalist) ───────────────── */
+
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+
 ::-webkit-scrollbar-track {
-    background: #080c14;
+    background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-    background: #00f0ff;
+    background: rgba(0, 240, 255, 0.15);
+    border-radius: 3px;
 }
 
-/* --- Arc Reactor / HUD System --- */
-
-.arc-container {
-    perspective: 1000px;
-    transform-style: preserve-3d;
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 240, 255, 0.3);
 }
 
-.arc-ring {
-    position: absolute;
-    border-radius: 50%;
-    border-style: solid;
-    box-shadow: 0 0 10px var(--color-jarvis-cyan);
+/* ── Animations ──────────────────────────────────── */
+
+@keyframes spin-cw {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
+
+@keyframes spin-ccw {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 10px var(--color-jarvis-cyan), inset 0 0 5px var(--color-jarvis-cyan);
+        opacity: 0.8;
+    }
+    50% {
+        box-shadow: 0 0 25px var(--color-jarvis-cyan), inset 0 0 10px var(--color-jarvis-cyan);
+        opacity: 1;
+    }
+}
+
+@keyframes scan {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+/* ── Utility Classes ─────────────────────────────── */
 
 .arc-rotate-cw {
     animation: spin-cw 20s linear infinite;
@@ -235,38 +121,44 @@ body {
     animation: pulse-glow 2s ease-in-out infinite;
 }
 
-@keyframes spin-cw {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.scanline {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 240, 255, 0.15), transparent);
+    animation: scan 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    pointer-events: none;
 }
 
-@keyframes spin-ccw {
-    from {
-        transform: rotate(360deg);
-    }
-    to {
-        transform: rotate(0deg);
-    }
+.animate-float {
+    animation: float 3s ease-in-out infinite;
 }
 
-@keyframes pulse-glow {
-    0%,
-    100% {
-        box-shadow:
-            0 0 10px var(--color-jarvis-cyan),
-            inset 0 0 5px var(--color-jarvis-cyan);
-        opacity: 0.8;
-    }
-    50% {
-        box-shadow:
-            0 0 25px var(--color-jarvis-cyan),
-            inset 0 0 10px var(--color-jarvis-cyan);
-        opacity: 1;
-    }
+/* ── Selection ───────────────────────────────────── */
+
+::selection {
+    background: rgba(0, 240, 255, 0.2);
+    color: #00f0ff;
+}
+
+/* ── Focus rings ─────────────────────────────────── */
+
+input:focus,
+button:focus-visible {
+    outline: none;
+}
+
+/* ── Canvas overlay ──────────────────────────────── */
+
+.arc-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.arc-ring {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    box-shadow: 0 0 10px var(--color-jarvis-cyan);
 }
 
 .arc-center-glow {
@@ -277,4 +169,22 @@ body {
         transparent 80%
     );
     filter: blur(5px);
+}
+
+/* ── Tech borders (kept for Canvas component) ────── */
+
+.tech-border {
+    clip-path: polygon(
+        10px 0, 100% 0, 100% calc(100% - 10px),
+        calc(100% - 10px) 100%, 0 100%, 0 10px
+    );
+    position: relative;
+}
+
+.tech-panel {
+    background: rgba(10, 15, 24, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
 }

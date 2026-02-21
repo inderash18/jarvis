@@ -1,7 +1,7 @@
 """
 JARVIS FastAPI Entry Point
 ─────────────────────────────
-Main FastAPI application with CORS, WebSocket, and lifecycle events.
+Main FastAPI application with CORS, WebSocket, REST API, and lifecycle events.
 """
 
 import asyncio
@@ -12,6 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from utils.logger import log
 from websocket.routes import router as websocket_router
+from api.tts_routes import router as tts_router
 from services.system_monitor import system_monitor
 
 app = FastAPI(
@@ -29,8 +30,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── WebSocket Router ────────────────────────────────
+# ── Routers ─────────────────────────────────────────
 app.include_router(websocket_router)
+app.include_router(tts_router)
 
 
 # ── Lifecycle Events ────────────────────────────────

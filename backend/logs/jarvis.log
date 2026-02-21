@@ -460,3 +460,345 @@
 2026-02-21 12:36:11.585 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
 2026-02-21 12:36:11.608 | INFO     | app.main:startup_event:39 - Starting JARVIS System...
 2026-02-21 12:36:11.610 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 12:36:58.800 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi"}
+2026-02-21 12:36:58.803 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hi
+2026-02-21 12:37:28.791 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 12:37:28.792 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=40)
+2026-02-21 12:38:24.263 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hey Jarvis\\"}
+2026-02-21 12:38:24.267 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hey Jarvis\
+2026-02-21 12:38:34.863 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 12:38:34.864 | INFO     | agents.voice_agent:speak:41 - Speaking: hey Jarvis...
+2026-02-21 12:38:43.970 | INFO     | services.tts_service:_get_model:33 - Loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-21 12:38:54.248 | INFO     | services.tts_service:_get_model:35 - KittenTTS model loaded successfully ✓
+2026-02-21 12:38:54.253 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=10
+2026-02-21 12:39:04.916 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=12)
+2026-02-21 12:42:09.174 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 12:42:09.288 | INFO     | app.main:shutdown_event:45 - Shutting down JARVIS System...
+2026-02-21 12:42:34.172 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 12:42:34.387 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 12:42:53.156 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 12:42:56.642 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 12:42:56.647 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 12:42:56.647 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 12:42:56.658 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 12:42:56.801 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 12:42:56.804 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 12:42:56.839 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 12:48:08.006 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=9
+2026-02-21 12:48:09.529 | INFO     | services.tts_service:_get_model:33 - Loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-21 12:48:12.592 | INFO     | services.tts_service:_get_model:35 - KittenTTS model loaded successfully ✓
+2026-02-21 12:48:12.592 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=9
+2026-02-21 12:49:19.516 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi"}
+2026-02-21 12:49:19.519 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hi
+2026-02-21 12:49:44.016 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 12:49:44.016 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=40)
+2026-02-21 12:49:44.353 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=40
+2026-02-21 12:49:44.353 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=40
+2026-02-21 12:50:34.375 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Leo, text_len=40
+2026-02-21 12:50:34.377 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Leo, text_len=40
+2026-02-21 12:50:49.531 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi"}
+2026-02-21 12:50:49.533 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hi
+2026-02-21 12:50:58.494 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 12:50:58.496 | INFO     | agents.voice_agent:speak:41 - Speaking: hi...
+2026-02-21 12:50:58.497 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=2
+2026-02-21 12:51:05.330 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=11)
+2026-02-21 12:51:05.675 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Leo, text_len=11
+2026-02-21 12:51:05.677 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Leo, text_len=11
+2026-02-21 12:51:41.551 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"tell me a story about bird"}
+2026-02-21 12:51:41.559 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: tell me a story about bird
+2026-02-21 12:52:17.283 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 12:52:17.284 | ERROR    | agents.chief_agent:_process_actions:176 - Action processing error: Expecting value: line 1 column 1 (char 0)
+2026-02-21 12:52:17.285 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=1355)
+2026-02-21 12:52:17.620 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Leo, text_len=1353
+2026-02-21 12:52:17.621 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Leo, text_len=1353
+2026-02-21 12:54:05.292 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"help me"}
+2026-02-21 12:54:05.296 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 12:54:05.301 | ERROR    | services.system_monitor:start_monitoring:43 - Error in SystemMonitor: 
+2026-02-21 12:54:08.460 | INFO     | app.main:shutdown_event:47 - Shutting down JARVIS System...
+2026-02-21 12:57:46.706 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 12:57:46.983 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 12:57:53.611 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 12:57:54.679 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 12:57:54.681 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 12:57:54.682 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 12:57:54.682 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 12:57:54.714 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 12:57:54.714 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 12:58:15.404 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi"}
+2026-02-21 12:58:15.408 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hi
+2026-02-21 12:58:41.191 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 12:58:41.192 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=12)
+2026-02-21 12:58:41.537 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Bella, text_len=12
+2026-02-21 12:58:48.490 | INFO     | services.tts_service:_get_model:33 - Loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-21 12:58:53.854 | INFO     | services.tts_service:_get_model:35 - KittenTTS model loaded successfully ✓
+2026-02-21 12:58:53.854 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Bella, text_len=12
+2026-02-21 12:59:16.215 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hello tell me ur intro to me"}
+2026-02-21 12:59:16.220 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hello tell me ur intro to me
+2026-02-21 12:59:32.660 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 12:59:32.661 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=54)
+2026-02-21 12:59:32.675 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Bella, text_len=54
+2026-02-21 12:59:32.676 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Bella, text_len=54
+2026-02-21 13:00:55.670 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Bella, text_len=54
+2026-02-21 13:00:55.672 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Bella, text_len=54
+2026-02-21 13:01:01.619 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=54
+2026-02-21 13:01:01.620 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=54
+2026-02-21 13:01:17.753 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"again"}
+2026-02-21 13:01:17.755 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: again
+2026-02-21 13:01:26.870 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 13:01:26.903 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=38)
+2026-02-21 13:01:27.276 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=38
+2026-02-21 13:01:27.277 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=38
+2026-02-21 13:19:46.532 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 14:50:19.283 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 14:50:19.535 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 14:50:27.344 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 14:50:28.520 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 14:50:28.521 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 14:50:28.523 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 14:50:28.523 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 14:50:28.563 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 14:50:28.564 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 14:51:52.008 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 14:51:52.117 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 14:51:57.968 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 14:51:58.463 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 14:51:58.464 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 14:51:58.464 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 14:51:58.464 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 14:51:58.494 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 14:51:58.494 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 14:52:07.622 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 14:52:22.764 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi"}
+2026-02-21 14:52:22.766 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hi
+2026-02-21 14:52:23.547 | ERROR    | agents.chief_agent:stream_request:153 - Streaming error: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\nPlease retry in 36.516568792s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash",\n              "location": "global"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "36s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 14:52:23.550 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=2409)
+2026-02-21 14:52:23.959 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=192
+2026-02-21 14:52:29.891 | INFO     | services.tts_service:_get_model:33 - Loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-21 14:52:34.751 | INFO     | services.tts_service:_get_model:35 - KittenTTS model loaded successfully ✓
+2026-02-21 14:52:34.753 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=192
+2026-02-21 14:52:53.903 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 14:52:54.011 | INFO     | app.main:shutdown_event:47 - Shutting down JARVIS System...
+2026-02-21 14:53:02.582 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi"}
+2026-02-21 14:53:02.583 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hi
+2026-02-21 14:53:03.165 | ERROR    | agents.chief_agent:stream_request:153 - Streaming error: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\nPlease retry in 56.905862807s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash",\n              "location": "global"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash",\n              "location": "global"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "56s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 14:53:03.170 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=2409)
+2026-02-21 14:53:03.556 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=192
+2026-02-21 14:53:06.735 | INFO     | services.tts_service:_get_model:33 - Loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-21 14:53:09.866 | INFO     | services.tts_service:_get_model:35 - KittenTTS model loaded successfully ✓
+2026-02-21 14:53:09.868 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=192
+2026-02-21 14:53:23.190 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 14:53:23.315 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 14:53:32.782 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 14:53:33.642 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 14:53:33.645 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 14:53:33.645 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 14:53:33.645 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 14:53:33.685 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 14:53:33.687 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 14:53:41.543 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hello"}
+2026-02-21 14:53:41.545 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hello
+2026-02-21 14:53:42.272 | ERROR    | agents.chief_agent:stream_request:153 - Streaming error: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\nPlease retry in 17.904205636s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "17s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 14:53:42.276 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=2409)
+2026-02-21 14:53:42.338 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=192
+2026-02-21 14:53:42.341 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=192
+2026-02-21 14:57:10.022 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi]"}
+2026-02-21 14:57:10.023 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hi]
+2026-02-21 14:57:10.669 | ERROR    | agents.chief_agent:stream_request:153 - Streaming error: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\nPlease retry in 49.395723897s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "49s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 14:57:10.671 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=2409)
+2026-02-21 14:57:11.062 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=192
+2026-02-21 14:57:14.449 | INFO     | services.tts_service:_get_model:33 - Loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-21 14:57:17.343 | INFO     | services.tts_service:_get_model:35 - KittenTTS model loaded successfully ✓
+2026-02-21 14:57:17.344 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=192
+2026-02-21 14:58:57.772 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 14:58:57.850 | INFO     | app.main:shutdown_event:47 - Shutting down JARVIS System...
+2026-02-21 14:58:57.896 | INFO     | app.main:shutdown_event:47 - Shutting down JARVIS System...
+2026-02-21 14:59:10.829 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 14:59:10.832 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 14:59:10.935 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 14:59:10.954 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 14:59:21.677 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 14:59:22.276 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 14:59:22.276 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 14:59:22.277 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 14:59:22.277 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 14:59:22.308 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 14:59:22.309 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 14:59:22.603 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 14:59:23.165 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 14:59:23.165 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 14:59:23.167 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 14:59:23.167 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 14:59:23.196 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 14:59:23.197 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 15:13:30.835 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi"}
+2026-02-21 15:13:30.837 | INFO     | agents.chief_agent:stream_request:146 - ChiefAgent streaming: hi
+2026-02-21 15:13:31.567 | WARNING  | agents.chief_agent:stream_request:179 - Gemini rate limit hit: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\nPlease retry in 28.524870311s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash",\n              "location": "global"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "28s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 15:13:31.569 | WARNING  | agents.chief_agent:stream_request:156 - Rate limited — retrying in 2s (attempt 2/4)
+2026-02-21 15:13:33.803 | WARNING  | agents.chief_agent:stream_request:179 - Gemini rate limit hit: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\nPlease retry in 26.33611698s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "26s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 15:13:33.805 | WARNING  | agents.chief_agent:stream_request:156 - Rate limited — retrying in 4s (attempt 3/4)
+2026-02-21 15:13:38.021 | WARNING  | agents.chief_agent:stream_request:179 - Gemini rate limit hit: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\nPlease retry in 22.052282131s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash",\n              "location": "global"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "22s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 15:13:38.021 | WARNING  | agents.chief_agent:stream_request:156 - Rate limited — retrying in 8s (attempt 4/4)
+2026-02-21 15:13:46.301 | ERROR    | agents.chief_agent:stream_request:182 - Streaming error: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\nPlease retry in 13.818835542s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash",\n              "location": "global"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash",\n              "location": "global"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "13s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 15:13:46.304 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=346)
+2026-02-21 15:14:52.258 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 15:14:52.288 | INFO     | app.main:shutdown_event:47 - Shutting down JARVIS System...
+2026-02-21 15:14:52.363 | INFO     | app.main:shutdown_event:47 - Shutting down JARVIS System...
+2026-02-21 15:15:15.095 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 15:15:15.096 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 15:15:15.204 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 15:15:15.223 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 15:15:22.700 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 15:15:22.782 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 15:15:23.377 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 15:15:23.380 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 15:15:23.380 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 15:15:23.380 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 15:15:23.403 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 15:15:23.405 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 15:15:23.405 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 15:15:23.405 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 15:15:23.460 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 15:15:23.460 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 15:15:23.465 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 15:15:23.467 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 15:24:32.690 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 19:03:05.245 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 19:03:06.510 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 19:03:11.900 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 19:03:13.595 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 19:03:13.596 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 19:03:13.597 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 19:03:13.597 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 19:03:13.641 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 19:03:13.645 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 19:03:18.915 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi"}
+2026-02-21 19:03:18.917 | INFO     | agents.chief_agent:stream_request:146 - ChiefAgent streaming: hi
+2026-02-21 19:03:19.638 | WARNING  | agents.chief_agent:stream_request:179 - Gemini rate limit hit: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\\nPlease retry in 39.572496866s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash-lite"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash-lite"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash-lite"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "39s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 19:03:19.640 | WARNING  | agents.chief_agent:stream_request:156 - Rate limited — retrying in 10s (attempt 2/4)
+2026-02-21 19:03:29.871 | WARNING  | agents.chief_agent:stream_request:179 - Gemini rate limit hit: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\\nPlease retry in 29.339905068s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash-lite",\n              "location": "global"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash-lite",\n              "location": "global"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash-lite",\n              "location": "global"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "29s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 19:03:29.872 | WARNING  | agents.chief_agent:stream_request:156 - Rate limited — retrying in 20s (attempt 3/4)
+2026-02-21 19:03:50.171 | WARNING  | agents.chief_agent:stream_request:179 - Gemini rate limit hit: 429 Too Many Requests. {'message': '{\n  "error": {\n    "code": 429,\n    "message": "You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash-lite\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash-lite\\nPlease retry in 8.987017591s.",\n    "status": "RESOURCE_EXHAUSTED",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.Help",\n        "links": [\n          {\n            "description": "Learn more about Gemini API quotas",\n            "url": "https://ai.google.dev/gemini-api/docs/rate-limits"\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.QuotaFailure",\n        "violations": [\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_input_token_count",\n            "quotaId": "GenerateContentInputTokensPerModelPerMinute-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash-lite",\n              "location": "global"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerMinutePerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "model": "gemini-2.0-flash-lite",\n              "location": "global"\n            }\n          },\n          {\n            "quotaMetric": "generativelanguage.googleapis.com/generate_content_free_tier_requests",\n            "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",\n            "quotaDimensions": {\n              "location": "global",\n              "model": "gemini-2.0-flash-lite"\n            }\n          }\n        ]\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.RetryInfo",\n        "retryDelay": "8s"\n      }\n    ]\n  }\n}\n', 'status': 'Too Many Requests'}
+2026-02-21 19:03:50.177 | WARNING  | agents.chief_agent:stream_request:156 - Rate limited — retrying in 40s (attempt 4/4)
+2026-02-21 19:04:30.613 | ERROR    | agents.chief_agent:stream_request:182 - Streaming error: 400 Bad Request. {'message': '{\n  "error": {\n    "code": 400,\n    "message": "API Key not found. Please pass a valid API key.",\n    "status": "INVALID_ARGUMENT",\n    "details": [\n      {\n        "@type": "type.googleapis.com/google.rpc.ErrorInfo",\n        "reason": "API_KEY_INVALID",\n        "domain": "googleapis.com",\n        "metadata": {\n          "service": "generativelanguage.googleapis.com"\n        }\n      },\n      {\n        "@type": "type.googleapis.com/google.rpc.LocalizedMessage",\n        "locale": "en-US",\n        "message": "API Key not found. Please pass a valid API key."\n      }\n    ]\n  }\n}\n', 'status': 'Bad Request'}
+2026-02-21 19:04:30.615 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=1036)
+2026-02-21 19:04:30.974 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=76
+2026-02-21 19:04:37.753 | INFO     | services.tts_service:_get_model:33 - Loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-21 19:04:46.068 | INFO     | services.tts_service:_get_model:35 - KittenTTS model loaded successfully ✓
+2026-02-21 19:04:46.069 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=76
+2026-02-21 19:04:48.898 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 19:04:48.899 | ERROR    | services.system_monitor:start_monitoring:43 - Error in SystemMonitor: 
+2026-02-21 19:05:00.059 | INFO     | app.main:shutdown_event:47 - Shutting down JARVIS System...
+2026-02-21 19:07:08.435 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 19:07:08.557 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 19:07:14.635 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 19:07:16.789 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 19:07:16.791 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 19:07:16.792 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 19:07:16.792 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 19:07:16.829 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 19:07:16.830 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 19:07:37.559 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 19:07:40.748 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi"}
+2026-02-21 19:07:40.749 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hi
+2026-02-21 19:08:00.840 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 19:08:00.840 | INFO     | agents.voice_agent:speak:41 - Speaking: hi...
+2026-02-21 19:08:06.476 | INFO     | services.tts_service:_get_model:33 - Loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-21 19:08:14.066 | INFO     | services.tts_service:_get_model:35 - KittenTTS model loaded successfully ✓
+2026-02-21 19:08:14.067 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Bella, text_len=2
+2026-02-21 19:08:20.812 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=11)
+2026-02-21 19:08:21.180 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=11
+2026-02-21 19:08:21.182 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=11
+2026-02-21 19:08:25.215 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"tell me a story"}
+2026-02-21 19:08:25.216 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: tell me a story
+2026-02-21 19:08:36.811 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 19:08:36.811 | INFO     | agents.vision_agent:capture_frame:50 - Capturing frame from webcam...
+2026-02-21 19:08:39.609 | INFO     | agents.image_agent:fetch_image:27 - Fetching image for query: a young adventurer
+2026-02-21 19:08:39.611 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=46)
+2026-02-21 19:08:39.640 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=46
+2026-02-21 19:08:39.642 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=46
+2026-02-21 19:08:55.452 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"show me a car image"}
+2026-02-21 19:08:55.453 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: show me a car image
+2026-02-21 19:09:03.873 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 19:09:03.874 | INFO     | agents.image_agent:fetch_image:27 - Fetching image for query: car
+2026-02-21 19:09:03.877 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=40)
+2026-02-21 19:09:04.211 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=40
+2026-02-21 19:09:04.211 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=40
+2026-02-21 19:09:34.220 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"fetch near vijay  image"}
+2026-02-21 19:09:34.222 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: fetch near vijay  image
+2026-02-21 19:09:43.905 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 19:09:43.905 | INFO     | agents.image_agent:fetch_image:27 - Fetching image for query: vijay
+2026-02-21 19:09:43.907 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=40)
+2026-02-21 19:09:43.923 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=40
+2026-02-21 19:09:43.923 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=40
+2026-02-21 19:09:57.552 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"actor vijay tamilnadu"}
+2026-02-21 19:09:57.553 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: actor vijay tamilnadu
+2026-02-21 19:10:06.672 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 19:10:06.674 | INFO     | agents.voice_agent:speak:41 - Speaking: Vijay Tamil Nadu...
+2026-02-21 19:10:06.675 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Bella, text_len=16
+2026-02-21 19:10:20.968 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=24)
+2026-02-21 19:10:21.302 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=24
+2026-02-21 19:10:21.303 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=24
+2026-02-21 19:10:50.518 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"actor vijay image tamilnadu"}
+2026-02-21 19:10:50.523 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: actor vijay image tamilnadu
+2026-02-21 19:11:06.479 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 19:11:06.480 | INFO     | agents.image_agent:fetch_image:27 - Fetching image for query: tamil nadu
+2026-02-21 19:11:06.481 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=45)
+2026-02-21 19:11:06.496 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=45
+2026-02-21 19:11:06.497 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=45
+2026-02-21 19:11:25.036 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"sex"}
+2026-02-21 19:11:25.037 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: sex
+2026-02-21 19:11:31.677 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 19:11:31.677 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=33)
+2026-02-21 19:11:32.010 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=33
+2026-02-21 19:11:32.012 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=33
+2026-02-21 19:11:52.704 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 19:11:52.818 | INFO     | app.main:shutdown_event:47 - Shutting down JARVIS System...
+2026-02-21 19:15:53.531 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 19:15:53.653 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 19:15:59.059 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 19:15:59.907 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 19:15:59.909 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 19:15:59.910 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 19:15:59.910 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 19:15:59.953 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 19:15:59.954 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 19:16:26.154 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hey jarvis show me samantha image"}
+2026-02-21 19:16:26.155 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hey jarvis show me samantha image
+2026-02-21 19:16:47.816 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 19:16:47.816 | INFO     | agents.image_agent:fetch_image:30 - Searching internet for image: samantha
+2026-02-21 19:16:49.737 | ERROR    | agents.image_agent:fetch_image:78 - Image search error: https://duckduckgo.com/i.js HTTPError: ('HTTP 403 Forbidden for URL: https://duckduckgo.com/i.js?o=json&q=samantha&l=us-en&vqd=4-82390443217321334116159800257227585115&p=1&f=%2C%2C%2C%2C%2C', 403, 'https://duckduckgo.com/i.js?o=json&q=samantha&l=us-en&vqd=4-82390443217321334116159800257227585115&p=1&f=%2C%2C%2C%2C%2C', 'Forbidden')
+2026-02-21 19:16:49.739 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=43)
+2026-02-21 19:16:50.129 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=43
+2026-02-21 19:16:55.226 | INFO     | services.tts_service:_get_model:33 - Loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-21 19:16:58.152 | INFO     | services.tts_service:_get_model:35 - KittenTTS model loaded successfully ✓
+2026-02-21 19:16:58.153 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=43
+2026-02-21 19:18:14.969 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 19:18:15.077 | INFO     | app.main:shutdown_event:47 - Shutting down JARVIS System...
+2026-02-21 19:19:42.008 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-21 19:19:42.401 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-21 19:19:47.937 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-21 19:19:48.844 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 19:19:48.845 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 19:19:48.846 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-21 19:19:48.846 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-21 19:19:48.871 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-21 19:19:48.872 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-21 19:19:52.325 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 19:19:55.063 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"hi"}
+2026-02-21 19:19:55.065 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: hi
+2026-02-21 19:20:10.472 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 19:20:10.474 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=11)
+2026-02-21 19:20:10.846 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=11
+2026-02-21 19:20:16.249 | INFO     | services.tts_service:_get_model:33 - Loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-21 19:20:21.805 | INFO     | services.tts_service:_get_model:35 - KittenTTS model loaded successfully ✓
+2026-02-21 19:20:21.805 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=11
+2026-02-21 19:20:33.933 | INFO     | websocket.routes:websocket_endpoint:26 - Received from client: {"command":"show me some image of tree"}
+2026-02-21 19:20:33.934 | INFO     | agents.chief_agent:stream_request:134 - ChiefAgent streaming: show me some image of tree
+2026-02-21 19:20:42.954 | DEBUG    | agents.chief_agent:_process_actions:157 - Processing actions from full response
+2026-02-21 19:20:42.956 | INFO     | agents.image_agent:fetch_image:30 - Searching internet for image: tree
+2026-02-21 19:20:43.455 | ERROR    | agents.image_agent:fetch_image:78 - Image search error: DDGS.images() missing 1 required positional argument: 'query'
+2026-02-21 19:20:43.458 | INFO     | websocket.routes:websocket_endpoint:84 - Sending result (thought_process len=41)
+2026-02-21 19:20:43.484 | INFO     | api.tts_routes:text_to_speech:35 - TTS API: voice=Jasper, text_len=41
+2026-02-21 19:20:43.484 | DEBUG    | services.tts_service:generate_audio:71 - Generating speech: voice=Jasper, text_len=41
+2026-02-21 19:21:13.720 | INFO     | websocket.routes:websocket_endpoint:108 - Client disconnected
+2026-02-21 19:21:13.850 | INFO     | app.main:shutdown_event:47 - Shutting down JARVIS System...
