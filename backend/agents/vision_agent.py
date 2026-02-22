@@ -14,8 +14,12 @@ cv2 = None
 if importlib.util.find_spec("cv2"):
     import cv2
 
-import mediapipe as mp
-
+try:
+    import mediapipe as mp
+    from mediapipe.python.solutions import hands as mp_hands
+    HAS_MEDIAPIPE = True
+except ImportError:
+    HAS_MEDIAPIPE = False
 
 class VisionAgent(BaseAgent):
     def __init__(self):
@@ -24,15 +28,18 @@ class VisionAgent(BaseAgent):
         self.hands = None
         self.mp_hands = None
 
-        try:
-            self.mp_hands = mp.solutions.hands
-            self.hands = self.mp_hands.Hands(
-                static_image_mode=True,
-                max_num_hands=2,
-                min_detection_confidence=0.5,
-            )
-        except Exception as e:
-            log.warning(f"MediaPipe Hands init failed: {e}")
+        if HAS_MEDIAPIPE:
+            try:
+                self.mp_hands = mp_hands
+                self.hands = mp_hands.Hands(
+                    static_image_mode=True,
+                    max_num_hands=2,
+                    min_detection_confidence=0.5,
+                )
+            except Exception as e:
+                log.warning(f"MediaPipe Hands init failed: {e}")
+        else:
+            log.warning("MediaPipe not installed. Hand detection will be disabled.")
 
     async def process_request(
         self, action: str, parameters: Dict[str, Any]

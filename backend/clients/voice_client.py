@@ -66,7 +66,10 @@ class JarvisClient:
         # --- Picovoice Porcupine Setup ---
         self.porcupine = None
         self.access_key = settings.PICOVOICE_ACCESS_KEY
-        self.model_path = os.path.join(os.getcwd(), settings.PICOVOICE_MODEL_PATH)
+        
+        # Make model_path relative to backend root
+        backend_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        self.model_path = os.path.join(backend_root, settings.PICOVOICE_MODEL_PATH)
         
         if self.access_key and os.path.exists(self.model_path):
             try:
