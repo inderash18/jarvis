@@ -28,6 +28,7 @@ import {
   Trash2,
   Download,
   ExternalLink,
+  Play,
 } from "lucide-react";
 import Canvas from "../components/Canvas";
 
@@ -156,7 +157,55 @@ const ImageViewer = ({ images, activeIndex, onClose, onSelect }) => {
 };
 
 // ── Chat Message Bubble ─────────────────────────────────────
-const ChatMessage = ({ msg, onImageClick }) => {
+const VideoMessageItem = ({ vid, shouldPlay }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (shouldPlay) setIsPlaying(true);
+  }, [shouldPlay]);
+
+  return (
+    <motion.div
+      whileHover={{ scale: 1.01 }}
+      className="relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-black/40 group"
+    >
+      {isPlaying ? (
+        <video
+          src={vid.video_url}
+          controls
+          autoPlay
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <>
+          {/* Thumbnail */}
+          <img
+            src={vid.thumbnail}
+            alt={vid.title}
+            className="w-full h-full object-cover opacity-60"
+          />
+          {/* Play Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <button
+              onClick={() => setIsPlaying(true)}
+              className="w-12 h-12 rounded-full bg-cyan-500/80 flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform"
+            >
+              <Play size={20} fill="white" />
+            </button>
+          </div>
+          {/* Title */}
+          <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+            <p className="text-[10px] text-white/90 truncate font-medium">
+              {vid.title}
+            </p>
+          </div>
+        </>
+      )}
+    </motion.div>
+  );
+};
+
+const ChatMessage = ({ msg, onImageClick, playingVideo }) => {
   const isUser = msg.role === "user";
   let content = msg.content;
   if (typeof content !== "string") content = JSON.stringify(content, null, 2);
@@ -240,35 +289,36 @@ const ChatMessage = ({ msg, onImageClick }) => {
         {msg.videos && msg.videos.length > 0 && (
           <div className="flex flex-col gap-2 w-full max-w-sm">
             {msg.videos.slice(0, 2).map((vid, i) => (
-              <motion.div
+              <VideoMessageItem
                 key={i}
-                whileHover={{ scale: 1.01 }}
-                className="relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-black/40 group"
+                vid={vid}
+                shouldPlay={playingVideo && playingVideo.messageId === msg.id && playingVideo.videoIndex === i}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Links Display */}
+        {msg.links && msg.links.length > 0 && (
+          <div className="flex flex-col gap-2 w-full max-w-sm">
+            {msg.links.map((link, i) => (
+              <a
+                key={i}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] hover:border-cyan-500/30 transition-all group"
               >
-                {/* Thumbnail */}
-                <img
-                  src={vid.thumbnail}
-                  alt={vid.title}
-                  className="w-full h-full object-cover opacity-60"
-                />
-                {/* Play Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <a
-                    href={vid.video_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full bg-cyan-500/80 flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform"
-                  >
-                    <Sparkles size={18} fill="white" />
-                  </a>
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[11px] font-bold text-cyan-400 truncate pr-2">
+                    {link.title}
+                  </span>
+                  <ExternalLink size={10} className="text-gray-500 group-hover:text-cyan-400" />
                 </div>
-                {/* Title */}
-                <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
-                  <p className="text-[10px] text-white/90 truncate font-medium">
-                    {vid.title}
-                  </p>
-                </div>
-              </motion.div>
+                <p className="text-[10px] text-gray-400 line-clamp-2 leading-relaxed">
+                  {link.snippet}
+                </p>
+              </a>
             ))}
           </div>
         )}
@@ -318,9 +368,15 @@ const Dashboard = () => {
   const [imageViewer, setImageViewer] = useState(null);
   const [time, setTime] = useState(new Date());
   const [metrics, setMetrics] = useState({ cpu: 0, ram_percent: 0 });
+  const [playingVideo, setPlayingVideo] = useState(null); // { messageId, videoIndex }
 
   const chatEndRef = useRef(null);
   const inputRef = useRef(null);
+  const chatHistoryRef = useRef([]);
+
+  useEffect(() => {
+    chatHistoryRef.current = chatHistory;
+  }, [chatHistory]);
 
   // ── Clock ──────────────────────────────────────────
   useEffect(() => {
@@ -401,9 +457,10 @@ const Dashboard = () => {
           thoughtText = last.content;
         }
 
-        // Extract images & videos
+        // Extract images, videos & links
         let foundImages = [];
         let foundVideos = [];
+        let foundLinks = [];
         const results = messageData.execution_results;
         if (Array.isArray(results)) {
           results.forEach((res) => {
@@ -422,27 +479,45 @@ const Dashboard = () => {
               foundVideos = [...foundVideos, ...vids];
             }
 
+            // Check for search results
+            if (res && res.results && res.agent === "SearchAgent") {
+              foundLinks = [...foundLinks, ...res.results];
+            }
+
+            // UI Control: Play Video
+            if (res && res.agent === "UIAgent" && res.action === "play_video") {
+              const index = res.parameters?.index || 0;
+              // Use ref to avoid stale closure or dependency loop
+              const lastMsgWithVideos = [...chatHistoryRef.current].reverse().find(m => m.videos && m.videos.length > 0);
+              if (lastMsgWithVideos) {
+                setPlayingVideo({ messageId: lastMsgWithVideos.id, videoIndex: index });
+              }
+            }
+
             if (res && (res.agent === "CanvasAgent" || res.status === "cleared")) {
               setCanvasCommands((prev) => [...prev, { type: "result", data: messageData }]);
             }
           });
         }
 
+        // 🔊 SPEAK IMMEDIATELY — don't wait for image/video processing
+        if (thoughtText) {
+          speak(thoughtText);
+        }
+
         // Add to history
         setChatHistory((prev) => [
           ...prev,
           {
+            id: Date.now(), // Unique ID for targeting
             role: "assistant",
             content: thoughtText || "Done.",
             images: foundImages.length > 0 ? foundImages : null,
             videos: foundVideos.length > 0 ? foundVideos : null,
+            links: foundLinks.length > 0 ? foundLinks : null,
             timestamp: new Date(),
           },
         ]);
-
-        if (thoughtText) {
-          speak(thoughtText.replace(/\{.*?\}/s, ""));
-        }
       }
     } else if (last.type === "error") {
       setIsProcessing(false);
@@ -597,7 +672,7 @@ const Dashboard = () => {
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.04]">
           <div className="flex items-center gap-3">
             <h1 className="text-lg font-bold tracking-[0.15em] bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              J.A.R.V.I.S
+              JARVIS
             </h1>
             <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.06]">
               <div className={`w-1.5 h-1.5 rounded-full ${isConnected ? "bg-emerald-400" : "bg-red-500"} ${isConnected ? "animate-pulse" : ""}`} />
@@ -689,6 +764,7 @@ const Dashboard = () => {
               onImageClick={(images, index) =>
                 setImageViewer({ images, index })
               }
+              playingVideo={playingVideo}
             />
           ))}
 

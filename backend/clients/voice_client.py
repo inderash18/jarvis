@@ -39,7 +39,7 @@ TTS_VOICE = "Jasper"
 class JarvisClient:
     def __init__(self):
         print("=" * 50)
-        print("   J.A.R.V.I.S  Voice Client Starting...")
+        print("   JARVIS  Voice Client Starting...")
         print("   TTS Engine: KittenTTS (15M params)")
         print("=" * 50)
 

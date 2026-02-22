@@ -39,6 +39,9 @@ app.include_router(tts_router)
 @app.on_event("startup")
 async def startup_event():
     log.info("Starting JARVIS System...")
+    # Pre-load TTS model so voice is instant on first request
+    from services.tts_service import preload_model
+    preload_model()
     asyncio.create_task(system_monitor.start_monitoring())
 
 

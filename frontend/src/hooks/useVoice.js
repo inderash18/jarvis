@@ -1,23 +1,62 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 
 /**
- * useVoice Hook
- * ─────────────
- * Speech Recognition (STT): Browser Web Speech API
- * Text-to-Speech (TTS):    Backend KittenTTS via /api/tts endpoint
+ * useVoice Hook — Ultra-Fast Voice Engine
+ * ─────────────────────────────────────────
+ * Uses browser's native speechSynthesis for INSTANT voice.
+ * No network round-trip — speaks the moment text appears.
  *
- * This produces natural human-quality voice instead of robotic browser TTS.
+ * Speech Recognition (STT): Browser Web Speech API
+ * Text-to-Speech (TTS):     Browser speechSynthesis (instant)
  */
-
-const TTS_API_URL = "http://127.0.0.1:8000/api/tts";
 
 export const useVoice = () => {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState("");
   const [isSpeaking, setIsSpeaking] = useState(false);
   const recognitionRef = useRef(null);
-  const audioRef = useRef(null);
-  const abortControllerRef = useRef(null);
+  const utteranceRef = useRef(null);
+  const voiceRef = useRef(null);
+
+  // ── Load best available voice ────────────────────
+  useEffect(() => {
+    const pickVoice = () => {
+      const voices = window.speechSynthesis?.getVoices() || [];
+      // Prefer premium Microsoft voices on Windows (natural sounding)
+      const preferred = [
+        "Microsoft David",
+        "Microsoft Mark",
+        "Microsoft Guy Online",   // Edge neural voice
+        "Microsoft Ryan Online",
+        "Google US English",
+        "Samantha",               // macOS
+        "Daniel",                 // macOS UK
+      ];
+
+      for (const name of preferred) {
+        const found = voices.find((v) => v.name.includes(name));
+        if (found) {
+          voiceRef.current = found;
+          console.log(`🔊 Voice Engine: ${found.name}`);
+          return;
+        }
+      }
+
+      // Fallback: pick any English voice
+      const english = voices.find((v) => v.lang.startsWith("en"));
+      if (english) {
+        voiceRef.current = english;
+        console.log(`🔊 Voice Engine (fallback): ${english.name}`);
+      }
+    };
+
+    pickVoice();
+    // Voices load asynchronously in some browsers
+    window.speechSynthesis?.addEventListener?.("voiceschanged", pickVoice);
+    return () => {
+      window.speechSynthesis?.removeEventListener?.("voiceschanged", pickVoice);
+    };
+  }, []);
 
   // ── Speech Recognition Setup ────────────────────
   useEffect(() => {
@@ -37,13 +76,8 @@ export const useVoice = () => {
     recognition.interimResults = true;
     recognition.lang = "en-US";
 
-    recognition.onstart = () => {
-      setIsListening(true);
-    };
-
-    recognition.onend = () => {
-      setIsListening(false);
-    };
+    recognition.onstart = () => setIsListening(true);
+    recognition.onend = () => setIsListening(false);
 
     recognition.onresult = (event) => {
       let interim = "";
@@ -56,7 +90,7 @@ export const useVoice = () => {
         }
       }
       if (final || interim) {
-        setTranscript((prev) => (final ? final : interim));
+        setTranscript(final ? final : interim);
       }
     };
 
@@ -83,115 +117,45 @@ export const useVoice = () => {
     setTranscript("");
   }, []);
 
-  // ── Text-to-Speech via Backend KittenTTS ────────
-  const speak = useCallback(async (text) => {
+  // ── Instant Text-to-Speech (Browser Native) ─────
+  const speak = useCallback((text) => {
     if (!text || text.trim().length === 0) return;
+    if (!("speechSynthesis" in window)) return;
 
     // Cancel any ongoing speech
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      audioRef.current = null;
+    window.speechSynthesis.cancel();
+
+    // Clean text: remove JSON artifacts, code blocks, brackets
+    const cleanText = text
+      .replace(/\{.*?\}/gs, "")
+      .replace(/```[\s\S]*?```/g, "")
+      .replace(/[{}\[\]]/g, "")
+      .replace(/\\n/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (!cleanText) return;
+
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.rate = 1.05;    // Slightly faster for snappy feel
+    utterance.pitch = 0.95;   // Slightly deeper for JARVIS-like voice
+    utterance.volume = 1.0;
+
+    if (voiceRef.current) {
+      utterance.voice = voiceRef.current;
     }
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort();
-    }
 
-    try {
-      setIsSpeaking(true);
-      abortControllerRef.current = new AbortController();
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
 
-      // Clean text: remove JSON artifacts, curly braces, etc.
-      const cleanText = text
-        .replace(/\{.*?\}/gs, "")
-        .replace(/```[\s\S]*?```/g, "")
-        .replace(/[{}[\]]/g, "")
-        .trim();
-
-      if (!cleanText) {
-        setIsSpeaking(false);
-        return;
-      }
-
-      console.log("🐱 KittenTTS: Generating speech for:", cleanText.substring(0, 60) + "...");
-
-      const url = `${TTS_API_URL}?text=${encodeURIComponent(cleanText)}&voice=Jasper`;
-
-      const response = await fetch(url, {
-        signal: abortControllerRef.current.signal,
-      });
-
-      if (!response.ok) {
-        throw new Error(`TTS API error: ${response.status}`);
-      }
-
-      const audioBlob = await response.blob();
-      const audioUrl = URL.createObjectURL(audioBlob);
-
-      const audio = new Audio(audioUrl);
-      audioRef.current = audio;
-
-      audio.onended = () => {
-        setIsSpeaking(false);
-        URL.revokeObjectURL(audioUrl);
-        audioRef.current = null;
-      };
-
-      audio.onerror = (e) => {
-        console.error("Audio playback error:", e);
-        setIsSpeaking(false);
-        URL.revokeObjectURL(audioUrl);
-        audioRef.current = null;
-      };
-
-      await audio.play();
-
-    } catch (err) {
-      if (err.name === "AbortError") {
-        console.log("TTS cancelled");
-      } else {
-        console.error("TTS Error:", err);
-        // Fallback to browser TTS if backend is unavailable
-        _fallbackBrowserSpeak(text);
-      }
-      setIsSpeaking(false);
-    }
-  }, []);
-
-  // ── Browser TTS Fallback (only if backend fails) ──
-  const _fallbackBrowserSpeak = useCallback((text) => {
-    if ("speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1.0;
-      utterance.pitch = 1.0;
-
-      // Try to use best available voice
-      const voices = window.speechSynthesis.getVoices();
-      const preferred = voices.find(
-        (v) =>
-          v.name.includes("Microsoft Zira") ||
-          v.name.includes("Google US English") ||
-          v.name.includes("Samantha"),
-      );
-      if (preferred) utterance.voice = preferred;
-
-      utterance.onend = () => setIsSpeaking(false);
-      window.speechSynthesis.speak(utterance);
-      setIsSpeaking(true);
-    }
+    utteranceRef.current = utterance;
+    setIsSpeaking(true);
+    window.speechSynthesis.speak(utterance);
   }, []);
 
   // ── Stop speaking ─────────────────────────────────
   const stopSpeaking = useCallback(() => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-      audioRef.current = null;
-    }
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort();
-    }
     window.speechSynthesis?.cancel();
     setIsSpeaking(false);
   }, []);
@@ -199,13 +163,7 @@ export const useVoice = () => {
   // Cleanup on unmount
   useEffect(() => {
     return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-      }
+      window.speechSynthesis?.cancel();
     };
   }, []);
 

@@ -16,30 +16,39 @@ import sounddevice as sd
 from app.config import settings
 from utils.logger import log
 
-# Lazy-loaded model instance
+# Pre-loaded model instance
 _tts_model = None
 
 
 AVAILABLE_VOICES = ["Bella", "Jasper", "Luna", "Bruno", "Rosie", "Hugo", "Kiki", "Leo"]
 
 
+def preload_model():
+    """Pre-load the KittenTTS model at startup for instant voice responses."""
+    global _tts_model
+    if _tts_model is not None:
+        return _tts_model
+    try:
+        from kittentts import KittenTTS
+
+        log.info(f"Pre-loading KittenTTS model: {settings.TTS_MODEL_ID}")
+        _tts_model = KittenTTS(settings.TTS_MODEL_ID)
+        log.info("KittenTTS model loaded successfully ✓ (voice ready)")
+    except ImportError:
+        log.error(
+            "kittentts not installed. Install with:\n"
+            "  pip install https://github.com/KittenML/KittenTTS/releases/download/0.8/kittentts-0.8.0-py3-none-any.whl"
+        )
+    except Exception as e:
+        log.error(f"Failed to load KittenTTS model: {e}")
+    return _tts_model
+
+
 def _get_model():
-    """Lazy-load the KittenTTS model on first use."""
+    """Get TTS model (pre-loaded at startup)."""
     global _tts_model
     if _tts_model is None:
-        try:
-            from kittentts import KittenTTS
-
-            log.info(f"Loading KittenTTS model: {settings.TTS_MODEL_ID}")
-            _tts_model = KittenTTS(settings.TTS_MODEL_ID)
-            log.info("KittenTTS model loaded successfully ✓")
-        except ImportError:
-            log.error(
-                "kittentts not installed. Install with:\n"
-                "  pip install https://github.com/KittenML/KittenTTS/releases/download/0.8/kittentts-0.8.0-py3-none-any.whl"
-            )
-        except Exception as e:
-            log.error(f"Failed to load KittenTTS model: {e}")
+        return preload_model()
     return _tts_model
 
 
