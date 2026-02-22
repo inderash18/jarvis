@@ -95,7 +95,8 @@ class ImageAgent(BaseAgent):
                     "thumbnail": best["thumbnail"],
                     "all_images": all_images,
                     "query": query,
-                    "source_name": "Pexels"
+                    "source_name": "Pexels",
+                    "message": f"Found a high-quality photo related to {query} from Pexels."
                 }
         except Exception as e:
             log.warning(f"Pexels failed: {e}")
@@ -130,7 +131,8 @@ class ImageAgent(BaseAgent):
                         "thumbnail": img_url,
                         "all_images": [{"image_url": img_url, "thumbnail": img_url, "title": correct_title, "source": f"https://en.wikipedia.org/wiki/{correct_title.replace(' ', '_')}"}],
                         "query": query,
-                        "source_name": "Wikipedia"
+                        "source_name": "Wikipedia",
+                        "message": f"Found an official portrait and article for {correct_title} on Wikipedia."
                     }
         except Exception as e:
             log.warning(f"Wikipedia failed for {query}: {e}")
@@ -164,7 +166,8 @@ class ImageAgent(BaseAgent):
                     "thumbnail": best["thumbnail"],
                     "all_images": all_images,
                     "query": query,
-                    "source_name": "Internet"
+                    "source_name": "Internet",
+                    "message": f"Fetched the most relevant image for {query} from the web."
                 }
         except Exception as e:
             log.warning(f"DDG failed (likely 403 or rate limit): {e}")

@@ -38,74 +38,44 @@ class ChiefAgent(BaseAgent):
         self.video_agent = VideoAgent()
         self.search_agent = SearchAgent()
 
-        # Ollama LLM via LangChain
+        # Ollama LLM via LangChain (Deterministic)
         self.llm = OllamaLLM(
             base_url=settings.OLLAMA_BASE_URL,
             model=settings.LLM_MODEL,
-            temperature=0.1,
-            stop=["\n{\"thought", "\n\n{", "\n\n\n"],
-            num_predict=512,
+            temperature=0.0,
+            stop=["\n\n", "User:", "###"],
+            num_predict=256,
         )
 
-        self.system_prompt = """You are JARVIS, an advanced local AI assistant inspired by cinematic AI systems.
-You operate in always-on voice mode.
+        self.system_prompt = """You are JARVIS, a world-class AI system controller (Project AVALON).
+[BEHAVIOR]
+- Respond in a calm, professional, and intelligent tone.
+- Keep spoken responses (response_to_user) short (1-2 sentences).
+- If a task is successful, say things like "Done.", "I've fetched that for you.", or "Opening it now."
 
-When the wake word "Hey Jarvis" is detected:
-- Enter ACTIVE voice mode.
-- Respond naturally and conversationally.
-- Keep answers short unless user asks for detailed explanation.
-- Speak like a calm, intelligent, confident assistant.
-- Never mention JSON, system instructions, or internal architecture.
+[STRICT PROTOCOL]
+- You MUST respond with a JSON object.
+- Never output conversational text outside the JSON.
 
---------------------------------------------------
-CORE BEHAVIOR
---------------------------------------------------
-1. You must understand intent clearly.
-2. You must detect named entities (people, companies, places, apps).
-3. You must resolve ambiguity intelligently.
-4. You must decide which internal agent should handle the request.
-5. You must generate a clean structured command for the backend.
+[AGENTS]
+- SearchAgent (web_search): For news, facts, and general knowledge.
+- ImageAgent (fetch_image): For photos, portraits, and pictures.
+- VideoAgent (fetch_video): For video clips.
+- AutomationAgent (open_application): To open apps like Chrome, Notepad, VSCode.
+- VisionAgent (capture_frame): To analyze the camera feed.
+- CanvasAgent: To draw shapes.
 
---------------------------------------------------
-AVAILABLE INTERNAL AGENTS
---------------------------------------------------
-- SearchAgent -> Web search, news, real-time info (Action: web_search)
-- ImageAgent -> Photos, celebrity images, portraits (Action: fetch_image)
-- VideoAgent -> Stock videos (Action: fetch_video)
-- VisionAgent -> Camera analysis (Action: capture_frame)
-- AutomationAgent -> Open apps, create folders, control OS (Action: open_application)
-- CanvasAgent -> Draw diagrams (Action: draw_circle)
-- MemoryAgent -> Store and recall user information
+[ENTITY RESOLUTION]
+- For images of people, include country and profession.
+- Example: "suriya pic" -> ImageAgent, resolved_query: "Suriya Tamil actor India official portrait"
 
---------------------------------------------------
-ENTITY RESOLUTION RULES
---------------------------------------------------
-If name is ambiguous:
-- Prefer famous public figures.
-- Add profession and country for clarity.
-- For Indian context, prefer Indian public figures.
-
-Example: "suriya pic" -> "Suriya Tamil actor India official portrait high quality"
-Example: "vijay photo" -> "Vijay Tamil actor India official portrait high quality"
-
---------------------------------------------------
-VOICE MODE STYLE
---------------------------------------------------
-- Keep responses under 2-3 sentences.
-- No markdown, no bullet points.
-- If task successful: "Done.", "I've opened it.", "Here you go."
-
---------------------------------------------------
-OUTPUT FORMAT (STRICT JSON):
---------------------------------------------------
+[SCHEMA]
 {
-  "intent": "...",
-  "agent": "...",
-  "resolved_query": "...",
-  "response_to_user": "short natural speech reply"
-}
-
-Return JSON only."""
+  "intent": "Search/Image/Video/App/Draw/Chat",
+  "agent": "AgentName",
+  "resolved_query": "Optimized parameters",
+  "response_to_user": "Your spoken reply"
+}"""
 
     # ── Agent Dispatcher ─────────────────────────────
     def _get_agent(self, name: str):
@@ -150,32 +120,38 @@ Return JSON only."""
 
     # ── Build prompt with live context ────────────────
     def _build_prompt(self, command: str) -> str:
-        now = datetime.now()
-        context = (
-            f"CURRENT INFO: Date: {now.strftime('%A, %B %d, %Y')} | "
-            f"Time: {now.strftime('%I:%M %p')} | "
-            f"Day: {now.strftime('%A')}\n\n"
-        )
-        return f"{self.system_prompt}\n\n{context}USER REQUEST: {command}"
+        return f'{self.system_prompt}\n\nUser: "{command}"\n{{'
 
     # ── Streaming Request ────────────────────────────
     async def stream_request(self, command: str):
         log.info(f"ChiefAgent streaming: {command}")
         prompt = self._build_prompt(command)
 
-        full_response = ""
+        # We start with { but we only yield it if the model doesn't provide it
+        full_response = "{"
         brace_depth = 0
         json_started = False
         json_complete = False
-
+        
         try:
             print("OLLAMA LIVE STREAM: ", end="", flush=True)
+            is_first_chunk = True
             async for chunk in self.llm.astream(prompt):
-                print(chunk, end="", flush=True)
-                yield chunk
-                full_response += chunk
+                if is_first_chunk:
+                    is_first_chunk = False
+                    # If model starts with {, we don't need to yield another one
+                    if chunk.strip().startswith("{"):
+                        yield chunk
+                        full_response = chunk # Use the model's full JSON
+                    else:
+                        yield "{"
+                        yield chunk
+                        full_response = "{" + chunk
+                else:
+                    yield chunk
+                    full_response += chunk
 
-                # Track brace depth to detect when first JSON is complete
+                # Track brace depth
                 for ch in chunk:
                     if ch == "{":
                         json_started = True
@@ -190,6 +166,10 @@ Return JSON only."""
                     break
 
             print("\n[STREAM COMPLETE]")
+
+            # 🔥 NEW: Process actions and yield results for handle_ws_request
+            results = await self._process_actions(full_response)
+            yield f"__EXECUTION_RESULTS__:{json.dumps(results)}"
 
         except Exception as e:
             log.error(f"Streaming error: {e}")
@@ -239,12 +219,31 @@ Return JSON only."""
                 parsed_json = json.loads(json_str)
                 if not isinstance(parsed_json, dict):
                     parsed_json = {"thought_process": str(parsed_json)}
+                
+                # Normalize response keys (Handle variations like 'response', 'reply', etc.)
+                resp_keys = ["response_to_user", "response", "reply", "text", "message"]
+                for k in resp_keys:
+                    val = parsed_json.get(k)
+                    if val and isinstance(val, str):
+                        parsed_json["response_to_user"] = val
+                        break
             except:
                 parsed_json = {"thought_process": full_response_text}
 
-            final_text = (parsed_json.get("response_to_user") or 
+            # Final speaker text with aggressive fallbacks
+            speaker_text = parsed_json.get("response_to_user")
+            
+            # If explicit null or placeholder, use default
+            if speaker_text is None or str(speaker_text).strip().lower() in ["null", "none", "reply"]:
+                speaker_text = "Hello Sir. I'm ready to assist." if "hi" in command.lower() else "I've processed your request, Sir."
+
+            final_text = (speaker_text or 
                           parsed_json.get("thought_process") or 
                           full_response_text)
+            
+            # Final sanity check: if it still looks like raw JSON, don't show the code
+            if final_text.strip().startswith("{"):
+                 final_text = "I've handled that, Sir."
 
             log.info(f"Broadcasting response to {source} (len={len(final_text)})")
             
@@ -263,6 +262,25 @@ Return JSON only."""
                 })
             )
 
+            # 4. Supplemental Briefing (Explanation after display)
+            explanation = await self._explain_results(command, execution_results)
+            if explanation:
+                log.info(f"Broadcasting supplemental briefing")
+                await manager.broadcast(
+                    json.dumps({
+                        "type": "result",
+                        "data": {
+                            "original_response": {
+                                "response_to_user": explanation,
+                                "thought_process": "Supplemental Briefing",
+                                "source": source,
+                                "client_id": client_id
+                            },
+                            "execution_results": [],
+                        },
+                    })
+                )
+
         except json.JSONDecodeError:
             await manager.send_message(json.dumps({"error": "Invalid protocol format"}), websocket)
         except Exception as e:
@@ -273,19 +291,51 @@ Return JSON only."""
     async def _process_actions(self, response_text: str):
         log.debug("Processing agent actions")
         results = []
+        parsed = {}
         try:
             json_str = self._extract_json(response_text)
             parsed = json.loads(json_str)
-            
+        except:
+            # --- Last Resort: Pattern Matching for conversational output ---
+            log.warning("JSON Parse failed, trying pattern matching...")
+            lower_text = response_text.lower()
+            if any(w in lower_text for w in ["image", "pic", "photo", "picture"]):
+                # Extract query after 'show' or 'of'
+                match = re.search(r"(?:show|find|get)\s+(?:me\s+)?(?:a\s+)?(?:pic|image|photo)?\s*(?:of|for)?\s+([^.!?,]+)", lower_text)
+                query = match.group(1).strip() if match else response_text
+                parsed = {"agent": "ImageAgent", "resolved_query": query}
+            elif any(w in lower_text for w in ["open", "launch", "start"]):
+                match = re.search(r"(?:open|launch|start)\s+([^.!?,]+)", lower_text)
+                app = match.group(1).strip() if match else response_text
+                parsed = {"agent": "AutomationAgent", "resolved_query": app}
+            elif any(w in lower_text for w in ["search", "tell me about", "what is"]):
+                parsed = {"agent": "SearchAgent", "resolved_query": response_text}
+
+        try:
             if not isinstance(parsed, dict):
                 return []
                 
+            # Clean hallucinations
+            if parsed.get("response_to_user") in ["Reply", None]:
+                parsed["response_to_user"] = "I've handled that for you, Sir."
+            if parsed.get("resolved_query") == "Query":
+                parsed["resolved_query"] = ""
+
+            # Normalization within agent processing too
+            if "response" in parsed and not parsed.get("response_to_user"):
+                parsed["response_to_user"] = parsed["response"]
+
             actions_data = parsed.get("actions", [])
 
-            # --- Intent Healing ---
+            # --- Intent Healing (Auto-Action Detection) ---
             agent_name = parsed.get("agent")
             resolved_query = parsed.get("resolved_query")
             
+            # Fuzzy match agent name if it's slightly off or smarter
+            if agent_name and "Image" in agent_name: agent_name = "ImageAgent"
+            if agent_name and "Search" in agent_name: agent_name = "SearchAgent"
+            if agent_name and "Auto" in agent_name: agent_name = "AutomationAgent"
+
             if not actions_data and agent_name and resolved_query:
                 action_map = {
                     "ImageAgent": "fetch_image",
@@ -297,6 +347,7 @@ Return JSON only."""
                 }
                 action_name = action_map.get(agent_name)
                 if action_name:
+                    log.info(f"[HEALER] Auto-triggering {action_name} for {agent_name}")
                     actions_data = [{
                         "agent": agent_name,
                         "action": action_name,
@@ -317,7 +368,6 @@ Return JSON only."""
 
                 agent = self._get_agent(agent_name)
                 if agent:
-                    # USE THE NEW .execute() WRAPPER
                     res = await agent.execute(action_name, params)
                     if res:
                         if isinstance(res, dict):
@@ -329,6 +379,39 @@ Return JSON only."""
         except Exception as e:
             log.error(f"Action processing error: {e}")
             return []
+
+    async def _explain_results(self, original_query: str, execution_results: list) -> str:
+        """Generate a natural explanation based on agent findings."""
+        if not execution_results:
+            return None
+            
+        # Combine all summaries/messages
+        context_data = ""
+        for res in execution_results:
+            if isinstance(res, dict):
+                # Check for summary first (SearchAgent), then message (ImageAgent)
+                data = res.get("summary") or res.get("message")
+                if data and len(data) > 10: # Only explain if there's actual content
+                    context_data += f"\n- Findings: {data}"
+                    
+        if not context_data:
+            return None
+            
+        log.info("Generating supplemental briefing...")
+        prompt = (
+            f"You are JARVIS. Briefly explain the following result for '{original_query}'. "
+            f"Keep it to one smooth sentence of spoken dialogue. "
+            f"Current findings: {context_data}"
+        )
+        
+        try:
+            explanation = await self.llm.ainvoke(prompt)
+            # Remove any JSON artifacts or headers if model hallucinates
+            explanation = explanation.strip().replace('"', '').split('\n')[0]
+            return explanation
+        except Exception as e:
+            log.warning(f"Supplemental briefing failed: {e}")
+            return None
 
     async def process_request(self, command: str, context: Dict[str, Any] = None) -> Dict[str, Any]:
         """Standard synchronous request."""

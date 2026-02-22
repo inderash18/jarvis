@@ -2972,3 +2972,742 @@ AttributeError: 'str' object has no attribute 'get'
 2026-02-22 14:47:41.148 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
 2026-02-22 14:47:45.832 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: hi
 2026-02-22 14:47:57.808 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to dashboard (len=38)
+2026-02-22 14:52:38.694 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: hi
+2026-02-22 14:52:46.454 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to dashboard (len=75)
+2026-02-22 14:54:01.491 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 14:54:12.738 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 14:54:13.194 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 14:54:19.455 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 14:54:20.280 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 14:54:22.009 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 14:54:22.014 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 14:54:22.016 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 14:54:22.017 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 14:54:22.017 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 14:54:22.018 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 14:54:22.048 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 14:54:24.017 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 14:54:27.181 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 14:54:27.183 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 14:54:27.891 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 14:54:27.892 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 14:54:30.887 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 14:54:30.889 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 14:56:27.081 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 14:56:27.092 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 14:57:06.481 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 14:57:17.911 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 14:57:18.227 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 14:57:23.811 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 14:57:24.545 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 14:57:26.244 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 14:57:26.246 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 14:57:26.251 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 14:57:26.252 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 14:57:26.253 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 14:57:26.253 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 14:57:26.317 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 14:57:30.112 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 14:57:35.962 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 14:57:35.963 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 14:57:35.995 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 14:57:35.997 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 14:57:36.353 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 14:57:36.355 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 14:57:49.101 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 14:57:51.771 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 14:57:51.771 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=9
+2026-02-22 14:57:56.441 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: Yes.
+2026-02-22 14:58:11.450 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to voice_client (len=57)
+2026-02-22 14:58:11.452 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=57
+2026-02-22 14:58:54.027 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=9
+2026-02-22 14:59:21.280 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=9
+2026-02-22 14:59:25.552 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: Yes.
+2026-02-22 14:59:26.518 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=9
+2026-02-22 14:59:27.961 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to voice_client (len=57)
+2026-02-22 14:59:27.962 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=57
+2026-02-22 14:59:31.768 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: Yes.
+2026-02-22 14:59:33.563 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to voice_client (len=57)
+2026-02-22 14:59:34.812 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=57
+2026-02-22 15:00:20.423 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 15:00:20.424 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 15:00:23.212 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 15:00:23.213 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 15:00:23.226 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 15:00:23.226 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 15:00:23.233 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 15:00:23.238 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 15:00:25.245 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: hi
+2026-02-22 15:00:29.441 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to dashboard (len=103)
+2026-02-22 15:00:42.604 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: today's date
+2026-02-22 15:00:46.384 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to dashboard (len=62)
+2026-02-22 15:01:19.366 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: when the avengers secret war will release
+2026-02-22 15:01:24.592 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to dashboard (len=88)
+2026-02-22 15:01:41.401 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: show me some iron man pic
+2026-02-22 15:01:44.789 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to dashboard (len=60)
+2026-02-22 15:01:54.147 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: image
+2026-02-22 15:01:57.335 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to dashboard (len=63)
+2026-02-22 15:02:06.250 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: show me image
+2026-02-22 15:02:11.408 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to dashboard (len=126)
+2026-02-22 15:02:33.412 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 15:02:33.414 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:26:03.524 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:26:21.550 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:26:25.115 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:26:26.743 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:26:26.758 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:26:26.759 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=9
+2026-02-22 20:26:33.275 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:26:34.075 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:26:36.675 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:26:36.677 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:26:36.681 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:26:36.681 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:26:36.681 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:26:36.682 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:26:36.749 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:26:39.786 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:26:45.271 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:26:45.273 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:26:45.796 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:26:45.799 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 20:26:50.244 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:26:50.248 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 20:26:51.383 | INFO     | agents.chief_agent:stream_request:117 - ChiefAgent streaming: hi
+2026-02-22 20:27:16.880 | INFO     | agents.chief_agent:handle_ws_request:203 - Broadcasting response to dashboard (len=5)
+2026-02-22 20:27:31.387 | INFO     | agents.chief_agent:stream_request:117 - ChiefAgent streaming: hello
+2026-02-22 20:27:48.568 | INFO     | agents.chief_agent:handle_ws_request:203 - Broadcasting response to dashboard (len=5)
+2026-02-22 20:28:10.063 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=9
+2026-02-22 20:28:17.087 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=9
+2026-02-22 20:28:26.246 | INFO     | agents.chief_agent:stream_request:117 - ChiefAgent streaming: Hey, Joseph.
+2026-02-22 20:28:29.109 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 20:28:29.113 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:28:29.212 | ERROR    | agents.chief_agent:handle_ws_request:223 - Handler error: 
+Traceback (most recent call last):
+
+  File "i:\jarvis\.venv\Lib\site-packages\websockets\legacy\protocol.py", line 1279, in close_connection
+    await self.transfer_data_task
+          │    └ <Task cancelled name='Task-13' coro=<WebSocketCommonProtocol.transfer_data() done, defined at i:\jarvis\.venv\Lib\site-packag...
+          └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+  File "i:\jarvis\.venv\Lib\site-packages\websockets\legacy\protocol.py", line 945, in transfer_data
+    message = await self.read_message()
+                    │    └ <function WebSocketCommonProtocol.read_message at 0x000002A4CB77E5C0>
+                    └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+  File "i:\jarvis\.venv\Lib\site-packages\websockets\legacy\protocol.py", line 1015, in read_message
+    frame = await self.read_data_frame(max_size=self.max_size)
+                  │    │                        │    └ 16777216
+                  │    │                        └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+                  │    └ <function WebSocketCommonProtocol.read_data_frame at 0x000002A4CB77E660>
+                  └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+  File "i:\jarvis\.venv\Lib\site-packages\websockets\legacy\protocol.py", line 1090, in read_data_frame
+    frame = await self.read_frame(max_size)
+                  │    │          └ 16777216
+                  │    └ <function WebSocketCommonProtocol.read_frame at 0x000002A4CB77E700>
+                  └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+  File "i:\jarvis\.venv\Lib\site-packages\websockets\legacy\protocol.py", line 1147, in read_frame
+    frame = await Frame.read(
+                  │     └ <classmethod(<function Frame.read at 0x000002A4CB77D120>)>
+                  └ <class 'websockets.legacy.framing.Frame'>
+  File "i:\jarvis\.venv\Lib\site-packages\websockets\legacy\framing.py", line 71, in read
+    data = await reader(2)
+                 └ <bound method StreamReader.readexactly of <StreamReader eof limit=32768 transport=<_SelectorSocketTransport closed fd=5596>>>
+  File "C:\Program Files\Python311\Lib\asyncio\streams.py", line 728, in readexactly
+    await self._wait_for_data('readexactly')
+          │    └ <function StreamReader._wait_for_data at 0x000002A4CAD78E00>
+          └ <StreamReader eof limit=32768 transport=<_SelectorSocketTransport closed fd=5596>>
+  File "C:\Program Files\Python311\Lib\asyncio\streams.py", line 522, in _wait_for_data
+    await self._waiter
+          │    └ None
+          └ <StreamReader eof limit=32768 transport=<_SelectorSocketTransport closed fd=5596>>
+
+asyncio.exceptions.CancelledError
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "i:\jarvis\.venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 329, in asgi_send
+    await self.send(data)  # type: ignore[arg-type]
+          │    │    └ '{"type": "stream_token", "token": "agent"}'
+          │    └ <function WebSocketCommonProtocol.send at 0x000002A4CB77E0C0>
+          └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+  File "i:\jarvis\.venv\Lib\site-packages\websockets\legacy\protocol.py", line 620, in send
+    await self.ensure_open()
+          │    └ <function WebSocketCommonProtocol.ensure_open at 0x000002A4CB77E480>
+          └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+  File "i:\jarvis\.venv\Lib\site-packages\websockets\legacy\protocol.py", line 921, in ensure_open
+    raise self.connection_closed_exc()
+          │    └ <function WebSocketCommonProtocol.connection_closed_exc at 0x000002A4CB77E3E0>
+          └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+
+websockets.exceptions.ConnectionClosedError: sent 1012 (service restart); no close frame received
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\websockets.py", line 86, in send
+    await self._send(message)
+          │    │     └ {'type': 'websocket.send', 'text': '{"type": "stream_token", "token": "agent"}'}
+          │    └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002A48C3B4680>
+          └ <starlette.websockets.WebSocket object at 0x000002A48C3C6AD0>
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\_exception_handler.py", line 39, in sender
+    await send(message)
+          │    └ {'type': 'websocket.send', 'text': '{"type": "stream_token", "token": "agent"}'}
+          └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+  File "i:\jarvis\.venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 342, in asgi_send
+    raise ClientDisconnected from exc
+          └ <class 'uvicorn.protocols.utils.ClientDisconnected'>
+
+uvicorn.protocols.utils.ClientDisconnected
+
+
+During handling of the above exception, another exception occurred:
+
+
+Traceback (most recent call last):
+
+  File "<string>", line 1, in <module>
+  File "C:\Program Files\Python311\Lib\multiprocessing\spawn.py", line 120, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               │     │   └ 312
+               │     └ 3
+               └ <function _main at 0x000002A4C90CDB20>
+  File "C:\Program Files\Python311\Lib\multiprocessing\spawn.py", line 133, in _main
+    return self._bootstrap(parent_sentinel)
+           │    │          └ 312
+           │    └ <function BaseProcess._bootstrap at 0x000002A4C8FDC720>
+           └ <SpawnProcess name='SpawnProcess-1' parent=7876 started>
+  File "C:\Program Files\Python311\Lib\multiprocessing\process.py", line 314, in _bootstrap
+    self.run()
+    │    └ <function BaseProcess.run at 0x000002A4C8FDBC40>
+    └ <SpawnProcess name='SpawnProcess-1' parent=7876 started>
+  File "C:\Program Files\Python311\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    │    │        │    │        │    └ {'config': <uvicorn.config.Config object at 0x000002A4C9342450>, 'target': <bound method Server.run of <uvicorn.server.Server...
+    │    │        │    │        └ <SpawnProcess name='SpawnProcess-1' parent=7876 started>
+    │    │        │    └ ()
+    │    │        └ <SpawnProcess name='SpawnProcess-1' parent=7876 started>
+    │    └ <function subprocess_started at 0x000002A4CB482CA0>
+    └ <SpawnProcess name='SpawnProcess-1' parent=7876 started>
+  File "i:\jarvis\.venv\Lib\site-packages\uvicorn\_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+    │              └ [<socket.socket [closed] fd=-1, family=2, type=1, proto=6>]
+    └ <bound method Server.run of <uvicorn.server.Server object at 0x000002A4CB5E69D0>>
+  File "i:\jarvis\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x000002A4CB41FD80>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x000002A4C9342450>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x000002A4CB5E69D0>
+           │           │    │             └ [<socket.socket [closed] fd=-1, family=2, type=1, proto=6>]
+           │           │    └ <function Server.serve at 0x000002A4CB481C60>
+           │           └ <uvicorn.server.Server object at 0x000002A4CB5E69D0>
+           └ <function asyncio_run at 0x000002A4CB3A9EE0>
+  File "i:\jarvis\.venv\Lib\site-packages\uvicorn\_compat.py", line 30, in asyncio_run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000002A4CB5C89A0>
+           │      └ <function Runner.run at 0x000002A4CAD61E40>
+           └ <asyncio.runners.Runner object at 0x000002A4C93416D0>
+  File "C:\Program Files\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at i:\jarvis\.venv\Lib\site-packages\uvicorn\server.py:71> wait_for=...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000002A4CAD579C0>
+           │    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000002A4C93416D0>
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000002A4CAD57920>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002A4CAD61760>
+    └ <_WindowsSelectorEventLoop running=True closed=False debug=False>
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002A4CACF2700>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "C:\Program Files\Python311\Lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=True>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=True>)>
+  File "i:\jarvis\.venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 244, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)  # type: ignore[func-returns-value]
+                   │    │   │    │      │    │             │    └ <function WebSocketProtocol.asgi_send at 0x000002A4CB799580>
+                   │    │   │    │      │    │             └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+                   │    │   │    │      │    └ <function WebSocketProtocol.asgi_receive at 0x000002A4CB799620>
+                   │    │   │    │      └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+                   │    │   │    └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+                   │    │   └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+                   │    └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000002A483CE6010>
+                   └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002A48C3A1C50>
+  File "i:\jarvis\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+                 │    │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+                 │    │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+                 │    └ <fastapi.applications.FastAPI object at 0x000002A4834D7790>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000002A483CE6010>
+  File "i:\jarvis\.venv\Lib\site-packages\fastapi\applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+                           │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+                           └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+          │    │                │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │                └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002A483407410>
+          └ <fastapi.applications.FastAPI object at 0x000002A4834D7790>
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+          │    │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000002A483C082D0>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002A483407410>
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\middleware\cors.py", line 79, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+          │    │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002A483C91450>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002A483C082D0>
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+          │                            │    │    │     │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │                            │    │    │     └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │                            │    │    └ <starlette.websockets.WebSocket object at 0x000002A48C3C6B10>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000002A480809410>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002A483C91450>
+          └ <function wrap_app_handling_exceptions at 0x000002A4CC563560>
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002A48C3B4680>
+          │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000002A480809410>
+  File "i:\jarvis\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002A48C3B4680>
+          │    │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <fastapi.routing.APIRouter object at 0x000002A483DFC050>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000002A480809410>
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002A48C3B4680>
+          │    │                │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │                └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000002A483DFC050>>
+          └ <fastapi.routing.APIRouter object at 0x000002A483DFC050>
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002A48C3B4680>
+          │     │      │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │     │      └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │     └ <function WebSocketRoute.handle at 0x000002A4CC598F40>
+          └ APIWebSocketRoute(path='/ws/chief', name='websocket_endpoint')
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\routing.py", line 364, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002A48C3B4680>
+          │    │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <function websocket_session.<locals>.app at 0x000002A483DEA700>
+          └ APIWebSocketRoute(path='/ws/chief', name='websocket_endpoint')
+  File "i:\jarvis\.venv\Lib\site-packages\fastapi\routing.py", line 145, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002A48C3B4680>
+          │                            │    │        │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │                            │    │        └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │                            │    └ <starlette.websockets.WebSocket object at 0x000002A48C3C6AD0>
+          │                            └ <function websocket_session.<locals>.app.<locals>.app at 0x000002A48C3B4720>
+          └ <function wrap_app_handling_exceptions at 0x000002A4CC563560>
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002A48C3B4860>
+          │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          └ <function websocket_session.<locals>.app.<locals>.app at 0x000002A48C3B4720>
+  File "i:\jarvis\.venv\Lib\site-packages\fastapi\routing.py", line 142, in app
+    await func(session)
+          │    └ <starlette.websockets.WebSocket object at 0x000002A48C3C6AD0>
+          └ <function get_websocket_app.<locals>.app at 0x000002A483DEA7A0>
+  File "i:\jarvis\.venv\Lib\site-packages\fastapi\routing.py", line 507, in app
+    await dependant.call(**solved_result.values)
+          │         │      │             └ {'websocket': <starlette.websockets.WebSocket object at 0x000002A48C3C6AD0>}
+          │         │      └ SolvedDependency(values={'websocket': <starlette.websockets.WebSocket object at 0x000002A48C3C6AD0>}, errors=[], background_t...
+          │         └ <function websocket_endpoint at 0x000002A483DE9620>
+          └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[], dependencies=[], name=None, ca...
+
+  File "I:\jarvis\backend\ws\routes.py", line 28, in websocket_endpoint
+    await chief_agent.handle_ws_request(websocket, manager, data)
+          │           │                 │          │        └ '{"command": "Hey, Joseph.", "source": "voice_client", "client_id": "fabe2463"}'
+          │           │                 │          └ <ws.manager.ConnectionManager object at 0x000002A483DE71D0>
+          │           │                 └ <starlette.websockets.WebSocket object at 0x000002A48C3C6AD0>
+          │           └ <function ChiefAgent.handle_ws_request at 0x000002A483DE8F40>
+          └ <Agent name='ChiefAgent'>
+
+> File "I:\jarvis\backend\agents\chief_agent.py", line 184, in handle_ws_request
+    await manager.send_message(
+          │       └ <function ConnectionManager.send_message at 0x000002A483DE99E0>
+          └ <ws.manager.ConnectionManager object at 0x000002A483DE71D0>
+
+  File "I:\jarvis\backend\ws\manager.py", line 29, in send_message
+    await websocket.send_text(message)
+          │         │         └ '{"type": "stream_token", "token": "agent"}'
+          │         └ <function WebSocket.send_text at 0x000002A4CC527C40>
+          └ <starlette.websockets.WebSocket object at 0x000002A48C3C6AD0>
+
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\websockets.py", line 166, in send_text
+    await self.send({"type": "websocket.send", "text": data})
+          │    │                                       └ '{"type": "stream_token", "token": "agent"}'
+          │    └ <function WebSocket.send at 0x000002A4CC5276A0>
+          └ <starlette.websockets.WebSocket object at 0x000002A48C3C6AD0>
+  File "i:\jarvis\.venv\Lib\site-packages\starlette\websockets.py", line 89, in send
+    raise WebSocketDisconnect(code=1006)
+          └ <class 'starlette.websockets.WebSocketDisconnect'>
+
+starlette.websockets.WebSocketDisconnect
+2026-02-22 20:28:29.845 | ERROR    | ws.routes:websocket_endpoint:34 - WebSocket unexpected error: Cannot call "send" once a close message has been sent.
+2026-02-22 20:28:29.845 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 20:28:29.849 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 20:28:40.329 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=9
+2026-02-22 20:28:57.144 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=9
+2026-02-22 20:29:05.138 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:29:13.585 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=9
+2026-02-22 20:29:15.350 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:29:15.900 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:29:21.985 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:29:22.742 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:29:24.667 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:29:24.670 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:29:24.676 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:29:24.677 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:29:24.677 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:29:24.677 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:29:24.763 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:29:28.646 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:29:34.213 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:29:34.215 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:29:34.220 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 20:29:52.470 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:29:56.712 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:29:56.818 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:30:05.984 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:30:06.245 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:30:06.833 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:30:06.835 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:30:06.836 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:30:06.837 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:30:06.837 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:30:06.838 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:30:06.870 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:30:07.857 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:30:11.576 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:30:11.577 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:30:11.584 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:30:11.585 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 20:30:11.586 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:30:11.586 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 20:30:18.787 | INFO     | agents.chief_agent:stream_request:109 - ChiefAgent streaming: hi
+2026-02-22 20:30:24.458 | INFO     | agents.chief_agent:handle_ws_request:197 - Broadcasting response to dashboard (len=77)
+2026-02-22 20:30:37.317 | INFO     | agents.chief_agent:stream_request:109 - ChiefAgent streaming: hello
+2026-02-22 20:30:39.704 | INFO     | agents.chief_agent:handle_ws_request:197 - Broadcasting response to dashboard (len=60)
+2026-02-22 20:31:18.161 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 20:31:18.162 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:31:18.163 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 20:31:18.164 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:31:18.267 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 20:31:42.679 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:31:46.819 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:31:47.026 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:31:52.650 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:31:53.003 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:31:53.776 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:31:53.777 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:31:53.781 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:31:53.781 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:31:53.782 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:31:53.782 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:31:53.807 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:31:55.648 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:31:58.437 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:31:58.438 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:31:58.444 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:31:58.445 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 20:31:58.445 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:31:58.446 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 20:32:02.120 | INFO     | agents.chief_agent:stream_request:109 - ChiefAgent streaming: hi
+2026-02-22 20:32:05.138 | INFO     | agents.chief_agent:handle_ws_request:210 - Broadcasting response to dashboard (len=77)
+2026-02-22 20:32:17.274 | INFO     | agents.chief_agent:stream_request:109 - ChiefAgent streaming: hello
+2026-02-22 20:32:19.643 | INFO     | agents.chief_agent:handle_ws_request:210 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:32:29.676 | INFO     | agents.chief_agent:stream_request:109 - ChiefAgent streaming: hi
+2026-02-22 20:32:32.590 | INFO     | agents.chief_agent:handle_ws_request:210 - Broadcasting response to dashboard (len=77)
+2026-02-22 20:32:37.821 | INFO     | agents.chief_agent:stream_request:109 - ChiefAgent streaming: hi
+2026-02-22 20:32:40.590 | INFO     | agents.chief_agent:handle_ws_request:210 - Broadcasting response to dashboard (len=77)
+2026-02-22 20:33:09.541 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 20:33:09.542 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:33:09.545 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 20:33:09.547 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:33:09.645 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 20:33:40.965 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:33:51.565 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:33:51.999 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:33:56.907 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:33:57.523 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:33:59.138 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:33:59.140 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:33:59.142 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:33:59.144 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:33:59.144 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:33:59.146 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:33:59.229 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:34:02.684 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:34:08.773 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:34:08.775 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:34:08.785 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:34:08.788 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 20:34:08.788 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:34:08.789 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 20:46:29.945 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:46:34.345 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:46:34.661 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:46:41.732 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:46:42.247 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:46:43.500 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:46:43.503 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:46:43.504 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:46:43.505 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:46:43.505 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:46:43.506 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:46:43.559 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:46:46.847 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:46:52.449 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:46:52.451 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:46:55.149 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:46:55.152 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 20:47:01.199 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:47:01.200 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 20:47:01.215 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 20:47:01.217 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:47:01.222 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:47:01.223 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 20:47:12.885 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: hi
+2026-02-22 20:48:06.931 | INFO     | agents.chief_agent:handle_ws_request:234 - Broadcasting response to dashboard (len=31)
+2026-02-22 20:48:14.373 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: hello
+2026-02-22 20:48:21.331 | INFO     | agents.chief_agent:handle_ws_request:234 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:48:24.779 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: Show me a pic of Robert Downey Jr as Iron Man
+2026-02-22 20:48:34.519 | INFO     | agents.chief_agent:handle_ws_request:234 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:49:24.215 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 20:49:24.223 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:49:24.242 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 20:49:24.244 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:49:24.333 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 20:49:49.876 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:49:54.455 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:49:54.754 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:50:00.336 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:50:00.713 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:50:01.499 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:50:01.500 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:50:01.502 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:50:01.502 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:50:01.502 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:50:01.503 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:50:01.524 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:50:03.151 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:50:06.096 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:50:06.096 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:50:06.101 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:50:06.102 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 20:50:06.102 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:50:06.103 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 20:50:36.326 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: hi
+2026-02-22 20:51:03.658 | INFO     | agents.chief_agent:handle_ws_request:234 - Broadcasting response to dashboard (len=31)
+2026-02-22 20:51:14.741 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: Show me a pic of Robert Downey Jr as Iron Man
+2026-02-22 20:51:25.636 | INFO     | agents.chief_agent:handle_ws_request:234 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:52:21.145 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 20:52:21.153 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:52:21.183 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 20:52:21.184 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:52:21.255 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 20:52:56.395 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:53:06.348 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:53:06.793 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:53:12.651 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:53:13.203 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:53:14.777 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:53:14.781 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:53:14.783 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:53:14.785 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:53:14.785 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:53:14.786 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:53:14.859 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:53:17.843 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:53:23.389 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:53:23.391 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:53:23.397 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 20:53:42.564 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:53:50.740 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:53:51.003 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:53:56.198 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:53:56.424 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:53:56.877 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:53:56.879 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:53:56.881 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:53:56.881 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:53:56.881 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:53:56.882 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:53:56.902 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:53:57.977 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:54:00.517 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:54:00.517 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:54:00.527 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:54:00.529 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 20:54:00.529 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 20:54:00.530 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 20:54:06.905 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: Show me a pic of Robert Downey Jr as Iron Man"
+2026-02-22 20:54:33.978 | DEBUG    | agents.chief_agent:_process_actions:276 - Processing agent actions
+2026-02-22 20:54:33.992 | INFO     | agents.chief_agent:_process_actions:334 - [HEALER] Auto-triggering fetch_image for ImageAgent
+2026-02-22 20:54:33.995 | INFO     | agents.base:execute:18 - [ImageAgent] Processing: fetch_image...
+2026-02-22 20:54:33.996 | INFO     | agents.image_agent:_try_wikipedia:105 - Trying Wikipedia for: Robert Downey Jr. as Iron Man official portrait
+2026-02-22 20:54:34.656 | WARNING  | agents.image_agent:_try_wikipedia:136 - Wikipedia failed for Robert Downey Jr. as Iron Man official portrait: Expecting value: line 1 column 1 (char 0)
+2026-02-22 20:54:34.657 | INFO     | agents.image_agent:_try_ddg:140 - Trying DDG for: Robert Downey Jr. as Iron Man official portrait
+2026-02-22 20:54:38.152 | WARNING  | agents.image_agent:_try_ddg:170 - DDG failed (likely 403 or rate limit): HTTPError: HTTPError('HTTP 403 Forbidden for URL: https://duckduckgo.com/i.js?o=json&q=Robert+Downey+Jr.+as+Iron+Man+official+portrait&l=us-en&vqd=4-99075654624885949282914977318395858432&p=1', 403, 'https://duckduckgo.com/i.js?o=json&q=Robert+Downey+Jr.+as+Iron+Man+official+portrait&l=us-en&vqd=4-99075654624885949282914977318395858432&p=1', 'Forbidden')
+2026-02-22 20:54:38.157 | INFO     | agents.image_agent:_try_pexels:78 - Trying Pexels for: Robert Downey Jr. as Iron Man official portrait
+2026-02-22 20:54:39.459 | SUCCESS  | agents.base:execute:21 - [ImageAgent] Processing complete.
+2026-02-22 20:54:39.460 | INFO     | agents.chief_agent:handle_ws_request:251 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:55:07.865 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: gt650 pic
+2026-02-22 20:55:16.853 | DEBUG    | agents.chief_agent:_process_actions:276 - Processing agent actions
+2026-02-22 20:55:16.854 | INFO     | agents.chief_agent:_process_actions:334 - [HEALER] Auto-triggering fetch_image for ImageAgent
+2026-02-22 20:55:16.854 | INFO     | agents.base:execute:18 - [ImageAgent] Processing: fetch_image...
+2026-02-22 20:55:16.854 | INFO     | agents.image_agent:_try_pexels:78 - Trying Pexels for: GT650 motorcycle India official picture
+2026-02-22 20:55:17.853 | SUCCESS  | agents.base:execute:21 - [ImageAgent] Processing complete.
+2026-02-22 20:55:17.854 | INFO     | agents.chief_agent:handle_ws_request:251 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:55:23.983 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: bmw pic
+2026-02-22 20:55:32.467 | DEBUG    | agents.chief_agent:_process_actions:276 - Processing agent actions
+2026-02-22 20:55:32.467 | INFO     | agents.chief_agent:_process_actions:334 - [HEALER] Auto-triggering fetch_image for ImageAgent
+2026-02-22 20:55:32.468 | INFO     | agents.base:execute:18 - [ImageAgent] Processing: fetch_image...
+2026-02-22 20:55:32.469 | INFO     | agents.image_agent:_try_wikipedia:105 - Trying Wikipedia for: BMW car Germany official picture
+2026-02-22 20:55:34.064 | WARNING  | agents.image_agent:_try_wikipedia:136 - Wikipedia failed for BMW car Germany official picture: Expecting value: line 1 column 1 (char 0)
+2026-02-22 20:55:34.066 | INFO     | agents.image_agent:_try_ddg:140 - Trying DDG for: BMW car Germany official picture
+2026-02-22 20:55:34.676 | WARNING  | agents.image_agent:_try_ddg:170 - DDG failed (likely 403 or rate limit): HTTPError: HTTPError('HTTP 403 Forbidden for URL: https://duckduckgo.com/i.js?o=json&q=BMW+car+Germany+official+picture&l=us-en&vqd=4-305026348580764382507063157448369437464&p=1', 403, 'https://duckduckgo.com/i.js?o=json&q=BMW+car+Germany+official+picture&l=us-en&vqd=4-305026348580764382507063157448369437464&p=1', 'Forbidden')
+2026-02-22 20:55:34.677 | INFO     | agents.image_agent:_try_pexels:78 - Trying Pexels for: BMW car Germany official picture
+2026-02-22 20:55:35.606 | SUCCESS  | agents.base:execute:21 - [ImageAgent] Processing complete.
+2026-02-22 20:55:35.607 | INFO     | agents.chief_agent:handle_ws_request:251 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:55:46.400 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: bmw video
+2026-02-22 20:55:54.751 | DEBUG    | agents.chief_agent:_process_actions:276 - Processing agent actions
+2026-02-22 20:55:54.752 | INFO     | agents.chief_agent:_process_actions:334 - [HEALER] Auto-triggering fetch_video for VideoAgent
+2026-02-22 20:55:54.757 | INFO     | agents.base:execute:18 - [VideoAgent] Processing: fetch_video...
+2026-02-22 20:55:54.760 | INFO     | agents.video_agent:fetch_video:41 - Searching Pexels for video: BMW car commercial
+2026-02-22 20:55:55.577 | SUCCESS  | agents.base:execute:21 - [VideoAgent] Processing complete.
+2026-02-22 20:55:55.579 | INFO     | agents.chief_agent:handle_ws_request:251 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:56:12.968 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: kiss pic
+2026-02-22 20:56:37.049 | DEBUG    | agents.chief_agent:_process_actions:276 - Processing agent actions
+2026-02-22 20:56:37.049 | INFO     | agents.chief_agent:_process_actions:334 - [HEALER] Auto-triggering fetch_image for ImageAgent
+2026-02-22 20:56:37.049 | INFO     | agents.base:execute:18 - [ImageAgent] Processing: fetch_image...
+2026-02-22 20:56:37.050 | INFO     | agents.image_agent:_try_pexels:78 - Trying Pexels for: Kiss portrait
+2026-02-22 20:56:39.238 | SUCCESS  | agents.base:execute:21 - [ImageAgent] Processing complete.
+2026-02-22 20:56:39.244 | INFO     | agents.chief_agent:handle_ws_request:251 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:56:46.265 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: lesbian
+2026-02-22 20:56:53.894 | DEBUG    | agents.chief_agent:_process_actions:276 - Processing agent actions
+2026-02-22 20:56:53.894 | INFO     | agents.chief_agent:_process_actions:334 - [HEALER] Auto-triggering web_search for SearchAgent
+2026-02-22 20:56:53.896 | INFO     | agents.base:execute:18 - [SearchAgent] Processing: web_search...
+2026-02-22 20:56:53.898 | INFO     | agents.search_agent:web_search:28 - Searching internet (DDG) for info: lesbian
+2026-02-22 20:56:57.196 | SUCCESS  | agents.base:execute:21 - [SearchAgent] Processing complete.
+2026-02-22 20:56:57.199 | INFO     | agents.chief_agent:handle_ws_request:251 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:57:07.621 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: lesbian pic
+2026-02-22 20:57:15.315 | DEBUG    | agents.chief_agent:_process_actions:276 - Processing agent actions
+2026-02-22 20:57:15.316 | INFO     | agents.chief_agent:_process_actions:334 - [HEALER] Auto-triggering fetch_image for ImageAgent
+2026-02-22 20:57:15.318 | INFO     | agents.base:execute:18 - [ImageAgent] Processing: fetch_image...
+2026-02-22 20:57:15.319 | INFO     | agents.image_agent:_try_pexels:78 - Trying Pexels for: Lesbian portrait
+2026-02-22 20:57:16.495 | SUCCESS  | agents.base:execute:21 - [ImageAgent] Processing complete.
+2026-02-22 20:57:16.497 | INFO     | agents.chief_agent:handle_ws_request:251 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:57:25.720 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: porn website
+2026-02-22 20:57:31.535 | DEBUG    | agents.chief_agent:_process_actions:276 - Processing agent actions
+2026-02-22 20:57:31.537 | WARNING  | agents.chief_agent:_process_actions:284 - JSON Parse failed, trying pattern matching...
+2026-02-22 20:57:31.542 | INFO     | agents.chief_agent:handle_ws_request:251 - Broadcasting response to dashboard (len=33)
+2026-02-22 20:58:39.680 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 20:58:39.681 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:58:39.694 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 20:58:39.694 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 20:58:39.798 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 20:59:17.605 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:59:25.190 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:59:25.490 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:59:31.426 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:59:31.813 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:59:32.640 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:59:32.642 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:59:32.643 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:59:32.644 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:59:32.645 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:59:32.645 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:59:32.677 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:59:34.545 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:59:37.916 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:59:37.917 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:59:37.923 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 20:59:47.069 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:59:49.920 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 20:59:50.027 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 20:59:54.998 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 20:59:55.253 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:59:55.721 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:59:55.724 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:59:55.726 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 20:59:55.726 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 20:59:55.727 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 20:59:55.727 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 20:59:55.762 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 20:59:56.809 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 20:59:59.273 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 20:59:59.274 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 20:59:59.277 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 21:00:06.929 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 21:00:11.195 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 21:00:11.351 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 21:00:16.606 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 21:00:16.807 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 21:00:17.345 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 21:00:17.346 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 21:00:17.349 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 21:00:17.350 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 21:00:17.350 | WARNING  | agents.vision_agent:__init__:42 - MediaPipe not installed. Hand detection will be disabled.
+2026-02-22 21:00:17.350 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 21:00:17.379 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 21:00:18.413 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 21:00:20.755 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 21:00:20.755 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 21:00:20.761 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 21:00:20.762 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 21:00:20.762 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 21:00:20.763 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 21:00:27.119 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: hi
+2026-02-22 21:00:54.193 | DEBUG    | agents.chief_agent:_process_actions:273 - Processing agent actions
+2026-02-22 21:00:54.195 | INFO     | agents.chief_agent:handle_ws_request:248 - Broadcasting response to dashboard (len=34)
+2026-02-22 21:01:08.757 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: porn website
+2026-02-22 21:01:14.177 | DEBUG    | agents.chief_agent:_process_actions:273 - Processing agent actions
+2026-02-22 21:01:14.178 | WARNING  | agents.chief_agent:_process_actions:281 - JSON Parse failed, trying pattern matching...
+2026-02-22 21:01:14.180 | INFO     | agents.chief_agent:handle_ws_request:248 - Broadcasting response to dashboard (len=33)
+2026-02-22 21:01:24.874 | INFO     | agents.chief_agent:stream_request:127 - ChiefAgent streaming: who is virat kholi
+2026-02-22 21:01:33.266 | DEBUG    | agents.chief_agent:_process_actions:273 - Processing agent actions
+2026-02-22 21:01:33.267 | INFO     | agents.chief_agent:_process_actions:331 - [HEALER] Auto-triggering web_search for SearchAgent
+2026-02-22 21:01:33.268 | INFO     | agents.base:execute:18 - [SearchAgent] Processing: web_search...
+2026-02-22 21:01:33.269 | INFO     | agents.search_agent:web_search:28 - Searching internet (DDG) for info: Virat Kohli
+2026-02-22 21:01:37.287 | SUCCESS  | agents.base:execute:21 - [SearchAgent] Processing complete.
+2026-02-22 21:01:37.294 | INFO     | agents.chief_agent:handle_ws_request:248 - Broadcasting response to dashboard (len=5)
+2026-02-22 21:02:42.812 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 21:02:42.813 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 21:02:44.806 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 21:02:44.807 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected

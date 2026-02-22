@@ -186,26 +186,26 @@ class JarvisClient:
         while True:
             if not self.audio_queue.empty():
                 indata = self.audio_queue.get()
-                energy = np.linalg.norm(indata) / len(indata)
-                is_speech = energy > SILENCE_THRESHOLD
+                
+                # ── Cinematic Volume Meter ──────────────────
+                energy = np.linalg.norm(indata) / np.sqrt(len(indata))
+                meter_level = min(int(energy * 120), 40)
+                meter_bar = "█" * meter_level + "░" * (40 - meter_level)
+                print(f"\r[MIC] {meter_bar} {energy:.4f}", end="", flush=True)
+
+                is_speech = energy > 0.005 # Calibrated threshold
 
                 # ── WAITING FOR WAKE WORD ──────────────────
                 if self.state == "WAITING_WAKE_WORD":
                     # --- Porcupine Mode (Instant) ---
                     if self.porcupine:
-                        # Convert float32 to int16 for Porcupine
                         pcm = (indata.flatten() * 32767).astype(np.int16)
-                        # Porcupine expect frames of specific length
-                        # But indata might be different from porcupine.frame_length
-                        # For simplicity, we assume BLOCK_SIZE in config matches or we handle it
-                        # The sounddevice streaming uses BLOCK_SIZE=4096, Porcupine usually 512
-                        # We need to process in chunks of 512
                         for i in range(0, len(pcm), self.porcupine.frame_length):
                             frame = pcm[i:i + self.porcupine.frame_length]
                             if len(frame) == self.porcupine.frame_length:
                                 keyword_index = self.porcupine.process(frame)
                                 if keyword_index >= 0:
-                                    print(f"\n✅ Wake word detected (Porcupine)!")
+                                    print(f"\n\n✅ Wake word detected (Porcupine)!")
                                     self.speak("Yes, sir?")
                                     self._prepare_listening()
                                     break
@@ -228,7 +228,7 @@ class JarvisClient:
                                 print(f"[STT] Heard: {text}          ", end="\r")
 
                             if WAKE_WORD in text:
-                                print(f"\n✅ Wake word detected (Whisper)!")
+                                print(f"\n\n✅ Wake word detected (Whisper)!")
                                 self.speak("Yes, sir?")
                                 self._prepare_listening()
                                 buffer = []
@@ -244,7 +244,7 @@ class JarvisClient:
                         if self.silence_start is None:
                             self.silence_start = time_module.time()
                         elif time_module.time() - self.silence_start > SILENCE_DURATION:
-                            print("\n[STT] Processing your command...")
+                            print("\n\n[STT] Processing your command...")
                             audio_data = np.concatenate(self.command_buffer).flatten()
                             segments, _ = self.model.transcribe(audio_data, beam_size=1)
                             command = " ".join([s.text for s in segments]).strip()
