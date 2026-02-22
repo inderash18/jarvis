@@ -49,9 +49,13 @@ class Settings(BaseSettings):
     SILENCE_THRESHOLD: float = 0.01
     SILENCE_DURATION: float = 1.5
 
+    # ── External APIs ────────────────────────────────
+    PEXELS_API_KEY: str = ""
+
     class Config:
         case_sensitive = True
         env_file = ".env"
+        extra = "ignore"  # Allow extra fields in .env without crashing
 
 
 @lru_cache()

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-const WS_URL = 'ws://localhost:8000/ws/chief';
+const WS_URL = 'ws://127.0.0.1:8000/ws/chief';
 
 export const useWebSocket = () => {
     const [isConnected, setIsConnected] = useState(false);

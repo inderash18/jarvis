@@ -16,10 +16,14 @@ class ConnectionManager:
     async def connect(self, websocket: WebSocket):
         await websocket.accept()
         self.active_connections.append(websocket)
+        from utils.logger import log
+        log.info(f"New client connected. Total: {len(self.active_connections)}")
 
     def disconnect(self, websocket: WebSocket):
         if websocket in self.active_connections:
             self.active_connections.remove(websocket)
+            from utils.logger import log
+            log.info(f"Client disconnected. Total: {len(self.active_connections)}")
 
     async def send_message(self, message: str, websocket: WebSocket):
         await websocket.send_text(message)

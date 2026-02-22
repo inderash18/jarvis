@@ -19,6 +19,7 @@ from .base import BaseAgent
 from .canvas_agent import CanvasAgent
 from .image_agent import ImageAgent
 from .memory_agent import MemoryAgent
+from .video_agent import VideoAgent
 from .vision_agent import VisionAgent
 from .voice_agent import VoiceAgent
 
@@ -32,6 +33,7 @@ class ChiefAgent(BaseAgent):
         self.image_agent = ImageAgent()
         self.voice_agent = VoiceAgent()
         self.vision_agent = VisionAgent()
+        self.video_agent = VideoAgent()
 
         # Ollama LLM via LangChain
         self.llm = OllamaLLM(
@@ -59,6 +61,8 @@ class ChiefAgent(BaseAgent):
         5. VisionAgent: Use when asked to see or check the camera.
            - capture_frame()
            - detect_hands()
+        6. VideoAgent: Use when asked to find or show videos.
+           - fetch_video(query)
 
         RULES:
         1. Return ONLY valid JSON.
@@ -98,6 +102,19 @@ class ChiefAgent(BaseAgent):
             }
           ]
         }
+
+        Example 4 (Video Search):
+        User: "Find me a video of a futuristic city."
+        {
+          "thought_process": "Searching for a cinematic video of a futuristic city, sir.",
+          "actions": [
+            {
+              "agent": "VideoAgent",
+              "action": "fetch_video",
+              "parameters": {"query": "futuristic city"}
+            }
+          ]
+        }
         """
 
     # ── Agent Dispatcher ─────────────────────────────
@@ -110,6 +127,7 @@ class ChiefAgent(BaseAgent):
             "VoiceAgent": self.voice_agent,
             "VisionAgent": self.vision_agent,
             "MemoryAgent": self.memory_agent,
+            "VideoAgent": self.video_agent,
         }
         return agents.get(name)
 

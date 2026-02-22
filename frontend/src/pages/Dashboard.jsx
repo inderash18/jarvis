@@ -137,8 +137,8 @@ const ImageViewer = ({ images, activeIndex, onClose, onSelect }) => {
                 key={i}
                 onClick={() => setCurrent(i)}
                 className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${i === current
-                    ? "border-cyan-400 shadow-[0_0_12px_rgba(0,240,255,0.4)]"
-                    : "border-white/10 opacity-50 hover:opacity-80"
+                  ? "border-cyan-400 shadow-[0_0_12px_rgba(0,240,255,0.4)]"
+                  : "border-white/10 opacity-50 hover:opacity-80"
                   }`}
               >
                 <img
@@ -189,8 +189,8 @@ const ChatMessage = ({ msg, onImageClick }) => {
       {/* Avatar */}
       <div
         className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center ${isUser
-            ? "bg-violet-500/15 border border-violet-500/30"
-            : "bg-cyan-500/15 border border-cyan-500/30"
+          ? "bg-violet-500/15 border border-violet-500/30"
+          : "bg-cyan-500/15 border border-cyan-500/30"
           }`}
       >
         {isUser ? (
@@ -204,8 +204,8 @@ const ChatMessage = ({ msg, onImageClick }) => {
       <div className={`flex flex-col gap-2 max-w-[85%] ${isUser ? "items-end" : "items-start"}`}>
         <div
           className={`px-4 py-3 rounded-2xl text-sm leading-relaxed ${isUser
-              ? "bg-violet-500/15 border border-violet-500/20 text-violet-100 rounded-tr-md"
-              : "bg-white/5 border border-white/10 text-gray-200 rounded-tl-md"
+            ? "bg-violet-500/15 border border-violet-500/20 text-violet-100 rounded-tr-md"
+            : "bg-white/5 border border-white/10 text-gray-200 rounded-tl-md"
             }`}
         >
           <p className="whitespace-pre-wrap break-words">{displayText}</p>
@@ -232,6 +232,43 @@ const ChatMessage = ({ msg, onImageClick }) => {
                   <Maximize2 size={12} className="text-white/80" />
                 </div>
               </motion.button>
+            ))}
+          </div>
+        )}
+
+        {/* Video Column */}
+        {msg.videos && msg.videos.length > 0 && (
+          <div className="flex flex-col gap-2 w-full max-w-sm">
+            {msg.videos.slice(0, 2).map((vid, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.01 }}
+                className="relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-black/40 group"
+              >
+                {/* Thumbnail */}
+                <img
+                  src={vid.thumbnail}
+                  alt={vid.title}
+                  className="w-full h-full object-cover opacity-60"
+                />
+                {/* Play Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <a
+                    href={vid.video_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 rounded-full bg-cyan-500/80 flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform"
+                  >
+                    <Sparkles size={18} fill="white" />
+                  </a>
+                </div>
+                {/* Title */}
+                <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+                  <p className="text-[10px] text-white/90 truncate font-medium">
+                    {vid.title}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         )}
@@ -308,6 +345,26 @@ const Dashboard = () => {
     if (transcript) setInput(transcript);
   }, [transcript]);
 
+  const [streamingMessage, setStreamingMessage] = useState(null);
+
+  // ── Helper: Extract thought_process from partial JSON ─────
+  const extractPartialThought = (text) => {
+    if (!text) return "";
+    // If it looks like JSON
+    if (text.includes('"thought_process":')) {
+      try {
+        // Try simple regex for partial string extraction
+        const match = text.match(/"thought_process":\s*"([^"]*)"?/);
+        if (match && match[1]) {
+          return match[1].replace(/\\n/g, "\n");
+        }
+      } catch (e) {
+        return text;
+      }
+    }
+    return text;
+  };
+
   // ── Process incoming messages ─────────────────────
   useEffect(() => {
     if (messages.length === 0) return;
@@ -317,52 +374,79 @@ const Dashboard = () => {
     if (last.type === "status") {
       setIsProcessing(true);
       playProcessing();
-    } else if (last.type === "assistant_response") {
-      if (!last.isStreaming && last.data) {
-        setIsProcessing(false);
+    } else if (last.type === "assistant_response" || last.type === "result") {
+      // If it's still streaming, just update the live preview
+      if (last.isStreaming) {
+        const partialText = extractPartialThought(last.content);
+        setStreamingMessage({
+          role: "assistant",
+          content: partialText,
+          isStreaming: true
+        });
+        return;
+      }
 
-        // Extract thought_process for display & speak
+      // If we reach here, the message is final (either a 'result' or finished 'assistant_response')
+      const messageData = last.type === "result" ? last.data : last.data;
+
+      if (messageData) {
+        setIsProcessing(false);
+        setStreamingMessage(null);
+
+        // Extract thought_process
         let thoughtText = "";
-        if (last.data.original_response?.thought_process) {
-          thoughtText = last.data.original_response.thought_process;
+        if (messageData.original_response?.thought_process) {
+          thoughtText = messageData.original_response.thought_process;
+        } else if (last.content) {
+          thoughtText = last.content;
         }
 
-        // Extract images
+        // Extract images & videos
         let foundImages = [];
-        const results = last.data.execution_results;
+        let foundVideos = [];
+        const results = messageData.execution_results;
         if (Array.isArray(results)) {
           results.forEach((res) => {
-            if (res && res.image_url) {
+            // Check for images
+            if (res && (res.image_url || res.all_images)) {
               const imgs = res.all_images || [
                 { image_url: res.image_url, thumbnail: res.thumbnail, title: res.title, source: res.source },
               ];
-              foundImages = imgs;
+              foundImages = [...foundImages, ...imgs];
             }
-            // Canvas commands
+            // Check for videos
+            if (res && (res.video_url || res.all_videos)) {
+              const vids = res.all_videos || [
+                { video_url: res.video_url, thumbnail: res.thumbnail, title: res.title, source: res.source },
+              ];
+              foundVideos = [...foundVideos, ...vids];
+            }
+
             if (res && (res.agent === "CanvasAgent" || res.status === "cleared")) {
-              setCanvasCommands((prev) => [...prev, { type: "result", data: last.data }]);
+              setCanvasCommands((prev) => [...prev, { type: "result", data: messageData }]);
             }
           });
         }
 
-        // Add assistant message to chat history
+        // Add to history
         setChatHistory((prev) => [
           ...prev,
           {
             role: "assistant",
-            content: thoughtText || last.content || "Done.",
+            content: thoughtText || "Done.",
             images: foundImages.length > 0 ? foundImages : null,
+            videos: foundVideos.length > 0 ? foundVideos : null,
             timestamp: new Date(),
           },
         ]);
 
-        // Speak the response
         if (thoughtText) {
           speak(thoughtText.replace(/\{.*?\}/s, ""));
         }
       }
     } else if (last.type === "error") {
       setIsProcessing(false);
+      setStreamingMessage(null);
       setChatHistory((prev) => [
         ...prev,
         { role: "assistant", content: "Error encountered, sir.", timestamp: new Date() },
@@ -608,6 +692,13 @@ const Dashboard = () => {
             />
           ))}
 
+          {streamingMessage && (
+            <ChatMessage
+              msg={streamingMessage}
+              onImageClick={() => { }}
+            />
+          )}
+
           {/* Streaming indicator */}
           {isProcessing && (
             <motion.div
@@ -642,8 +733,8 @@ const Dashboard = () => {
               onClick={toggleVoice}
               disabled={isProcessing}
               className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all ${isListening
-                  ? "bg-red-500/20 border border-red-500/40 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.3)]"
-                  : "bg-white/[0.04] border border-white/[0.08] text-gray-400 hover:text-cyan-400 hover:border-cyan-500/30"
+                ? "bg-red-500/20 border border-red-500/40 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.3)]"
+                : "bg-white/[0.04] border border-white/[0.08] text-gray-400 hover:text-cyan-400 hover:border-cyan-500/30"
                 }`}
             >
               {isListening ? <MicOff size={16} /> : <Mic size={16} />}
@@ -672,8 +763,8 @@ const Dashboard = () => {
               onClick={handleSend}
               disabled={!input.trim() || isProcessing}
               className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all ${input.trim() && !isProcessing
-                  ? "bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/30 shadow-[0_0_12px_rgba(0,240,255,0.2)]"
-                  : "bg-white/[0.02] border border-white/[0.05] text-gray-700"
+                ? "bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/30 shadow-[0_0_12px_rgba(0,240,255,0.2)]"
+                : "bg-white/[0.02] border border-white/[0.05] text-gray-700"
                 }`}
             >
               {isProcessing ? (

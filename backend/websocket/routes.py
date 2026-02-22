@@ -19,6 +19,7 @@ router = APIRouter()
 
 @router.websocket("/ws/chief")
 async def websocket_endpoint(websocket: WebSocket):
+    log.info("WebSocket connection attempt on /ws/chief")
     await manager.connect(websocket)
     try:
         while True:

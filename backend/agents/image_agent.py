@@ -5,8 +5,10 @@ Uses DuckDuckGo Image Search (no API key required).
 
 from typing import Any, Dict, List
 
-from ddgs import DDGS
+from duckduckgo_search import DDGS
+from pexelsapi.pexels import Pexels as PexelsAPI
 
+from app.config import settings
 from utils.logger import log
 from .base import BaseAgent
 
@@ -17,6 +19,13 @@ class ImageAgent(BaseAgent):
             name="ImageAgent",
             description="Search and fetch real images from the internet.",
         )
+        self.pexels = None
+        if settings.PEXELS_API_KEY:
+            try:
+                self.pexels = PexelsAPI(settings.PEXELS_API_KEY)
+                log.info("Pexels API initialized for ImageAgent.")
+            except Exception as e:
+                log.warning(f"Failed to init Pexels API: {e}")
 
     async def process_request(
         self, action: str, parameters: Dict[str, Any]
@@ -27,7 +36,42 @@ class ImageAgent(BaseAgent):
         return {"error": "Unknown action"}
 
     def fetch_image(self, query: str) -> Dict[str, Any]:
-        log.info(f"Searching internet for image: {query}")
+        # Try Pexels first if available
+        if self.pexels:
+            try:
+                log.info(f"Searching Pexels for: {query}")
+                # search_photos returns a dict
+                results_dict = self.pexels.search_photos(query, page=1, per_page=5)
+                photos = results_dict.get("photos", [])
+
+                if photos:
+                    all_images = []
+                    for photo in photos:
+                        # Extract urls dict which has 'large', 'medium', etc.
+                        urls = photo.get("src", {})
+                        all_images.append({
+                            "image_url": urls.get("large", ""),
+                            "thumbnail": urls.get("medium", ""),
+                            "title": f"Photo by {photo.get('photographer', 'Pexels')}",
+                            "source": photo.get("url", "")
+                        })
+
+                    best = all_images[0]
+                    return {
+                        "status": "success",
+                        "image_url": best["image_url"],
+                        "thumbnail": best["thumbnail"],
+                        "title": best["title"],
+                        "source": best["source"],
+                        "all_images": all_images,
+                        "query": query,
+                        "message": f"Found {len(all_images)} high-quality images from Pexels",
+                    }
+            except Exception as e:
+                log.warning(f"Pexels search failed, falling back to DDG: {e}")
+
+        # Fallback to DuckDuckGo
+        log.info(f"Searching internet (DDG) for image: {query}")
         try:
             with DDGS() as ddgs:
                 results = list(ddgs.images(
@@ -37,14 +81,6 @@ class ImageAgent(BaseAgent):
                 ))
 
             if results:
-                # Return the best (first) result + extras
-                best = results[0]
-                image_url = best.get("image", "")
-                thumbnail = best.get("thumbnail", "")
-                title = best.get("title", "")
-                source = best.get("url", "")
-
-                # Collect all image URLs for the frontend
                 all_images = [
                     {
                         "image_url": r.get("image", ""),
@@ -55,19 +91,18 @@ class ImageAgent(BaseAgent):
                     for r in results
                 ]
 
-                log.info(f"Found {len(results)} images for '{query}'")
+                best = all_images[0]
                 return {
                     "status": "success",
-                    "image_url": image_url,
-                    "thumbnail": thumbnail,
-                    "title": title,
-                    "source": source,
+                    "image_url": best["image_url"],
+                    "thumbnail": best["thumbnail"],
+                    "title": best["title"],
+                    "source": best["source"],
                     "all_images": all_images,
                     "query": query,
-                    "message": f"Found {len(results)} images for '{query}' from the internet",
+                    "message": f"Found {len(results)} images from the internet",
                 }
             else:
-                log.warning(f"No images found for: {query}")
                 return {
                     "status": "no_results",
                     "query": query,

@@ -9,7 +9,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
  * This produces natural human-quality voice instead of robotic browser TTS.
  */
 
-const TTS_API_URL = "http://localhost:8000/api/tts";
+const TTS_API_URL = "http://127.0.0.1:8000/api/tts";
 
 export const useVoice = () => {
   const [isListening, setIsListening] = useState(false);
