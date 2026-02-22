@@ -103,7 +103,7 @@ export const useWebSocket = () => {
 
     const sendMessage = useCallback((command) => {
         if (ws.current && isConnected) {
-            ws.current.send(JSON.stringify({ command }));
+            ws.current.send(JSON.stringify({ command, source: "dashboard" }));
         } else {
             console.warn("WebSocket is not connected");
         }

@@ -11,7 +11,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from utils.logger import log
-from websocket.routes import router as websocket_router
+from ws.routes import router as websocket_router
 from api.tts_routes import router as tts_router
 from services.system_monitor import system_monitor
 

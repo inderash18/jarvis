@@ -2268,3 +2268,688 @@
 2026-02-22 12:07:55.245 | INFO     | websocket.manager:disconnect:26 - Client disconnected. Total: 0
 2026-02-22 12:07:55.248 | INFO     | websocket.routes:websocket_endpoint:109 - Client disconnected
 2026-02-22 12:07:58.880 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:27:19.351 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:27:36.371 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:27:37.763 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:27:44.128 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:27:44.642 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:27:46.355 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:27:46.356 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:27:46.358 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:27:46.359 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:27:46.359 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:27:46.359 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:27:46.397 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:27:57.672 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:28:05.155 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:28:05.156 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:28:08.391 | INFO     | websocket.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:28:08.392 | INFO     | websocket.manager:connect:20 - New client connected. Total: 1
+2026-02-22 12:30:48.209 | INFO     | websocket.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 12:30:48.209 | INFO     | websocket.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:30:48.306 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:30:58.594 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:31:03.117 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:31:03.228 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:31:07.731 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:31:08.040 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:31:08.571 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:31:08.573 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:31:08.574 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:31:08.575 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:31:08.576 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:31:08.576 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:31:08.608 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:31:10.058 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:31:12.622 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:31:12.623 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:31:12.628 | INFO     | websocket.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:31:12.630 | INFO     | websocket.manager:connect:20 - New client connected. Total: 1
+2026-02-22 12:33:11.504 | INFO     | websocket.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 12:33:11.504 | INFO     | websocket.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:33:11.609 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:33:21.479 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:33:26.278 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:33:26.440 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:33:30.634 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:33:30.976 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:33:31.635 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:33:31.637 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:33:31.638 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:33:31.639 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:33:31.640 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:33:31.640 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:34:03.708 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:34:08.357 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:34:08.497 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:34:12.993 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:34:13.220 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:34:13.702 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:34:13.703 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:34:13.704 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:34:13.705 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:34:13.705 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:34:13.709 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:34:28.244 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:34:31.792 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:34:31.899 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:34:35.721 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:34:35.961 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:34:36.470 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:34:36.472 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:34:36.473 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:34:36.474 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:34:36.474 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:34:36.474 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:34:44.792 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:34:48.063 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:34:48.165 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:34:53.845 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:34:54.092 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:34:54.538 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:34:54.539 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:34:54.540 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:34:54.540 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:34:54.541 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:34:54.541 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:36:23.905 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:36:27.124 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:36:27.224 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:36:32.217 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:36:32.452 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:36:32.926 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:36:32.927 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:36:32.929 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:36:32.929 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:36:32.930 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:36:32.930 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:38:15.300 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:38:18.650 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:38:18.746 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:38:23.436 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:38:23.661 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:38:24.161 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:38:24.161 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:38:24.163 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:38:24.164 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:38:24.164 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:38:24.164 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:38:24.190 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:38:25.843 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:38:28.174 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:38:28.175 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:38:28.177 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:38:28.415 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:38:28.417 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 12:38:38.105 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:38:41.773 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:38:41.877 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:38:46.226 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:38:46.484 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:38:46.959 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:38:46.960 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:38:46.963 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:38:46.963 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:38:46.963 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:38:46.964 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:38:46.993 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:38:48.234 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:38:50.653 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:38:50.653 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:38:50.659 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:38:50.660 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 12:38:50.660 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:38:50.661 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 12:38:50.662 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:38:50.662 | INFO     | ws.manager:connect:20 - New client connected. Total: 3
+2026-02-22 12:41:35.096 | INFO     | ws.routes:websocket_endpoint:27 - Received from client: {"command":"hi"}
+2026-02-22 12:41:35.100 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: hi
+2026-02-22 12:41:50.694 | DEBUG    | agents.chief_agent:_process_actions:205 - Processing actions from full response
+2026-02-22 12:41:50.694 | ERROR    | agents.chief_agent:_process_actions:266 - Action processing error: Expecting value: line 1 column 1 (char 0)
+2026-02-22 12:41:50.694 | INFO     | ws.routes:websocket_endpoint:85 - Sending result (thought_process len=38)
+2026-02-22 12:41:53.322 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:41:53.669 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:41:56.996 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:41:56.996 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=38
+2026-02-22 12:41:57.043 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:41:57.044 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=38
+2026-02-22 12:43:10.570 | INFO     | ws.routes:websocket_endpoint:27 - Received from client: {"command":"hi"}
+2026-02-22 12:43:10.599 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: hi
+2026-02-22 12:43:13.285 | DEBUG    | agents.chief_agent:_process_actions:205 - Processing actions from full response
+2026-02-22 12:43:13.287 | ERROR    | agents.chief_agent:_process_actions:266 - Action processing error: Expecting value: line 1 column 1 (char 0)
+2026-02-22 12:43:13.287 | INFO     | ws.routes:websocket_endpoint:85 - Sending result (thought_process len=38)
+2026-02-22 12:43:13.288 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=38
+2026-02-22 12:43:13.288 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=38
+2026-02-22 12:43:28.733 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 2
+2026-02-22 12:43:28.734 | INFO     | ws.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:44:09.610 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 12:44:09.613 | INFO     | ws.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:44:09.624 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 12:44:09.627 | INFO     | ws.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:44:09.715 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:44:39.556 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:44:44.578 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:44:44.899 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:44:50.112 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:44:50.575 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:44:51.514 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:44:51.516 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:44:51.518 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:44:51.519 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:44:51.519 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:44:51.519 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:44:51.570 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:44:53.256 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:44:55.841 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:44:55.842 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:44:56.753 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:44:56.755 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 12:44:56.757 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:44:56.759 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 12:45:13.551 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:45:13.554 | INFO     | ws.manager:connect:20 - New client connected. Total: 3
+2026-02-22 12:45:13.578 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:45:13.579 | INFO     | ws.manager:connect:20 - New client connected. Total: 4
+2026-02-22 12:45:13.595 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 3
+2026-02-22 12:45:13.596 | INFO     | ws.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:46:14.621 | INFO     | ws.routes:websocket_endpoint:27 - Received from client: {"command":"Draw a circle"}
+2026-02-22 12:46:14.623 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: Draw a circle
+2026-02-22 12:46:22.788 | DEBUG    | agents.chief_agent:_process_actions:205 - Processing actions from full response
+2026-02-22 12:46:22.788 | ERROR    | agents.chief_agent:_process_actions:266 - Action processing error: Expecting value: line 1 column 1 (char 0)
+2026-02-22 12:46:22.789 | INFO     | ws.routes:websocket_endpoint:85 - Sending result (thought_process len=67)
+2026-02-22 12:46:22.796 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=67
+2026-02-22 12:46:22.805 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=67
+2026-02-22 12:48:22.813 | INFO     | ws.routes:websocket_endpoint:27 - Received from client: {"command":"hi"}
+2026-02-22 12:48:22.828 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: hi
+2026-02-22 12:48:27.855 | DEBUG    | agents.chief_agent:_process_actions:205 - Processing actions from full response
+2026-02-22 12:48:27.858 | ERROR    | agents.chief_agent:_process_actions:266 - Action processing error: 'str' object has no attribute 'get'
+2026-02-22 12:48:27.859 | INFO     | ws.routes:websocket_endpoint:85 - Sending result (thought_process len=40)
+2026-02-22 12:48:27.871 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=40
+2026-02-22 12:48:27.870 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=40
+2026-02-22 12:48:41.741 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 2
+2026-02-22 12:48:41.741 | INFO     | ws.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:48:41.756 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 12:48:41.758 | INFO     | ws.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:48:41.765 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 12:48:41.766 | INFO     | ws.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:48:41.854 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:49:15.543 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:49:26.430 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:49:26.782 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:49:32.146 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:49:32.539 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:49:33.425 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:49:33.428 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:49:33.430 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:49:33.432 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:49:33.432 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:49:33.432 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:49:33.465 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:49:35.263 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:49:38.741 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:49:38.742 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:49:38.903 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:49:38.907 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 12:49:41.265 | INFO     | ws.routes:websocket_endpoint:27 - Received from client: {"command":"hi"}
+2026-02-22 12:49:41.268 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: hi
+2026-02-22 12:49:43.444 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:49:43.444 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 12:49:43.690 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:49:43.692 | INFO     | ws.manager:connect:20 - New client connected. Total: 3
+2026-02-22 12:49:46.040 | DEBUG    | agents.chief_agent:_process_actions:205 - Processing actions from full response
+2026-02-22 12:49:46.040 | ERROR    | agents.chief_agent:_process_actions:266 - Action processing error: Expecting value: line 1 column 1 (char 0)
+2026-02-22 12:49:46.040 | INFO     | ws.routes:websocket_endpoint:85 - Sending result (thought_process len=75)
+2026-02-22 12:49:46.042 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=75
+2026-02-22 12:49:46.042 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=75
+2026-02-22 12:50:46.434 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 2
+2026-02-22 12:50:46.434 | INFO     | ws.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:50:46.437 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 12:50:46.438 | INFO     | ws.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:50:46.440 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 12:50:46.441 | INFO     | ws.routes:websocket_endpoint:109 - Client disconnected
+2026-02-22 12:50:46.558 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:51:05.384 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:51:10.387 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:51:10.700 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:51:16.222 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:51:16.834 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:51:17.928 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:51:17.932 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:51:17.932 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:51:17.934 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:51:17.934 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:51:17.934 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:51:17.960 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:51:19.829 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:51:22.706 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:51:22.708 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:51:22.711 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:51:35.037 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:51:45.258 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:51:45.431 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:51:50.405 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:51:50.634 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:51:51.130 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:51:51.136 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:51:51.136 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:51:51.138 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:51:51.138 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:51:51.138 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:51:51.171 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:51:52.234 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:51:54.803 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:51:54.803 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:51:54.808 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:51:54.809 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 12:51:54.810 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:51:54.810 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 12:51:54.810 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:51:54.811 | INFO     | ws.manager:connect:20 - New client connected. Total: 3
+2026-02-22 12:52:42.441 | INFO     | ws.routes:websocket_endpoint:27 - Received from client: {"command":"hi","source":"dashboard"}
+2026-02-22 12:52:42.442 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: hi
+2026-02-22 12:52:48.513 | DEBUG    | agents.chief_agent:_process_actions:205 - Processing actions from full response
+2026-02-22 12:52:48.514 | ERROR    | agents.chief_agent:_process_actions:266 - Action processing error: 'str' object has no attribute 'get'
+2026-02-22 12:52:48.514 | INFO     | ws.routes:websocket_endpoint:88 - Broadcasting result (thought_process len=40)
+2026-02-22 12:52:48.521 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=40
+2026-02-22 12:52:48.520 | DEBUG    | services.tts_service:generate_audio:80 - Generating speech: voice=Jasper, text_len=40
+2026-02-22 12:54:22.308 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 2
+2026-02-22 12:54:22.308 | INFO     | ws.routes:websocket_endpoint:115 - Client disconnected
+2026-02-22 12:54:22.310 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 12:54:22.310 | INFO     | ws.routes:websocket_endpoint:115 - Client disconnected
+2026-02-22 12:54:22.312 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 12:54:22.313 | INFO     | ws.routes:websocket_endpoint:115 - Client disconnected
+2026-02-22 12:54:22.428 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:54:35.491 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:54:39.863 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:54:40.085 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:54:44.293 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:54:44.610 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:54:45.264 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:54:45.266 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:54:45.267 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:54:45.268 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:54:45.268 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:54:45.268 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:54:45.296 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:54:46.807 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:54:49.336 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:54:49.337 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:54:49.345 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:54:49.346 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 12:54:49.346 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:54:49.347 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 12:54:49.347 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:54:49.347 | INFO     | ws.manager:connect:20 - New client connected. Total: 3
+2026-02-22 12:54:50.212 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 2
+2026-02-22 12:54:50.214 | INFO     | ws.routes:websocket_endpoint:115 - Client disconnected
+2026-02-22 12:54:50.214 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 12:54:50.216 | INFO     | ws.routes:websocket_endpoint:115 - Client disconnected
+2026-02-22 12:54:50.218 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 12:54:50.218 | INFO     | ws.routes:websocket_endpoint:115 - Client disconnected
+2026-02-22 12:54:50.320 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:55:01.120 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:55:06.073 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:55:06.272 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:55:10.595 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:55:10.801 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:55:11.480 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:55:11.482 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:55:11.484 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:55:11.484 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:55:11.485 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:55:11.485 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:55:11.509 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:55:12.625 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:55:14.884 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:55:14.885 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:55:14.886 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:55:23.299 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:55:26.802 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:55:26.890 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:55:31.594 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:55:31.804 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:55:32.273 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:55:32.274 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:55:32.276 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:55:32.276 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:55:32.277 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:55:32.277 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:55:32.304 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:55:33.254 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:55:35.278 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:55:35.279 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:55:35.279 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:55:42.680 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:55:45.562 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:55:45.651 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:55:50.848 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:55:51.058 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:55:51.486 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:55:51.488 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:55:51.489 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:55:51.489 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:55:51.490 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:55:51.490 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:55:51.512 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:55:52.433 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:55:54.891 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:55:54.892 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:55:54.894 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 12:56:02.924 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:56:06.185 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 12:56:06.295 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 12:56:11.523 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 12:56:11.723 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:56:12.207 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:56:12.208 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:56:12.209 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 12:56:12.210 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 12:56:12.210 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 12:56:12.211 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 12:56:12.239 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 12:56:13.251 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 12:56:15.618 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 12:56:15.618 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 12:56:15.625 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:56:15.627 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 12:56:15.628 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:56:15.628 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 12:56:15.629 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 12:56:15.629 | INFO     | ws.manager:connect:20 - New client connected. Total: 3
+2026-02-22 12:56:20.416 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 2
+2026-02-22 12:56:20.417 | INFO     | ws.routes:websocket_endpoint:117 - Client disconnected
+2026-02-22 12:56:20.418 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 1
+2026-02-22 12:56:20.418 | INFO     | ws.routes:websocket_endpoint:117 - Client disconnected
+2026-02-22 12:56:20.420 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 12:56:20.420 | INFO     | ws.routes:websocket_endpoint:117 - Client disconnected
+2026-02-22 12:56:20.525 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 13:01:06.023 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 13:01:09.556 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 13:01:09.700 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 13:01:14.050 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 13:01:14.358 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 13:01:14.858 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 13:01:14.860 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 13:01:14.862 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 13:01:14.862 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 13:01:14.862 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 13:01:14.863 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 13:01:14.914 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 13:01:16.096 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 13:01:18.510 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 13:01:18.510 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 13:01:18.605 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 13:01:18.606 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 13:01:18.786 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 13:01:18.787 | INFO     | ws.manager:connect:20 - New client connected. Total: 2
+2026-02-22 13:01:22.710 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 13:01:22.712 | INFO     | ws.manager:connect:20 - New client connected. Total: 3
+2026-02-22 13:01:22.715 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 13:01:22.716 | INFO     | ws.manager:connect:20 - New client connected. Total: 4
+2026-02-22 13:01:52.457 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 13:01:56.852 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 13:01:56.968 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 13:02:00.901 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 13:02:01.218 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 13:02:01.794 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 13:02:01.795 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 13:02:01.798 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 13:02:01.798 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 13:02:01.799 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 13:02:01.799 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 13:02:01.833 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 13:02:03.343 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 13:02:05.798 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 13:02:05.799 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 13:02:05.800 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 13:03:36.786 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 13:03:40.094 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 13:03:40.202 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 13:03:44.744 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 13:03:45.151 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 13:03:45.865 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 13:03:45.867 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 13:03:45.868 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 13:03:45.870 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 13:03:45.870 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 13:03:45.870 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 13:03:45.902 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 13:03:47.305 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 13:03:49.659 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 13:03:49.659 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 13:04:17.679 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 13:04:46.939 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 3
+2026-02-22 13:04:46.947 | INFO     | ws.routes:websocket_endpoint:117 - Client disconnected
+2026-02-22 14:40:54.745 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 14:41:25.135 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 14:41:26.201 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 14:41:31.102 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 14:41:31.551 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 14:41:32.934 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 14:41:32.937 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 14:41:32.939 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 14:41:32.939 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 14:41:32.939 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 14:41:32.940 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 14:41:32.971 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 14:41:47.842 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 14:41:59.322 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 14:41:59.323 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 14:42:26.766 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 14:42:26.775 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 14:42:26.786 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 14:42:26.787 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 14:42:26.808 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 14:42:26.810 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 14:42:33.023 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: hi
+2026-02-22 14:43:00.837 | ERROR    | agents.chief_agent:handle_ws_request:265 - Handler error: 'str' object has no attribute 'get'
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "I:\jarvis\.venv\Lib\site-packages\uvicorn\__main__.py", line 4, in <module>
+    uvicorn.main()
+    │       └ <Command main>
+    └ <module 'uvicorn' from 'I:\\jarvis\\.venv\\Lib\\site-packages\\uvicorn\\__init__.py'>
+  File "I:\jarvis\.venv\Lib\site-packages\click\core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function Command.main at 0x000002B39CC07100>
+           └ <Command main>
+  File "I:\jarvis\.venv\Lib\site-packages\click\core.py", line 1406, in main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x000002B39A536AD0>
+         │    └ <function Command.invoke at 0x000002B39CC06DE0>
+         └ <Command main>
+  File "I:\jarvis\.venv\Lib\site-packages\click\core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'port': 8000, 'app': 'main:app', 'host': '127.0.0.1', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'reload_i...
+           │   │      │    │           └ <click.core.Context object at 0x000002B39A536AD0>
+           │   │      │    └ <function main at 0x000002B39CE65120>
+           │   │      └ <Command main>
+           │   └ <function Context.invoke at 0x000002B39CBB11C0>
+           └ <click.core.Context object at 0x000002B39A536AD0>
+  File "I:\jarvis\.venv\Lib\site-packages\click\core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'port': 8000, 'app': 'main:app', 'host': '127.0.0.1', 'uds': None, 'fd': None, 'reload': False, 'reload_dirs': (), 'reload_i...
+           │         └ ()
+           └ <function main at 0x000002B39CE65120>
+  File "I:\jarvis\.venv\Lib\site-packages\uvicorn\main.py", line 424, in main
+    run(
+    └ <function run at 0x000002B39CC6A7A0>
+  File "I:\jarvis\.venv\Lib\site-packages\uvicorn\main.py", line 594, in run
+    server.run()
+    │      └ <function Server.run at 0x000002B39CCD9BC0>
+    └ <uvicorn.server.Server object at 0x000002B39C6A2B90>
+  File "I:\jarvis\.venv\Lib\site-packages\uvicorn\server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+           │           │    │             │                      │    │      └ <function Config.get_loop_factory at 0x000002B39CC6FEC0>
+           │           │    │             │                      │    └ <uvicorn.config.Config object at 0x000002B39CE6EA90>
+           │           │    │             │                      └ <uvicorn.server.Server object at 0x000002B39C6A2B90>
+           │           │    │             └ None
+           │           │    └ <function Server.serve at 0x000002B39CCD9C60>
+           │           └ <uvicorn.server.Server object at 0x000002B39C6A2B90>
+           └ <function asyncio_run at 0x000002B39CC0A020>
+  File "I:\jarvis\.venv\Lib\site-packages\uvicorn\_compat.py", line 30, in asyncio_run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x000002B39CE60400>
+           │      └ <function Runner.run at 0x000002B39C588540>
+           └ <asyncio.runners.Runner object at 0x000002B39CE6F150>
+  File "C:\Program Files\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at I:\jarvis\.venv\Lib\site-packages\uvicorn\server.py:71> wait_for=...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000002B39C5860C0>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000002B39CE6F150>
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 637, in run_until_complete
+    self.run_forever()
+    │    └ <function ProactorEventLoop.run_forever at 0x000002B39C659260>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Program Files\Python311\Lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 604, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002B39C587E20>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 1909, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002B39C4CA340>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "C:\Program Files\Python311\Lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "I:\jarvis\.venv\Lib\site-packages\uvicorn\protocols\websockets\websockets_impl.py", line 244, in run_asgi
+    result = await self.app(self.scope, self.asgi_receive, self.asgi_send)  # type: ignore[func-returns-value]
+                   │    │   │    │      │    │             │    └ <function WebSocketProtocol.asgi_send at 0x000002B39CFFF600>
+                   │    │   │    │      │    │             └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002B3D805B290>
+                   │    │   │    │      │    └ <function WebSocketProtocol.asgi_receive at 0x000002B39CFFF6A0>
+                   │    │   │    │      └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002B3D805B290>
+                   │    │   │    └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+                   │    │   └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002B3D805B290>
+                   │    └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000002B3D50E5010>
+                   └ <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x000002B3D805B290>
+  File "I:\jarvis\.venv\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+                 │    │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+                 │    │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+                 │    └ <fastapi.applications.FastAPI object at 0x000002B39C6BC390>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x000002B3D50E5010>
+  File "I:\jarvis\.venv\Lib\site-packages\fastapi\applications.py", line 1134, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+                           │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+                           └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+  File "I:\jarvis\.venv\Lib\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+          │    │                │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │                └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002B3D4EE8F90>
+          └ <fastapi.applications.FastAPI object at 0x000002B39C6BC390>
+  File "I:\jarvis\.venv\Lib\site-packages\starlette\middleware\errors.py", line 151, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+          │    │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000002B3D512CD90>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002B3D4EE8F90>
+  File "I:\jarvis\.venv\Lib\site-packages\starlette\middleware\cors.py", line 79, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+          │    │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002B3D4EDD5D0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002B3D512CD90>
+  File "I:\jarvis\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <bound method WebSocketProtocol.asgi_send of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0000...
+          │                            │    │    │     │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │                            │    │    │     └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │                            │    │    └ <starlette.websockets.WebSocket object at 0x000002B3D8076450>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000002B3D5307490>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002B3D4EDD5D0>
+          └ <function wrap_app_handling_exceptions at 0x000002B39DD9D9E0>
+  File "I:\jarvis\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3D80C1800>
+          │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000002B3D5307490>
+  File "I:\jarvis\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3D80C1800>
+          │    │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <fastapi.routing.APIRouter object at 0x000002B3D53047D0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000002B3D5307490>
+  File "I:\jarvis\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3D80C1800>
+          │    │                │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │                └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x000002B3D53047D0>>
+          └ <fastapi.routing.APIRouter object at 0x000002B3D53047D0>
+  File "I:\jarvis\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3D80C1800>
+          │     │      │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │     │      └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │     └ <function WebSocketRoute.handle at 0x000002B39DD9F380>
+          └ APIWebSocketRoute(path='/ws/chief', name='websocket_endpoint')
+  File "I:\jarvis\.venv\Lib\site-packages\starlette\routing.py", line 364, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3D80C1800>
+          │    │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │    │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │    └ <function websocket_session.<locals>.app at 0x000002B3D52EF100>
+          └ APIWebSocketRoute(path='/ws/chief', name='websocket_endpoint')
+  File "I:\jarvis\.venv\Lib\site-packages\fastapi\routing.py", line 145, in app
+    await wrap_app_handling_exceptions(app, session)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3D80C1800>
+          │                            │    │        │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │                            │    │        └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          │                            │    └ <starlette.websockets.WebSocket object at 0x000002B3D7226690>
+          │                            └ <function websocket_session.<locals>.app.<locals>.app at 0x000002B3D80C18A0>
+          └ <function wrap_app_handling_exceptions at 0x000002B39DD9D9E0>
+  File "I:\jarvis\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002B3D80C1C60>
+          │   │      └ <bound method WebSocketProtocol.asgi_receive of <uvicorn.protocols.websockets.websockets_impl.WebSocketProtocol object at 0x0...
+          │   └ {'type': 'websocket', 'asgi': {'version': '3.0', 'spec_version': '2.4'}, 'http_version': '1.1', 'scheme': 'ws', 'server': ('1...
+          └ <function websocket_session.<locals>.app.<locals>.app at 0x000002B3D80C18A0>
+  File "I:\jarvis\.venv\Lib\site-packages\fastapi\routing.py", line 142, in app
+    await func(session)
+          │    └ <starlette.websockets.WebSocket object at 0x000002B3D7226690>
+          └ <function get_websocket_app.<locals>.app at 0x000002B3D52EF1A0>
+  File "I:\jarvis\.venv\Lib\site-packages\fastapi\routing.py", line 507, in app
+    await dependant.call(**solved_result.values)
+          │         │      │             └ {'websocket': <starlette.websockets.WebSocket object at 0x000002B3D7226690>}
+          │         │      └ SolvedDependency(values={'websocket': <starlette.websockets.WebSocket object at 0x000002B3D7226690>}, errors=[], background_t...
+          │         └ <function websocket_endpoint at 0x000002B39DF94680>
+          └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[], dependencies=[], name=None, ca...
+
+  File "I:\jarvis\backend\ws\routes.py", line 28, in websocket_endpoint
+    await chief_agent.handle_ws_request(websocket, manager, data)
+          │           │                 │          │        └ '{"command":"hi","source":"dashboard"}'
+          │           │                 │          └ <ws.manager.ConnectionManager object at 0x000002B3D52EBED0>
+          │           │                 └ <starlette.websockets.WebSocket object at 0x000002B3D7226690>
+          │           └ <function ChiefAgent.handle_ws_request at 0x000002B3D52EDD00>
+          └ <Agent name='ChiefAgent'>
+
+> File "I:\jarvis\backend\agents\chief_agent.py", line 243, in handle_ws_request
+    final_text = parsed_json.get("response_to_user") or parsed_json.get("thought_process", full_response_text)
+                 │                                      │                                  └ '"Hey there. I\'m here to help you with anything on your mind."'
+                 │                                      └ "Hey there. I'm here to help you with anything on your mind."
+                 └ "Hey there. I'm here to help you with anything on your mind."
+
+AttributeError: 'str' object has no attribute 'get'
+2026-02-22 14:46:54.242 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
+2026-02-22 14:46:54.245 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
+2026-02-22 14:46:54.360 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...

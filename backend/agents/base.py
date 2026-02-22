@@ -1,9 +1,6 @@
-"""
-Base Agent — Abstract interface for all JARVIS agents.
-"""
-
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List
+from utils.logger import log
 
 
 class BaseAgent(ABC):
@@ -15,6 +12,17 @@ class BaseAgent(ABC):
     def __init__(self, name: str, description: str):
         self.name = name
         self.description = description
+
+    async def execute(self, command: str, context: Dict[str, Any] = None) -> Dict[str, Any]:
+        """Wrapper with logging and error handling."""
+        log.info(f"[{self.name}] Processing: {command[:50]}...")
+        try:
+            result = await self.process_request(command, context)
+            log.success(f"[{self.name}] Processing complete.")
+            return result
+        except Exception as e:
+            log.error(f"[{self.name}] Failed: {str(e)}")
+            return {"error": str(e), "agent": self.name}
 
     @abstractmethod
     async def process_request(

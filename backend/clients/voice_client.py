@@ -14,11 +14,16 @@ import json
 import queue
 import threading
 import time as time_module
+import uuid
 from typing import Optional
 
 import numpy as np
 import sounddevice as sd
 from faster_whisper import WhisperModel
+import pvporcupine
+import struct
+import os
+from app.config import settings
 
 # KittenTTS for high-quality voice synthesis
 from services.tts_service import speak as tts_speak, generate_audio
@@ -26,7 +31,7 @@ from services.tts_service import speak as tts_speak, generate_audio
 # ─────────────────────────────────────────────
 # Configuration (can also be pulled from app.config)
 # ─────────────────────────────────────────────
-WAKE_WORD = "hello"
+WAKE_WORD = "hey jarvis"
 SERVER_URL = "ws://localhost:8000/ws/chief"
 SAMPLE_RATE = 16000
 BLOCK_SIZE = 4096
@@ -38,8 +43,9 @@ TTS_VOICE = "Jasper"
 
 class JarvisClient:
     def __init__(self):
+        self.client_id = str(uuid.uuid4())[:8]
         print("=" * 50)
-        print("   JARVIS  Voice Client Starting...")
+        print(f"   JARVIS Voice Client (ID: {self.client_id})")
         print("   TTS Engine: KittenTTS (15M params)")
         print("=" * 50)
 
@@ -56,6 +62,24 @@ class JarvisClient:
         self.command_buffer = []
         self.silence_start = None
         self.response_buffer = ""
+
+        # --- Picovoice Porcupine Setup ---
+        self.porcupine = None
+        self.access_key = settings.PICOVOICE_ACCESS_KEY
+        self.model_path = os.path.join(os.getcwd(), settings.PICOVOICE_MODEL_PATH)
+        
+        if self.access_key and os.path.exists(self.model_path):
+            try:
+                print(f"[INIT] Activating Porcupine Engine with model: {settings.PICOVOICE_MODEL_PATH}")
+                self.porcupine = pvporcupine.create(
+                    access_key=self.access_key,
+                    keyword_paths=[self.model_path]
+                )
+                print("[INIT] Porcupine Wake Word Engine Active ✓")
+            except Exception as e:
+                print(f"[ERROR] Porcupine Init Failed: {e}. Falling back to Whisper.")
+        else:
+            print("[WARN] Picovoice Key or Model not found. Using Whisper fallback.")
 
     # ─────────────────────────────────────────
     # WebSocket Handlers
@@ -76,10 +100,15 @@ class JarvisClient:
 
             elif msg_type == "result":
                 original = data.get("data", {}).get("original_response", {})
-                text = original.get("thought_process", "")
-                if text:
-                    print(f"\nJARVIS: {text}")
-                    self.speak(text)
+                source = original.get("source", "unknown")
+                client_id = original.get("client_id", "unknown")
+                
+                # ONLY speak if this command came from THIS specific voice client!
+                if source == "voice_client" and client_id == self.client_id:
+                    text = original.get("response_to_user") or original.get("thought_process", "")
+                    if text:
+                        print(f"\nJARVIS: {text}")
+                        self.speak(text)
 
         except Exception as e:
             print(f"[WS] Error parsing message: {e}")
@@ -93,7 +122,7 @@ class JarvisClient:
             start = text.index("{")
             end = text.rindex("}") + 1
             parsed = json.loads(text[start:end])
-            thought = parsed.get("thought_process", "")
+            thought = parsed.get("response_to_user") or parsed.get("thought_process", "")
             if thought:
                 print(f"\nJARVIS: {thought}")
                 self.speak(thought)
@@ -159,30 +188,48 @@ class JarvisClient:
 
                 # ── WAITING FOR WAKE WORD ──────────────────
                 if self.state == "WAITING_WAKE_WORD":
-                    buffer.append(indata)
+                    # --- Porcupine Mode (Instant) ---
+                    if self.porcupine:
+                        # Convert float32 to int16 for Porcupine
+                        pcm = (indata.flatten() * 32767).astype(np.int16)
+                        # Porcupine expect frames of specific length
+                        # But indata might be different from porcupine.frame_length
+                        # For simplicity, we assume BLOCK_SIZE in config matches or we handle it
+                        # The sounddevice streaming uses BLOCK_SIZE=4096, Porcupine usually 512
+                        # We need to process in chunks of 512
+                        for i in range(0, len(pcm), self.porcupine.frame_length):
+                            frame = pcm[i:i + self.porcupine.frame_length]
+                            if len(frame) == self.porcupine.frame_length:
+                                keyword_index = self.porcupine.process(frame)
+                                if keyword_index >= 0:
+                                    print(f"\n✅ Wake word detected (Porcupine)!")
+                                    self.speak("Yes, sir?")
+                                    self._prepare_listening()
+                                    break
+                    
+                    # --- Whisper Fallback (If porcupine failed or not used) ---
+                    else:
+                        buffer.append(indata)
+                        max_blocks = int(SAMPLE_RATE * 2 / BLOCK_SIZE)
+                        if len(buffer) > max_blocks:
+                            buffer.pop(0)
 
-                    max_blocks = int(SAMPLE_RATE * 2 / BLOCK_SIZE)
-                    if len(buffer) > max_blocks:
-                        buffer.pop(0)
+                        now = time_module.time()
+                        if buffer and (now - last_transcribe_time) >= 1.5:
+                            last_transcribe_time = now
+                            audio_data = np.concatenate(buffer).flatten()
+                            segments, _ = self.model.transcribe(audio_data, beam_size=1)
+                            text = " ".join([s.text for s in segments]).lower().strip()
 
-                    now = time_module.time()
-                    if buffer and (now - last_transcribe_time) >= 1.5:
-                        last_transcribe_time = now
-                        audio_data = np.concatenate(buffer).flatten()
-                        segments, _ = self.model.transcribe(audio_data, beam_size=1)
-                        text = " ".join([s.text for s in segments]).lower().strip()
+                            if text:
+                                print(f"[STT] Heard: {text}          ", end="\r")
 
-                        if text:
-                            print(f"[STT] Heard: {text}          ", end="\r")
-
-                        if WAKE_WORD in text:
-                            print(f"\n✅ Wake word detected!")
-                            self.speak("Yes, sir?")
-                            self.state = "LISTENING_COMMAND"
-                            buffer = []
-                            self.command_buffer = []
-                            self.silence_start = None
-                            last_transcribe_time = 0
+                            if WAKE_WORD in text:
+                                print(f"\n✅ Wake word detected (Whisper)!")
+                                self.speak("Yes, sir?")
+                                self._prepare_listening()
+                                buffer = []
+                                last_transcribe_time = 0
 
                 # ── LISTENING FOR COMMAND ──────────────────
                 elif self.state == "LISTENING_COMMAND":
@@ -203,7 +250,11 @@ class JarvisClient:
                                 print(f"[YOU]    {command}")
                                 print(f"[JARVIS] Thinking...", end="\r")
                                 if self.ws and self.ws.sock:
-                                    self.ws.send(json.dumps({"command": command}))
+                                    self.ws.send(json.dumps({
+                                        "command": command, 
+                                        "source": "voice_client",
+                                        "client_id": self.client_id
+                                    }))
                                 else:
                                     print("[WS] Not connected. Reconnecting...")
                                     self._connect_websocket()
@@ -217,6 +268,12 @@ class JarvisClient:
                             self.silence_start = None
             else:
                 time_module.sleep(0.01)
+
+    def _prepare_listening(self):
+        """Prepare variables for command listening mode."""
+        self.state = "LISTENING_COMMAND"
+        self.command_buffer = []
+        self.silence_start = None
 
     # ─────────────────────────────────────────
     # WebSocket Connection

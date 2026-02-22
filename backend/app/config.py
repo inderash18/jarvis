@@ -43,7 +43,7 @@ class Settings(BaseSettings):
     ALLOW_ORIGINS: List[str] = ["*"]
 
     # ── Audio / Voice Client ─────────────────────────
-    WAKE_WORD: str = "hello"
+    WAKE_WORD: str = "hey jarvis"
     AUDIO_SAMPLE_RATE: int = 16000
     AUDIO_BLOCK_SIZE: int = 4096
     SILENCE_THRESHOLD: float = 0.01
@@ -51,6 +51,8 @@ class Settings(BaseSettings):
 
     # ── External APIs ────────────────────────────────
     PEXELS_API_KEY: str = ""
+    PICOVOICE_ACCESS_KEY: str = ""
+    PICOVOICE_MODEL_PATH: str = "hey-jarvis_en_windows_v4_0_0/hey-jarvis_en_windows_v4_0_0.ppn"
 
     class Config:
         case_sensitive = True

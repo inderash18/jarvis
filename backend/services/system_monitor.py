@@ -10,7 +10,7 @@ import json
 import psutil
 
 from utils.logger import log
-from websocket.manager import manager
+from ws.manager import manager
 
 
 class SystemMonitor:

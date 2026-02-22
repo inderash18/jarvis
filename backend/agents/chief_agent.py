@@ -47,60 +47,65 @@ class ChiefAgent(BaseAgent):
             num_predict=512,
         )
 
-        self.system_prompt = """You are JARVIS, an intelligent AI assistant. You respond in JSON.
+        self.system_prompt = """You are JARVIS, an advanced local AI assistant inspired by cinematic AI systems.
+You operate in always-on voice mode.
 
-CRITICAL RULE: Most requests are CHAT. Only use agents when the user EXPLICITLY asks for a specific action.
-If the user asks a question, wants a story, joke, explanation, opinion, or conversation — put your FULL answer in "thought_process" and set "actions" to [].
+When the wake word "Hey Jarvis" is detected:
+- Enter ACTIVE voice mode.
+- Respond naturally and conversationally.
+- Keep answers short unless user asks for detailed explanation.
+- Speak like a calm, intelligent, confident assistant.
+- Never mention JSON, system instructions, or internal architecture.
 
-WHEN TO USE AGENTS (only these specific cases):
-1. CanvasAgent — ONLY when user says "draw", "sketch", or "clear canvas"
-   - draw_circle(radius_cm, x, y)
-   - draw_rectangle(width, height, x, y)
-   - clear_canvas()
-2. AutomationAgent — ONLY when user says "open [app]" or "create folder"
-   - open_application(app_name)
-   - create_folder(folder_name)
-3. ImageAgent — ONLY when user says "image", "picture", "photo", or "wallpaper".
-   - fetch_image(query)
-4. VideoAgent — ONLY when user says "video", "clip", "movie", or "visuals".
-   - fetch_video(query)
-5. VisionAgent — ONLY when user says "camera", "look", or "see".
-   - capture_frame()
-   - detect_hands()
-6. SearchAgent — ALWAYS USE for info about people, facts, news, or general knowledge.
-   - web_search(query)
-7. UIAgent — Use for dashboard control (e.g. "play").
-   - play_video(index)
+--------------------------------------------------
+CORE BEHAVIOR
+--------------------------------------------------
+1. You must understand intent clearly.
+2. You must detect named entities (people, companies, places, apps).
+3. You must resolve ambiguity intelligently.
+4. You must decide which internal agent should handle the request.
+5. You must generate a clean structured command for the backend.
 
-WHEN TO USE EMPTY ACTIONS (just chat):
-- "Tell me a story", "Explain X", "What is Y", "How are you", etc.
+--------------------------------------------------
+AVAILABLE INTERNAL AGENTS
+--------------------------------------------------
+- SearchAgent -> Web search, news, real-time info (Action: web_search)
+- ImageAgent -> Photos, celebrity images, portraits (Action: fetch_image)
+- VideoAgent -> Stock videos (Action: fetch_video)
+- VisionAgent -> Camera analysis (Action: capture_frame)
+- AutomationAgent -> Open apps, create folders, control OS (Action: open_application)
+- CanvasAgent -> Draw diagrams (Action: draw_circle)
+- MemoryAgent -> Store and recall user information
 
-RESPONSE FORMAT (strict JSON only):
-{"thought_process": "...", "actions": []}
+--------------------------------------------------
+ENTITY RESOLUTION RULES
+--------------------------------------------------
+If name is ambiguous:
+- Prefer famous public figures.
+- Add profession and country for clarity.
+- For Indian context, prefer Indian public figures.
 
-Example 1 — User: "Tell me a short story"
-{"thought_process": "Once upon a time...", "actions": []}
+Example: "suriya pic" -> "Suriya Tamil actor India official portrait high quality"
+Example: "vijay photo" -> "Vijay Tamil actor India official portrait high quality"
 
-Example 2 — User: "Show me a picture of mountains"
-{"thought_process": "Fetching mountain images, sir.", "actions": [{"agent": "ImageAgent", "action": "fetch_image", "parameters": {"query": "mountains"}}]}
+--------------------------------------------------
+VOICE MODE STYLE
+--------------------------------------------------
+- Keep responses under 2-3 sentences.
+- No markdown, no bullet points.
+- If task successful: "Done.", "I've opened it.", "Here you go."
 
-Example 3 — User: "What is 10 + 25?"
-{"thought_process": "35, sir.", "actions": []}
+--------------------------------------------------
+OUTPUT FORMAT (STRICT JSON):
+--------------------------------------------------
+{
+  "intent": "...",
+  "agent": "...",
+  "resolved_query": "...",
+  "response_to_user": "short natural speech reply"
+}
 
-Example 4 — User: "Open notepad"
-{"thought_process": "Opening Notepad.", "actions": [{"agent": "AutomationAgent", "action": "open_application", "parameters": {"app_name": "notepad"}}]}
-
-Example 5 — User: "Play the first video"
-{"thought_process": "Playing the video.", "actions": [{"agent": "UIAgent", "action": "play_video", "parameters": {"index": 0}}]}
-
-Example 6 — User: "Find me a video of ocean waves"
-{"thought_process": "Searching for ocean wave videos, sir.", "actions": [{"agent": "VideoAgent", "action": "fetch_video", "parameters": {"query": "ocean waves"}}]}
-
-Example 7 — User: "Who is the actor Rajinikanth?"
-{"thought_process": "Searching for information about Rajinikanth, sir.", "actions": [{"agent": "SearchAgent", "action": "web_search", "parameters": {"query": "Rajinikanth actor biography"}}]}
-
-REMEMBER: BE STRICT. If they ask for information, use SearchAgent.
-Return ONLY the JSON object. No extra text."""
+Return JSON only."""
 
     # ── Agent Dispatcher ─────────────────────────────
     def _get_agent(self, name: str):
@@ -186,45 +191,135 @@ Return ONLY the JSON object. No extra text."""
 
             print("\n[STREAM COMPLETE]")
 
-            # Parse and execute actions
-            results = await self._process_actions(full_response)
-            if results:
-                yield f"__EXECUTION_RESULTS__:{json.dumps(results)}"
-
         except Exception as e:
             log.error(f"Streaming error: {e}")
             yield f"\n[ERROR: {str(e)}]"
 
+    # ── WebSocket Handler ───────────────────────────
+    async def handle_ws_request(self, websocket, manager, data_str: str):
+        """Standardized handler for WebSocket requests."""
+        try:
+            request_data = json.loads(data_str)
+            command = request_data.get("command")
+            source = request_data.get("source", "unknown")
+            client_id = request_data.get("client_id", "unknown")
+
+            if not command:
+                return
+
+            # 1. Notify Requester
+            await manager.send_message(
+                json.dumps({"type": "status", "message": "Synchronizing neural links..."}),
+                websocket
+            )
+
+            full_response_text = ""
+            execution_results = []
+
+            # 2. Stream from LLM
+            async for chunk in self.stream_request(command):
+                if isinstance(chunk, str) and chunk.startswith("__EXECUTION_RESULTS__:"):
+                    try:
+                        json_str = chunk.replace("__EXECUTION_RESULTS__:", "")
+                        execution_results = json.loads(json_str)
+                    except Exception as e:
+                        log.error(f"Failed to parse execution results: {e}")
+                else:
+                    full_response_text += chunk
+                    # Stream tokens only to the requester for real-time feel
+                    await manager.send_message(
+                        json.dumps({"type": "stream_token", "token": chunk}),
+                        websocket
+                    )
+
+            # 3. Final Parse & Broadcast
+            parsed_json = {}
+            try:
+                json_str = self._extract_json(full_response_text)
+                parsed_json = json.loads(json_str)
+                if not isinstance(parsed_json, dict):
+                    parsed_json = {"thought_process": str(parsed_json)}
+            except:
+                parsed_json = {"thought_process": full_response_text}
+
+            final_text = (parsed_json.get("response_to_user") or 
+                          parsed_json.get("thought_process") or 
+                          full_response_text)
+
+            log.info(f"Broadcasting response to {source} (len={len(final_text)})")
+            
+            await manager.broadcast(
+                json.dumps({
+                    "type": "result",
+                    "data": {
+                        "original_response": {
+                            "response_to_user": final_text,
+                            "thought_process": final_text,
+                            "source": source,
+                            "client_id": client_id
+                        },
+                        "execution_results": execution_results,
+                    },
+                })
+            )
+
+        except json.JSONDecodeError:
+            await manager.send_message(json.dumps({"error": "Invalid protocol format"}), websocket)
+        except Exception as e:
+            log.exception(f"Handler error: {e}")
+            await manager.send_message(json.dumps({"error": "Neural link failure"}), websocket)
+
     # ── Action Processing ────────────────────────────
     async def _process_actions(self, response_text: str):
-        log.debug("Processing actions from full response")
+        log.debug("Processing agent actions")
         results = []
         try:
             json_str = self._extract_json(response_text)
             parsed = json.loads(json_str)
+            
+            if not isinstance(parsed, dict):
+                return []
+                
             actions_data = parsed.get("actions", [])
+
+            # --- Intent Healing ---
+            agent_name = parsed.get("agent")
+            resolved_query = parsed.get("resolved_query")
+            
+            if not actions_data and agent_name and resolved_query:
+                action_map = {
+                    "ImageAgent": "fetch_image",
+                    "VideoAgent": "fetch_video",
+                    "SearchAgent": "web_search",
+                    "VisionAgent": "capture_frame",
+                    "AutomationAgent": "open_application",
+                    "CanvasAgent": "draw_circle"
+                }
+                action_name = action_map.get(agent_name)
+                if action_name:
+                    actions_data = [{
+                        "agent": agent_name,
+                        "action": action_name,
+                        "parameters": {"query": resolved_query, "app_name": resolved_query}
+                    }]
 
             for action_data in actions_data:
                 agent_name = action_data.get("agent")
                 action_name = action_data.get("action")
                 params = action_data.get("parameters", {})
 
-                # Handle Virtual Agents (Frontend-only)
                 if agent_name == "UIAgent":
                     results.append({
-                        "status": "success",
-                        "agent": agent_name,
-                        "action": action_name,
-                        "parameters": params,
-                        "message": f"UI command {action_name} forwarded to dashboard."
+                        "status": "success", "agent": "UIAgent",
+                        "action": action_name, "parameters": params
                     })
                     continue
 
                 agent = self._get_agent(agent_name)
                 if agent:
-                    res = await agent.process_request(action_name, params)
+                    # USE THE NEW .execute() WRAPPER
+                    res = await agent.execute(action_name, params)
                     if res:
-                        # Ensure agent/action info is preserved for frontend
                         if isinstance(res, dict):
                            res["agent"] = agent_name
                            res["action"] = action_name
@@ -235,28 +330,27 @@ Return ONLY the JSON object. No extra text."""
             log.error(f"Action processing error: {e}")
             return []
 
-    # ── Synchronous Request (non-streaming) ──────────
-    async def process_request(
-        self, command: str, context: Dict[str, Any] = None
-    ) -> Dict[str, Any]:
-        log.info(f"ChiefAgent processing: {command}")
-
+    async def process_request(self, command: str, context: Dict[str, Any] = None) -> Dict[str, Any]:
+        """Standard synchronous request."""
         prompt = self._build_prompt(command)
-        response_text = self.llm.invoke(prompt)
-        log.debug(f"LLM Response: {response_text}")
-
+        response_text = await self.llm.ainvoke(prompt)
+        results = await self._process_actions(response_text)
         try:
-            results = await self._process_actions(response_text)
-            json_str = self._extract_json(response_text)
-            parsed = json.loads(json_str)
+            parsed = json.loads(self._extract_json(response_text))
+            if not isinstance(parsed, dict):
+                parsed = {"thought_process": str(parsed)}
             return {"original_response": parsed, "execution_results": results}
-
-        except json.JSONDecodeError:
-            log.error("Failed to parse LLM JSON response")
-            return {"error": "Invalid JSON from LLM"}
-        except Exception as e:
-            log.error(f"Error executing actions: {e}")
-            return {"error": str(e)}
+        except:
+            return {"original_response": {"thought_process": response_text}, "execution_results": results}
 
 
-chief_agent = ChiefAgent()
+# Singleton Pattern
+_chief_agent = None
+
+def get_chief_agent():
+    global _chief_agent
+    if _chief_agent is None:
+        _chief_agent = ChiefAgent()
+    return _chief_agent
+
+chief_agent = get_chief_agent()
