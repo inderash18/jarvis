@@ -2953,3 +2953,22 @@ AttributeError: 'str' object has no attribute 'get'
 2026-02-22 14:46:54.242 | INFO     | ws.manager:disconnect:26 - Client disconnected. Total: 0
 2026-02-22 14:46:54.245 | INFO     | ws.routes:websocket_endpoint:32 - Client disconnected
 2026-02-22 14:46:54.360 | INFO     | app.main:shutdown_event:50 - Shutting down JARVIS System...
+2026-02-22 14:47:20.555 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 14:47:25.693 | INFO     | services.vector_service:__init__:19 - Initializing Vector Service (ChromaDB)...
+2026-02-22 14:47:25.977 | INFO     | services.vector_service:__init__:22 - Loading Embedding Model...
+2026-02-22 14:47:31.492 | INFO     | services.vector_service:__init__:28 - Vector Service Ready.
+2026-02-22 14:47:31.869 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 14:47:32.612 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 14:47:32.613 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 14:47:32.615 | INFO     | agents.image_agent:__init__:29 - Pexels API initialized for ImageAgent.
+2026-02-22 14:47:32.616 | INFO     | agents.voice_agent:__init__:23 - VoiceAgent initialized (TTS voices: Bella, Jasper, Luna, Bruno, Rosie, Hugo, Kiki, Leo)
+2026-02-22 14:47:32.616 | WARNING  | agents.vision_agent:__init__:35 - MediaPipe Hands init failed: module 'mediapipe' has no attribute 'solutions'
+2026-02-22 14:47:32.616 | INFO     | agents.video_agent:__init__:25 - Pexels API initialized for VideoAgent.
+2026-02-22 14:47:32.653 | INFO     | app.main:startup_event:41 - Starting JARVIS System...
+2026-02-22 14:47:34.351 | INFO     | services.tts_service:preload_model:34 - Pre-loading KittenTTS model: KittenML/kitten-tts-mini-0.8
+2026-02-22 14:47:40.767 | INFO     | services.tts_service:preload_model:36 - KittenTTS model loaded successfully ✓ (voice ready)
+2026-02-22 14:47:40.768 | INFO     | services.system_monitor:start_monitoring:22 - Starting System Monitor...
+2026-02-22 14:47:41.144 | INFO     | ws.routes:websocket_endpoint:22 - WebSocket connection attempt on /ws/chief
+2026-02-22 14:47:41.148 | INFO     | ws.manager:connect:20 - New client connected. Total: 1
+2026-02-22 14:47:45.832 | INFO     | agents.chief_agent:stream_request:163 - ChiefAgent streaming: hi
+2026-02-22 14:47:57.808 | INFO     | agents.chief_agent:handle_ws_request:249 - Broadcasting response to dashboard (len=38)
